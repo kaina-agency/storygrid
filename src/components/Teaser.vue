@@ -6,7 +6,12 @@
 </template>
 
 <script>
+	import { MDCRipple } from "@material/ripple";
+
 	export default {
-		props: ["blok"]
+		props: ["blok"],
+		mounted() {
+			const buttonRipple = new MDCRipple(document.querySelector(".mdc-button"));
+		}
 	};
 </script>
