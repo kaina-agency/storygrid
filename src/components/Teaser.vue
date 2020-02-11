@@ -10,7 +10,3 @@ export default {
   props: ['blok']
 }
 </script>
-
-<style lang="scss">
-@import "@material/button/mdc-button";
-</style>
