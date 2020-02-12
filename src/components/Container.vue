@@ -1,6 +1,6 @@
 <template lang="pug">
 	v-container(
-		:class="[blok.bottom_margin, blok.class]"
+		:class="[blok.bottom_margin, blok.class, full]"
 		:style="blok.style"
 	)
 		component(
@@ -13,6 +13,23 @@
 
 <script>
 	export default {
-		props: ["blok"]
+		props: ["blok"],
+		computed: {
+			full() {
+				return this.blok.full_width ? "full" : "";
+			}
+		}
 	};
 </script>
+
+<style scoped>
+	.container {
+		position: relative;
+	}
+
+	.container.full {
+		padding: 0;
+		margin: 0 0;
+		max-width: none;
+	}
+</style>

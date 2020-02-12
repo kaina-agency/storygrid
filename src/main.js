@@ -9,7 +9,7 @@ import Page from '~/components/Page.vue'
 import TextContent from '~/components/TextContent.vue'
 import Button from '~/components/Button.vue'
 import Spacer from '~/components/Spacer.vue'
-import Grid from '~/components/Grid.vue'
+import VideoBackground from '~/components/VideoBackground.vue'
 import Container from '~/components/Container.vue'
 
 export default function(
@@ -21,6 +21,9 @@ export default function(
 	})
 	appOptions.vuetify = new Vuetify({
 		theme: {
+			options: {
+				customProperties: true
+			},
 			themes: {
 				light: {
 					primary: '#2979FF',
@@ -37,6 +40,6 @@ export default function(
 	Vue.component('TextContent', TextContent)
 	Vue.component('Button', Button)
 	Vue.component('Spacer', Spacer)
-	Vue.component('Grid', Grid)
+	Vue.component('VideoBackground', VideoBackground)
 	Vue.component('Container', Container)
 }

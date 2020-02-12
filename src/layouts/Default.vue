@@ -15,8 +15,7 @@
 				:is="blok.component"
 			)
 		v-content(app)
-			v-container
-				slot
+			slot
 </template>
 
 <script>

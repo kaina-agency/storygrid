@@ -1,5 +1,9 @@
 <template lang="pug">
-	div(v-html="richtext")
+	div.rich-text(
+		v-html="richtext"
+		:class="blok.class"
+		:style="blok.style"
+	)
 </template>
 
 <script>
@@ -14,3 +18,9 @@
 		}
 	};
 </script>
+
+<style>
+	.rich-text {
+		position: relative;
+	}
+</style>
