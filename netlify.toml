@@ -1,15 +1,3 @@
 [build]
   command = "yarn build"
   publish = "dist"
-
-[[redirects]]
-	from = "/"
-	to = "/home/index.html"
-	status = 200
-	force = true
-
-[[redirects]]
-	from = "/index.html"
-	to = "/home/index.html"
-	status = 200
-	force = true
