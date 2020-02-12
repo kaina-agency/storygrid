@@ -2,24 +2,44 @@
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import '@mdi/font/css/materialdesignicons.css'
+
 import DefaultLayout from '~/layouts/Default.vue'
 import Page from '~/components/Page.vue'
-import Teaser from '~/components/Teaser.vue'
-import Feature from '~/components/Feature.vue'
+import Markdown from '~/components/Markdown.vue'
+import Button from '~/components/Button.vue'
+import Spacer from '~/components/Spacer.vue'
 import Grid from '~/components/Grid.vue'
 import Richtext from '~/components/Richtext.vue'
 import MyImage from '~/components/MyImage.vue'
+import Container from '~/components/Container.vue'
 
-export default function (Vue, { router, head, isClient, appOptions }) {
-	Vue.use(Vuetify)
-  appOptions.vuetify = new Vuetify({})
-  // Set default layout as a global component
-  Vue.component('Layout', DefaultLayout)
+export default function(
+	Vue,
+	{ router, head, isClient, appOptions }
+) {
+	Vue.use(Vuetify, {
+		iconfont: 'mdi'
+	})
+	appOptions.vuetify = new Vuetify({
+		theme: {
+			themes: {
+				light: {
+					primary: '#2979FF',
+					secondary: '#EEEEEE',
+					accent: '#651FFF'
+				}
+			}
+		}
+	})
+	// Set default layout as a global component
+	Vue.component('Layout', DefaultLayout)
 
-  Vue.component('Page', Page)
-  Vue.component('Teaser', Teaser)
-  Vue.component('Feature', Feature)
-  Vue.component('Grid', Grid)
-  Vue.component('Richtext', Richtext)
-  Vue.component('MyImage', MyImage)
+	Vue.component('Page', Page)
+	Vue.component('Markdown', Markdown)
+	Vue.component('Button', Button)
+	Vue.component('Spacer', Spacer)
+	Vue.component('Grid', Grid)
+	Vue.component('Richtext', Richtext)
+	Vue.component('Container', Container)
 }

@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "@material/ripple": "^4.0.0",
+    "@mdi/font": "^4.9.95",
     "gridsome": "^0.7.12",
     "gridsome-source-storyblok": "^0.2.1",
+    "markdown-it-vue": "^1.0.11",
     "vuetify": "^2.2.12"
   },
   "devDependencies": {
