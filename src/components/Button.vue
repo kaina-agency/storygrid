@@ -6,6 +6,7 @@
 		:href="href"
 		:icon="blok.style == 'icon'"
 		:outlined="blok.style == 'outlined'"
+		:replace="blok.link.linktype == 'story'"
 		ripple
 		:rounded="blok.style == 'rounded'"
 		:text="blok.style == 'text'"
