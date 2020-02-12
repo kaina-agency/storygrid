@@ -11,7 +11,6 @@ import Button from '~/components/Button.vue'
 import Spacer from '~/components/Spacer.vue'
 import Grid from '~/components/Grid.vue'
 import Richtext from '~/components/Richtext.vue'
-import MyImage from '~/components/MyImage.vue'
 import Container from '~/components/Container.vue'
 
 export default function(

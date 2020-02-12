@@ -22,18 +22,6 @@
 <script>
 	import config from "../../gridsome.config";
 
-	const loadStoryblokBridge = function(cb) {
-		let sbConfigs = config.plugins.filter(item => {
-			return item.use === "gridsome-source-storyblok";
-		});
-		let sbConfig = sbConfigs.length > 0 ? sbConfigs[0] : {};
-		let script = document.createElement("script");
-		script.type = "text/javascript";
-		script.src = `//app.storyblok.com/f/storyblok-latest.js?t=${sbConfig.options.client.accessToken}`;
-		script.onload = cb;
-		document.getElementsByTagName("head")[0].appendChild(script);
-	};
-
 	export default {
 		data() {
 			return {
@@ -41,12 +29,7 @@
 			};
 		},
 		mounted() {
-			loadStoryblokBridge(() => {
-				this.initStoryblokEvents();
-			});
-		},
-		methods: {
-			loadStory() {
+			const loadStory = () => {
 				window.storyblok.get(
 					{
 						slug: "settings",
@@ -56,18 +39,18 @@
 						this.story = data.story;
 					}
 				);
-			},
-			initStoryblokEvents() {
-				this.loadStory();
+			};
+			const initStoryblokEvents = () => {
+				loadStory();
 
 				let sb = window.storyblok;
 
 				sb.on(["change", "published"], payload => {
-					this.loadStory();
+					loadStory();
 				});
 
 				sb.on("input", payload => {
-					this.loadStory();
+					loadStory();
 				});
 
 				sb.pingEditor(() => {
@@ -75,7 +58,21 @@
 						sb.enterEditmode();
 					}
 				});
-			}
+			};
+			const loadStoryblokBridge = cb => {
+				let sbConfigs = config.plugins.filter(item => {
+					return item.use === "gridsome-source-storyblok";
+				});
+				let sbConfig = sbConfigs.length > 0 ? sbConfigs[0] : {};
+				let script = document.createElement("script");
+				script.type = "text/javascript";
+				script.src = `//app.storyblok.com/f/storyblok-latest.js?t=${sbConfig.options.client.accessToken}`;
+				script.onload = cb;
+				document.getElementsByTagName("head")[0].appendChild(script);
+			};
+			loadStoryblokBridge(() => {
+				initStoryblokEvents();
+			});
 		}
 	};
 </script>
