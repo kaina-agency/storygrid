@@ -6,11 +6,10 @@ import '@mdi/font/css/materialdesignicons.css'
 
 import DefaultLayout from '~/layouts/Default.vue'
 import Page from '~/components/Page.vue'
-import Markdown from '~/components/Markdown.vue'
+import TextContent from '~/components/TextContent.vue'
 import Button from '~/components/Button.vue'
 import Spacer from '~/components/Spacer.vue'
 import Grid from '~/components/Grid.vue'
-import Richtext from '~/components/Richtext.vue'
 import Container from '~/components/Container.vue'
 
 export default function(
@@ -35,10 +34,9 @@ export default function(
 	Vue.component('Layout', DefaultLayout)
 
 	Vue.component('Page', Page)
-	Vue.component('Markdown', Markdown)
+	Vue.component('TextContent', TextContent)
 	Vue.component('Button', Button)
 	Vue.component('Spacer', Spacer)
 	Vue.component('Grid', Grid)
-	Vue.component('Richtext', Richtext)
 	Vue.component('Container', Container)
 }
