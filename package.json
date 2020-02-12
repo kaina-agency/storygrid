@@ -9,6 +9,14 @@
   "dependencies": {
     "@material/ripple": "^4.0.0",
     "gridsome": "^0.7.12",
-    "gridsome-source-storyblok": "^0.2.1"
+    "gridsome-source-storyblok": "^0.2.1",
+    "vuetify": "^2.2.12"
+  },
+  "devDependencies": {
+    "node-sass": "^4.13.1",
+    "pug": "^2.0.4",
+    "pug-plain-loader": "^1.0.0",
+    "sass-loader": "^8.0.2",
+    "webpack-node-externals": "^1.7.2"
   }
 }
