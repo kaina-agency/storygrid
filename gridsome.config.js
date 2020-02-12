@@ -16,7 +16,6 @@ module.exports = {
 			}
 		}
 	],
-	pathPrefix: '/pages',
 	chainWebpack: config => {
 		config.module
 			.rule('pug')
