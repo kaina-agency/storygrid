@@ -1,23 +1,23 @@
 <template>
-  <Layout>
-    <component
-      v-if="story.content.component"
-      :key="story.content._uid"
-      :blok="story.content"
-      :is="story.content.component"
-    />
-  </Layout>
+	<Layout>
+		<component
+			v-if="story.content.component"
+			:key="story.content._uid"
+			:blok="story.content"
+			:is="story.content.component"
+		/>
+	</Layout>
 </template>
 
 <script>
-export default {
-  name: 'StoryblokEntryTemplate',
-  computed: {
-    story () {
-      return this.$page.storyblokEntry
-    }
-  }
-}
+	export default {
+		name: "StoryblokEntryTemplate",
+		computed: {
+			story() {
+				return this.$page.storyblokEntry;
+			}
+		}
+	};
 </script>
 
 <page-query>
