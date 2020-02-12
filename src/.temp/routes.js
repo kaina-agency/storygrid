@@ -1,10 +1,14 @@
 export default [
   {
-    path: "/settings/",
+    path: "/test/more/",
     component: () => import(/* webpackChunkName: "page--src--templates--storyblok-entry-vue" */ "/Users/james.lovallo/Documents/GitHub/gridsome-test/src/templates/StoryblokEntry.vue")
   },
   {
-    path: "/pages/",
+    path: "/test/",
+    component: () => import(/* webpackChunkName: "page--src--templates--storyblok-entry-vue" */ "/Users/james.lovallo/Documents/GitHub/gridsome-test/src/templates/StoryblokEntry.vue")
+  },
+  {
+    path: "/settings/",
     component: () => import(/* webpackChunkName: "page--src--templates--storyblok-entry-vue" */ "/Users/james.lovallo/Documents/GitHub/gridsome-test/src/templates/StoryblokEntry.vue")
   },
   {

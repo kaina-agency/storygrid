@@ -2,6 +2,7 @@
 	v-btn(
 		:color="blok.color"
 		:depressed="blok.style == 'depressed'"
+		exact
 		:fab="blok.style == 'fab'"
 		:href="href"
 		:icon="blok.style == 'icon'"
@@ -11,7 +12,7 @@
 		:rounded="blok.style == 'rounded'"
 		:text="blok.style == 'text'"
 		:tile="blok.style == 'tile'"
-		:to="blok.link.linktype == 'story' ? blok.link.cached_url : ''"
+		:to="blok.link.linktype == 'story' ? '/' + blok.link.cached_url : ''"
 		v-editable="blok"
 	) 
 		v-icon(
