@@ -1,11 +1,14 @@
 <template lang="pug">
 	v-card(
+		:dark="blok.options.includes('dark')"
 		:flat="blok.options.includes('flat')"
 		:hover="blok.options.includes('hover')"
 		:outlined="blok.options.includes('outlined')"
 		:raised="blok.options.includes('raised')"
 		:shaped="blok.options.includes('shaped')"
 		:tile="blok.options.includes('tile')"
+		:class="blok.class"
+		:style="blok.style"
 		v-editable="blok"
 	)
 		component(
@@ -48,5 +51,15 @@
 				margin-bottom: 0;
 			}
 		}
+	}
+
+	.theme--light.v-card .v-card__subtitle,
+	.theme--light.v-card > .v-card__text {
+		color: rgba(0, 0, 0, 0.9);
+	}
+
+	.theme--dark.v-card .v-card__subtitle,
+	.theme--dark.v-card > .v-card__text {
+		color: rgba(255, 255, 255, 0.9);
 	}
 </style>
