@@ -26,7 +26,7 @@
 					sm: r.small || r.xsmall,
 					md: r.medium || r.small || r.xsmall,
 					lg: r.large || r.medium || r.small || r.xsmall,
-					xl: r.xlarge || r.medium || r.small || r.xsmall
+					xl: r.xlarge || r.large || r.medium || r.small || r.xsmall
 				};
 			}
 		}
