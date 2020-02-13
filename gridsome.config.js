@@ -5,7 +5,8 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-	siteName: 'Storyblok Boilerplate',
+	siteName: 'GMASQ',
+	siteDescription: 'Remember to update this',
 	plugins: [
 		{
 			use: 'gridsome-source-storyblok',
