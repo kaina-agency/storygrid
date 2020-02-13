@@ -1,28 +1,27 @@
 <template lang="pug">
 	.q-typer(:class="blok.class" :style="blok.style" v-editable="blok")
 		| {{ blok.sentence }}
-		vue-typer(
-			:text="blok.text.split(',')"
-			:repeat="Infinity"
-			:shuffle="false"
-			initial-action="typing"
-			:pre-type-delay="70"
-			:type-delay="70"
-			:pre-erase-delay="2000"
-			:erase-delay="250"
-			erase-style="select-all"
-			:erase-on-complete="false"
-			caret-animation="smooth"
-			:style="`min-width: ${minWidth};`"
-		)
+		ClientOnly
+			vue-typer(
+				:text="blok.text.split(',')"
+				:repeat="Infinity"
+				:shuffle="false"
+				initial-action="typing"
+				:pre-type-delay="70"
+				:type-delay="70"
+				:pre-erase-delay="2000"
+				:erase-delay="250"
+				erase-style="select-all"
+				:erase-on-complete="false"
+				caret-animation="smooth"
+				:style="`min-width: ${minWidth};`"
+			)
 </template>
 
 <script>
-	import { VueTyper } from "vue-typer";
-
 	export default {
 		props: ["blok"],
-		components: { VueTyper },
+		components: { VueTyper: () => import("vue-typer") },
 		computed: {
 			minWidth() {
 				let arr = this.blok.text.split(",");
