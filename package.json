@@ -17,6 +17,9 @@
 		"node-sass": "^4.13.1",
 		"pug": "^2.0.4",
 		"pug-plain-loader": "^1.0.0",
-		"sass-loader": "^8.0.2"
+		"sass-loader": "^8.0.2",
+		"vue-carousel-3d": "^0.2.0",
+		"vue-packer": "^0.3.0",
+		"vue-typer": "^1.2.0"
 	}
 }

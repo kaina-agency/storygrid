@@ -36,7 +36,9 @@
 						sizes += `(max-width: ${bp}px) ${bp}w, `;
 						srcset +=
 							"https://img2.storyblok.com" +
-							`/${bp}x${b.options.includes("keep_aspect") ? "" : bp * ar}` +
+							`/${bp}x${
+								b.options.includes("keep_aspect") ? "" : Math.floor(bp * ar)
+							}` +
 							smart +
 							quality +
 							img +
