@@ -11,6 +11,10 @@ import Button from '~/components/Button.vue'
 import Spacer from '~/components/Spacer.vue'
 import VideoBackground from '~/components/VideoBackground.vue'
 import Container from '~/components/Container.vue'
+import Column from '~/components/Column.vue'
+import Row from '~/components/Row.vue'
+import Card from '~/components/Card.vue'
+import ImageG from '~/components/ImageG.vue'
 
 export default function(
 	Vue,
@@ -42,4 +46,8 @@ export default function(
 	Vue.component('Spacer', Spacer)
 	Vue.component('VideoBackground', VideoBackground)
 	Vue.component('Container', Container)
+	Vue.component('Column', Column)
+	Vue.component('Row', Row)
+	Vue.component('Card', Card)
+	Vue.component('ImageG', ImageG)
 }

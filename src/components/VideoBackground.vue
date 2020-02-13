@@ -1,5 +1,5 @@
 <template lang="pug">
-	div.video-container(
+	.video-container(
 		:class="blok.class" 
 		:style="blok.style" 
 		v-editable="blok"
@@ -13,7 +13,7 @@
 		)
 			source(v-if="blok.webm" :src="blok.webm" type="video/webm")
 			source(v-if="blok.mp4" :src="blok.mp4" type="video/mp4")
-		div.video-overlay(:style="overlay")
+		.video-overlay(:style="overlay")
 </template>
 
 <script>

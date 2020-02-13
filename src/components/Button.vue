@@ -13,6 +13,11 @@
 		:text="blok.style == 'text'"
 		:tile="blok.style == 'tile'"
 		:to="blok.link.linktype == 'story' ? '/' + blok.link.cached_url : ''"
+		:x-small="blok.size == 'xs'"
+		:small="blok.size == 'sm'"
+		:medium="blok.size == 'md'"
+		:large="blok.size == 'lg'"
+		:x-large="blok.size == 'xl'"
 		v-editable="blok"
 	) 
 		v-icon(

@@ -1,15 +1,15 @@
 <template lang="pug">
 	v-app
-		v-app-bar(app dense color="primary" dark :flat="story.content.flat_header")
+		v-app-bar(app dense color="primary" dark :flat="settings.flat_header")
 			component(
-				v-for="blok in story.content.header"
+				v-for="blok in settings.header"
 				:key="blok._uid"
 				:blok="blok"
 				:is="blok.component"
 			)
-		v-navigation-drawer(app)
+		v-navigation-drawer(app v-if="(settings.drawer || {}).length")
 			component(
-				v-for="blok in story.content.drawer"
+				v-for="blok in settings.drawer"
 				:key="blok._uid"
 				:blok="blok"
 				:is="blok.component"
@@ -24,7 +24,7 @@
 	export default {
 		data() {
 			return {
-				story: { content: {} }
+				settings: {}
 			};
 		},
 		mounted() {
@@ -35,7 +35,7 @@
 						version: "draft"
 					},
 					data => {
-						this.story = data.story;
+						this.settings = data.story.content;
 					}
 				);
 			};
