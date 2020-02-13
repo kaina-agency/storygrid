@@ -33,13 +33,14 @@
 					let bps = [400, 800, 1200, 1600];
 
 					bps.forEach(bp => {
-						bp = b.options.includes("large") ? bp : Math.floor(bp / 1.5);
+						let width = b.options.includes("large") ? bp : Math.floor(bp / 2);
+						let height = b.options.includes("keep_aspect")
+							? ""
+							: Math.floor(width * ar);
 						sizes += `(max-width: ${bp}px) ${bp}w, `;
 						srcset +=
 							"https://img2.storyblok.com" +
-							`/${bp}x${
-								b.options.includes("keep_aspect") ? "" : Math.floor(bp * ar)
-							}` +
+							`/${width}x${height}` +
 							smart +
 							quality +
 							img +
