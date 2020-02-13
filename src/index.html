@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html ${htmlAttrs}>
 	<head>
+		<link rel="preconnect" href="https://img2.storyblok.com" />
+		<link rel="preconnect" href="https://app.storyblok.com" />
+		<link rel="preconnect" href="https://api.storyblok.com" />
 		${head}
 	</head>
 
 	<body ${bodyAttrs}>
 		${app} ${scripts}
+		<script
+			type="text/javascript"
+			src="webpjs-0.0.2.min.js"
+		></script>
 	</body>
 </html>

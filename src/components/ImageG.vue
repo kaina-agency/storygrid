@@ -29,10 +29,11 @@
 				if (b.image.includes(sb)) {
 					let img = b.image.replace(sb, "");
 					let smart = b.options.includes("smart") ? "/smart" : "";
-					let quality = `/filters:quality(${b.quality || "50"})`;
+					let quality = `/filters:quality(${b.quality || "50"}):format(webp)`;
 					let bps = [400, 800, 1200, 1600];
 
 					bps.forEach(bp => {
+						bp = b.options.includes("large") ? bp : Math.floor(bp / 1.5);
 						sizes += `(max-width: ${bp}px) ${bp}w, `;
 						srcset +=
 							"https://img2.storyblok.com" +
