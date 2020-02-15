@@ -21,40 +21,54 @@
 		props: ["blok"],
 		computed: {
 			src() {
-				let b = this.blok;
-				let bo = String(b.options);
+				const b = this.blok;
+				const bo = String(b.options);
 				let [sizes, srcset, jpegSrcset, src, c, pt] = "";
-				let sb = "//a.storyblok.com";
-				let ba = b.aspect_ratio || "16/9";
-				let br = ba.split("/")[1] / ba.split("/")[0];
-				let bpt = `padding-top: ${br * 100}%;`;
-				let bv = b.vertical_alignment || 5;
-				let bh = b.horizontal_alignment || 5;
-				let keepAspect = bo.includes("keep_aspect");
-				let contain = bo.includes("contain") ? "contain" : "cover";
+				const sb = "//a.storyblok.com";
+				const ba = b.aspect_ratio || "16/9";
+				const br = ba.split("/")[1] / ba.split("/")[0];
+				const bpt = `padding-top: ${br * 100}%;`;
+				const bv = b.vertical_alignment || 50;
+				const bh = b.horizontal_alignment || 50;
+				const keepAspect = bo.includes("keep_aspect");
+				const contain = bo.includes("contain") ? "contain" : "cover";
 				pt = bpt;
 
 				if (b.image.includes(sb)) {
-					let cdn = "https://img2.storyblok.com";
-					let s = bo.includes("smart") ? "/smart" : "";
-					let q = `/filters:quality(${b.quality || "50"})`;
-					let f = ":format(webp)";
-					let i = b.image.replace(sb, "");
-					let ia = String(i.match(/\d+x\d+/g));
-					let ir = ia.split("x")[1] / ia.split("x")[0];
-					let ipt = `padding-top: ${ir * 100}%;`;
+					const cdn = "https://img2.storyblok.com";
+					const s = bo.includes("smart") ? "/smart" : "";
+					const q = `/filters:quality(${b.quality || "50"})`;
+					const f = ":format(webp)";
+					const i = b.image.replace(sb, "");
+					const ia = String(i.match(/\d+x\d+/g));
+					const ih = ia.split("x")[1];
+					const iw = ia.split("x")[0];
+					const ir = ih / iw;
+					const ipt = `padding-top: ${ir * 100}%;`;
 					pt = bo.includes("natural") ? ipt : bpt;
 
-					let bps = [400, 800, 1200, 1600];
+					const bps = [400, 800, 1200, 1600];
 
 					bps.forEach(bp => {
-						let w = b.high_quality ? bp : Math.floor(bp / 2);
-						let h = keepAspect ? "" : Math.floor(w * br);
-						let d = `/${w}x${h}`;
-						c = s ? "" : `:focal(${0}x${h * bv}:${w * bh}x${0})`;
+						const w = b.high_quality ? bp : Math.floor(bp / 2);
+						const h = keepAspect ? "" : Math.floor(w * br);
+						const d = `/${w}x${h}`;
+
+						const coord = (value, upperBound) => {
+							value = Math.max(0, value);
+							value = Math.min(value, upperBound);
+							return Math.ceil(value);
+						};
+
+						const top = coord((bv / 100) * ih - 100 / 2, ih);
+						const left = coord((bh / 100) * iw - 100 / 2, iw);
+						const bottom = coord(top + 100, ih);
+						const right = coord(left + 100, iw);
+
+						const fp = `:focal(${left}x${top}:${right}x${bottom})`;
 
 						sizes += `(max-width: ${bp}px) ${bp}w, `;
-						srcset += cdn + d + s + q + f + c + i + ` ${bp}w, `;
+						srcset += cdn + d + s + q + f + fp + i + ` ${bp}w, `;
 						jpegSrcset += cdn + d + s + q + i + ` ${bp}w, `;
 					});
 
