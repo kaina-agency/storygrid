@@ -9,6 +9,7 @@ import Page from '~/components/Page.vue'
 
 import Button from '~/components/Button.vue'
 import Card from '~/components/Card.vue'
+import Carousel from '~/components/Carousel.vue'
 import Carousel3D from '~/components/Carousel3D.vue'
 import Column from '~/components/Column.vue'
 import Container from '~/components/Container.vue'
@@ -19,6 +20,7 @@ import Row from '~/components/Row.vue'
 import Spacer from '~/components/Spacer.vue'
 import TextContent from '~/components/TextContent.vue'
 import Typer from '~/components/Typer.vue'
+import Video from '~/components/Video.vue'
 import VideoBackground from '~/components/VideoBackground.vue'
 
 export default function(
@@ -49,6 +51,7 @@ export default function(
 
 	Vue.component('Button', Button)
 	Vue.component('Card', Card)
+	Vue.component('Carousel', Carousel)
 	Vue.component('Carousel3D', Carousel3D)
 	Vue.component('Column', Column)
 	Vue.component('Container', Container)
@@ -59,5 +62,6 @@ export default function(
 	Vue.component('Spacer', Spacer)
 	Vue.component('TextContent', TextContent)
 	Vue.component('Typer', Typer)
+	Vue.component('Video', Video)
 	Vue.component('VideoBackground', VideoBackground)
 }
