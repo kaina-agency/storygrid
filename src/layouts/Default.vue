@@ -22,10 +22,22 @@
 	import config from "../../gridsome.config";
 
 	export default {
-		data() {
-			return {
-				settings: {}
-			};
+		data: () => ({
+			settings: {}
+		}),
+		methods: {
+			async getSettings() {
+				try {
+					const results = await this.$fetch("/settings");
+					let settingsData = results.data;
+					this.settings = settingsData.storyblokEntry.content;
+				} catch (error) {
+					console.log(error);
+				}
+			}
+		},
+		created() {
+			this.getSettings();
 		},
 		mounted() {
 			const loadStory = () => {
