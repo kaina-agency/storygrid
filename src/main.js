@@ -15,6 +15,8 @@ import Column from '~/components/Column.vue'
 import Container from '~/components/Container.vue'
 import GoogleMap from '~/components/GoogleMap.vue'
 import ImageG from '~/components/ImageG.vue'
+import List from '~/components/List.vue'
+import ListItem from '~/components/ListItem.vue'
 import Masonry from '~/components/Masonry.vue'
 import Row from '~/components/Row.vue'
 import Spacer from '~/components/Spacer.vue'
@@ -57,6 +59,8 @@ export default function(
 	Vue.component('Container', Container)
 	Vue.component('GoogleMap', GoogleMap)
 	Vue.component('ImageG', ImageG)
+	Vue.component('List', List)
+	Vue.component('ListItem', ListItem)
 	Vue.component('Masonry', Masonry)
 	Vue.component('Row', Row)
 	Vue.component('Spacer', Spacer)

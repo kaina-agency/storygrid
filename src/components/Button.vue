@@ -33,14 +33,15 @@
 		props: ["blok"],
 		computed: {
 			href() {
-				if (this.blok.link.linktype == "story") {
+				const b = this.blok;
+				if (b.link.linktype == "story") {
 					return "";
-				} else if (this.blok.link.linktype == "url") {
-					return this.blok.link.url;
-				} else if (this.blok.link.linktype == "email") {
-					return "mailto:" + this.blok.link.url;
-				} else if (this.blok.link.linktype == "asset") {
-					return this.blok.link.url;
+				} else if (b.link.linktype == "url") {
+					return b.link.url;
+				} else if (b.link.linktype == "email") {
+					return "mailto:" + b.link.url;
+				} else if (b.link.linktype == "asset") {
+					return b.link.url;
 				} else {
 					return "";
 				}

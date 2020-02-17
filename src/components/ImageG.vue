@@ -23,7 +23,8 @@
 			src() {
 				const b = this.blok;
 				const bo = String(b.options);
-				let [sizes, srcset, jpegSrcset, src, c, pt] = "";
+				let [sizes, srcset, jpegSrcset, src, c, pt] = ["", "", "", "", "", ""];
+				console.log(sizes, srcset, jpegSrcset, src, c, pt);
 				const sb = "//a.storyblok.com";
 				const ba = b.aspect_ratio || "16/9";
 				const br = ba.split("/")[1] / ba.split("/")[0];
@@ -47,32 +48,33 @@
 					const ipt = `padding-top: ${ir * 100}%;`;
 					pt = bo.includes("natural") ? ipt : bpt;
 
-					const bps = [400, 800, 1200, 1600];
+					const coord = (value, upperBound) => {
+						value = Math.max(0, value);
+						value = Math.min(value, upperBound);
+						return Math.ceil(value);
+					};
+					const top = coord((bv / 100) * ih - 100 / 2, ih);
+					const left = coord((bh / 100) * iw - 100 / 2, iw);
+					const bottom = coord(top + 100, ih);
+					const right = coord(left + 100, iw);
+					const fp = `:focal(${left}x${top}:${right}x${bottom})`;
+
+					const bps = b.max_quality.length
+						? b.max_quality.split(",")
+						: [400, 800, 1200, 1600];
 
 					bps.forEach(bp => {
-						const w = b.high_quality ? bp : Math.floor(bp / 2);
+						const w = bp;
 						const h = keepAspect ? "" : Math.floor(w * br);
 						const d = `/${w}x${h}`;
-
-						const coord = (value, upperBound) => {
-							value = Math.max(0, value);
-							value = Math.min(value, upperBound);
-							return Math.ceil(value);
-						};
-
-						const top = coord((bv / 100) * ih - 100 / 2, ih);
-						const left = coord((bh / 100) * iw - 100 / 2, iw);
-						const bottom = coord(top + 100, ih);
-						const right = coord(left + 100, iw);
-
-						const fp = `:focal(${left}x${top}:${right}x${bottom})`;
 
 						sizes += `(max-width: ${bp}px) ${bp}w, `;
 						srcset += cdn + d + s + q + f + fp + i + ` ${bp}w, `;
 						jpegSrcset += cdn + d + s + q + i + ` ${bp}w, `;
 					});
 
-					src = srcset.split(", ")[2].replace("1200w", "");
+					let sources = srcset.split(", ");
+					src = sources[sources.length - 2];
 				} else {
 					src = b.image;
 				}
