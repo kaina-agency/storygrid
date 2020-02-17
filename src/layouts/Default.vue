@@ -25,7 +25,7 @@
 		data: () => ({
 			settings: {}
 		}),
-		methods: {
+		computed: {
 			async getSettings() {
 				try {
 					const results = await this.$fetch("/settings");
@@ -36,9 +36,6 @@
 				}
 			}
 		},
-		created() {
-			this.getSettings();
-		},
 		mounted() {
 			const loadStory = () => {
 				window.storyblok.get(
@@ -47,7 +44,9 @@
 						version: "draft"
 					},
 					data => {
-						this.settings = data.story.content;
+						if (this.settings != data.story.content) {
+							this.settings = data.story.content;
+						}
 					}
 				);
 			};
@@ -56,11 +55,7 @@
 
 				let sb = window.storyblok;
 
-				sb.on(["change", "published"], payload => {
-					loadStory();
-				});
-
-				sb.on("input", payload => {
+				sb.on(["change", "published", "input"], payload => {
 					loadStory();
 				});
 
