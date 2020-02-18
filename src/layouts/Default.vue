@@ -58,17 +58,6 @@
 				};
 				let responsive =
 					"calc(minpx + (max - min) * ((100vw - 400px) / (1800 - 400)))";
-
-				for (let i = 1; i <= 6; i++) {
-					styles["--h" + i + "-fs"] = responsive
-						.replace(/min/g, s["h" + i + "_min"])
-						.replace(/max/g, s["h" + i + "_max"]);
-				}
-
-				styles["--bs"] = responsive
-					.replace(/min/g, s.body_min)
-					.replace(/max/g, s.body_max);
-
 				let themeColors = [
 					"primary",
 					"secondary",
@@ -79,7 +68,14 @@
 					"warning"
 				];
 
-				if (s.theme == "dark") this.$vuetify.theme.dark = true;
+				if (s.default_theme === "dark") {
+					console.log(s.default_theme === "dark");
+					this.$vuetify.theme.dark = true;
+					styles.background = s.background_dark;
+				} else {
+					styles.background = s.background;
+				}
+
 				themeColors.forEach(color => {
 					if (s[color]) {
 						this.$vuetify.theme.themes.light[color] = s[color];
@@ -88,6 +84,16 @@
 						this.$vuetify.theme.themes.dark[color] = s[color + "_dark"];
 					}
 				});
+
+				for (let i = 1; i <= 6; i++) {
+					styles["--h" + i + "-fs"] = responsive
+						.replace(/min/g, s["h" + i + "_min"])
+						.replace(/max/g, s["h" + i + "_max"]);
+				}
+
+				styles["--bs"] = responsive
+					.replace(/min/g, s.body_min)
+					.replace(/max/g, s.body_max);
 
 				return styles;
 			}
@@ -103,11 +109,6 @@
 						},
 						data => {
 							this.settings = data.story.content;
-							if (data.story.content == "dynamic") {
-								if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-									this.$vuetify.theme.dark = true;
-								}
-							}
 						}
 					);
 				};
