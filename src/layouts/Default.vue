@@ -68,9 +68,13 @@
 					"warning"
 				];
 
+				if (s.theme == "dark") this.$vuetify.theme.dark = true;
 				themeColors.forEach(color => {
 					if (s[color]) {
 						this.$vuetify.theme.themes.light[color] = s[color];
+					}
+					if (s[color + "_dark"]) {
+						this.$vuetify.theme.themes.dark[color] = s[color + "_dark"];
 					}
 				});
 
