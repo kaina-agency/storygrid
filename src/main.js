@@ -35,7 +35,12 @@ export default function(
 	appOptions.vuetify = new Vuetify({
 		theme: {
 			options: {
-				customProperties: true
+				customProperties: true,
+				minifyTheme: function(css) {
+					return process.env.NODE_ENV === 'production'
+						? css.replace(/[\r\n|\r|\n]/g, '')
+						: css
+				}
 			},
 			themes: {
 				light: {

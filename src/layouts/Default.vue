@@ -24,6 +24,7 @@
 
 <script>
 	import config from "../../gridsome.config";
+	import WebFont from "webfontloader";
 
 	export default {
 		data: () => ({
