@@ -11,8 +11,7 @@
 		"@mdi/font": "^4.9.95",
 		"gridsome": "^0.7.12",
 		"gridsome-source-storyblok": "^0.2.1",
-		"vuetify": "^2.2.12",
-		"webfontloader": "^1.6.28"
+		"vuetify": "^2.2.12"
 	},
 	"devDependencies": {
 		"node-sass": "^4.13.1",

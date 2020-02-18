@@ -3,6 +3,7 @@
 		v-html="richtext"
 		:class="blok.class"
 		:style="blok.style"
+		v-editable="blok"
 	)
 </template>
 
