@@ -8,6 +8,7 @@
 				source(:srcset="src.srcset" :sizes="src.sizes" type="image/webp")
 				source(:srcset="src.jpegSrcset" :sizes="src.sizes" type="image/jpeg")
 				img(
+					loading="lazy"
 					:srcset="src.srcset"
 					:sizes="src.sizes"
 					:src="src.src"
