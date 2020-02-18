@@ -2,6 +2,7 @@
 	v-list-item(
 		:href="href"
 		:to="blok.link.linktype == 'story' ? '/' + blok.link.cached_url : ''"
+		v-editable="blok"
 		)
 		v-list-item-avatar(v-if="blok.avatar || blok.icon")
 			component(

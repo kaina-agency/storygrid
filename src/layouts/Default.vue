@@ -1,6 +1,13 @@
 <template lang="pug">
 	v-app(:style="appStyles")
-		v-app-bar(app dense color="primary" dark :flat="settings.flat_header")
+		v-app-bar(
+			app
+			:clipped-left="settings.full_width_header || false"
+			dense
+			color="primary"
+			dark
+			:flat="settings.flat_header"
+		)
 			v-app-bar-nav-icon(@click="drawer = !drawer")
 			component(
 				v-for="blok in settings.header"
@@ -10,6 +17,8 @@
 			)
 		v-navigation-drawer(
 			app
+			:clipped="settings.full_width_header || false"
+			:class="settings.drawer_class || 'secondary'"
 			v-if="(settings.drawer || {}).length || false"
 			v-model="drawer")
 			component(

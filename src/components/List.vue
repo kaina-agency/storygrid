@@ -1,5 +1,13 @@
 <template lang="pug">
-	v-list(dense)
+	v-list(
+		dense
+		:nav="blok.style == 'nav'"
+		:rounded="blok.style == 'rounded'"
+		:shaped="blok.style == 'shaped'"
+		:three-line="blok.line_cap == 'three'"
+		:two-line="blok.line_cap == 'two'"
+		v-editable="blok"
+	)
 		v-subheader(v-if="blok.subheader")
 		v-list-item-group(:color="blok.color")
 			component(
