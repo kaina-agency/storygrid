@@ -1,5 +1,7 @@
 <template lang="pug">
 	v-app(:style="appStyles")
+		div(v-html="settings.inject_html")
+		component(:is="'style'") {{ settings.inject_css }}
 		v-app-bar(
 			app
 			:clipped-left="settings.full_width_header || false"
