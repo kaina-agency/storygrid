@@ -31,7 +31,7 @@
 			settings: {},
 			drawer: null
 		}),
-		async mounted() {
+		async created() {
 			try {
 				const results = await this.$fetch("/settings");
 				this.settings = results.data.storyblokEntry.content;
@@ -48,12 +48,84 @@
 				};
 				let responsive =
 					"calc(minpx + (max - min) * ((100vw - 400px) / (1800 - 400)))";
+
 				for (let i = 1; i <= 6; i++) {
 					styles["--h" + i + "-fs"] = responsive
 						.replace(/min/g, s["h" + i + "_min"])
 						.replace(/max/g, s["h" + i + "_max"]);
 				}
+
+				styles["--bs"] = responsive
+					.replace(/min/g, s.body_min)
+					.replace(/max/g, s.body_max);
+
+				let themeColors = [
+					"primary",
+					"secondary",
+					"accent",
+					"success",
+					"error",
+					"info",
+					"warning"
+				];
+
+				themeColors.forEach(color => {
+					if (s[color]) {
+						this.$vuetify.theme.themes.light[color] = s[color];
+					}
+				});
+
 				return styles;
+			}
+		},
+		mounted() {
+			if (window.location != window.parent.location) {
+				console.info("Layout is in edit mode");
+				const loadStory = () => {
+					window.storyblok.get(
+						{
+							slug: "settings",
+							version: "draft"
+						},
+						data => {
+							this.settings = data.story.content;
+							if (data.story.content == "dynamic") {
+								if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+									this.$vuetify.theme.dark = true;
+								}
+							}
+						}
+					);
+				};
+				const initStoryblokEvents = () => {
+					loadStory();
+
+					let sb = window.storyblok;
+
+					sb.on(["change", "published", "input"], payload => {
+						loadStory();
+					});
+
+					sb.pingEditor(() => {
+						if (sb.inEditor) {
+							sb.enterEditmode();
+						}
+					});
+				};
+				const loadStoryblokBridge = cb => {
+					let sbConfigs = config.plugins.filter(item => {
+						return item.use === "gridsome-source-storyblok";
+					});
+					let sbConfig = sbConfigs.length > 0 ? sbConfigs[0] : {};
+					let script = document.createElement("script");
+					script.type = "text/javascript";
+					script.src = `//app.storyblok.com/f/storyblok-latest.js?t=${sbConfig.options.client.accessToken}`;
+					script.onload = cb;
+					document.getElementsByTagName("head")[0].appendChild(script);
+				};
+				loadStoryblokBridge(() => {
+					initStoryblokEvents();
+				});
 			}
 		}
 	};
@@ -79,31 +151,38 @@
 
 	h1 {
 		font-size: 60;
-		font-size: var(--h1-fs, 60);
+		font-size: var(--h1-fs, 60px);
 	}
 
 	h2 {
 		font-size: 48;
-		font-size: var(--h2-fs, 48);
+		font-size: var(--h2-fs, 48px);
 	}
 
 	h3 {
 		font-size: 34;
-		font-size: var(--h3-fs, 34);
+		font-size: var(--h3-fs, 34px);
 	}
 
 	h4 {
 		font-size: 24;
-		font-size: var(--h4-fs, 24);
+		font-size: var(--h4-fs, 24px);
 	}
 
 	h5 {
 		font-size: 20;
-		font-size: var(--h5-fs, 20);
+		font-size: var(--h5-fs, 20px);
 	}
 
 	h6 {
 		font-size: 18;
-		font-size: var(--h6-fs, 18);
+		font-size: var(--h6-fs, 18px);
+	}
+
+	p,
+	ol,
+	ul {
+		font-size: 1rem;
+		font-size: var(--bs, 16px);
 	}
 </style>
