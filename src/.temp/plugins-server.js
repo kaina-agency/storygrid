@@ -1,4 +1,4 @@
-import plugin_gridsome_source_storyblok_5 from "c:\\Users\\james\\Documents\\GitHub\\storygrid\\node_modules\\gridsome-source-storyblok\\gridsome.client.js"
+import plugin_gridsome_source_storyblok_5 from "/Users/james.lovallo/Documents/GitHub/gridsome-test/node_modules/gridsome-source-storyblok/gridsome.client.js"
 
 export default [
   {

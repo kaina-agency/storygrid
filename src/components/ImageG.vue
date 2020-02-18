@@ -24,7 +24,6 @@
 				const b = this.blok;
 				const bo = String(b.options);
 				let [sizes, srcset, jpegSrcset, src, c, pt] = ["", "", "", "", "", ""];
-				console.log(sizes, srcset, jpegSrcset, src, c, pt);
 				const sb = "//a.storyblok.com";
 				const ba = b.aspect_ratio || "16/9";
 				const br = ba.split("/")[1] / ba.split("/")[0];
@@ -59,9 +58,7 @@
 					const right = coord(left + 100, iw);
 					const fp = `:focal(${left}x${top}:${right}x${bottom})`;
 
-					const bps = b.max_quality.length
-						? b.max_quality.split(",")
-						: [400, 800, 1200, 1600];
+					const bps = b.max_quality.split(",") || [400, 800];
 
 					bps.forEach(bp => {
 						const w = bp;
