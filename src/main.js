@@ -41,13 +41,6 @@ export default function(
 						? css.replace(/[\r\n|\r|\n]/g, '')
 						: css
 				}
-			},
-			themes: {
-				light: {
-					primary: '#2979FF',
-					secondary: '#EEEEEE',
-					accent: '#651FFF'
-				}
 			}
 		}
 	})
