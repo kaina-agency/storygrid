@@ -9,6 +9,7 @@
 	},
 	"dependencies": {
 		"@mdi/font": "^4.9.95",
+		"download-file": "^0.1.5",
 		"gridsome": "^0.7.13",
 		"gridsome-source-storyblok": "^0.2.2",
 		"vuetify": "^2.2.13"

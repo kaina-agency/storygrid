@@ -7,6 +7,7 @@
 module.exports = {
 	siteName: 'GMASQ',
 	siteDescription: 'Remember to update this',
+	icon: './src/my-icon.png',
 	plugins: [
 		{
 			use: 'gridsome-source-storyblok',
