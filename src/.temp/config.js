@@ -1,7 +1,7 @@
 export default {
   "trailingSlash": true,
   "pathPrefix": "",
-  "titleTemplate": "%s - GMASQ",
+  "titleTemplate": "%s - StoryGrid",
   "siteUrl": "",
   "version": "0.7.13",
   "catchLinks": true
