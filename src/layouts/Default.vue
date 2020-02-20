@@ -69,11 +69,10 @@
 				];
 
 				if (s.default_theme === "dark") {
-					console.log(s.default_theme === "dark");
 					this.$vuetify.theme.dark = true;
-					styles.background = s.background_dark;
+					styles["--bg"] = s.background_dark;
 				} else {
-					styles.background = s.background;
+					styles["--bg"] = s.background;
 				}
 
 				themeColors.forEach(color => {
@@ -151,6 +150,20 @@
 		font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
 		margin: 0;
 		padding: 0;
+	}
+
+	#app {
+		background: var(--bg);
+		&:before {
+			content: "";
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: var(--bg);
+			z-index: -1;
+		}
 	}
 
 	h1,
