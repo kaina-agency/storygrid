@@ -1,7 +1,7 @@
 <template lang="pug">
 	.imgG(
 			:class="blok.class"
-			:style="src.pt + blok.style"
+			:style="src.pt + src.filters + blok.style"
 			v-editable="blok"
 		)
 			picture
@@ -33,6 +33,11 @@
 				const bh = b.horizontal_alignment || 50;
 				const keepAspect = bo.includes("keep_aspect");
 				const contain = bo.includes("contain") ? "contain" : "cover";
+				const brt = `brightness(${b.brightness || 1}) `;
+				const cnt = `contrast(${b.contrast || 1}) `;
+				const sat = `saturate(${b.saturation || 1}) `;
+				const grs = `grayscale(${b.grayscale ? 1 : 0}) `;
+				const filters = `filter: ${brt + cnt + sat + grs};`;
 				pt = bpt;
 
 				if (b.image.includes(sb)) {
@@ -83,7 +88,8 @@
 					jpegSrcset: jpegSrcset,
 					pt: pt,
 					src: src,
-					contain: contain
+					contain: contain,
+					filters: filters
 				};
 			}
 		}
