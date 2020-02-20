@@ -4,8 +4,8 @@
 	"scripts": {
 		"build": "gridsome build",
 		"develop": "gridsome develop",
-		"publish": "gridsome build && netlify deploy --prod",
-		"switch": "netlify unlink && netlify link && netlify dev -c 'node switch.js'"
+		"publish": "gridsome build && ntl deploy --prod",
+		"switch": "ntl unlink && ntl link && ntl dev -c 'node switch.js'"
 	},
 	"dependencies": {
 		"@mdi/font": "^4.9.95",
