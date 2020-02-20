@@ -1,5 +1,7 @@
 node_modules
-dist
-# Local Netlify folder
 .netlify
+.env
 src/.temp
+src/icon.png
+.cache
+dist

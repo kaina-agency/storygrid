@@ -5,15 +5,15 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-	siteName: 'StoryGrid',
+	siteName: process.env.GRIDSOME_TITLE,
 	siteDescription: 'Remember to update this',
-	icon: './src/.temp/icon.png',
+	icon: './src/icon.png',
 	plugins: [
 		{
 			use: 'gridsome-source-storyblok',
 			options: {
 				client: {
-					accessToken: process.env.SB
+					accessToken: process.env.GRIDSOME_SB
 				}
 			}
 		}

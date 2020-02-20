@@ -5,7 +5,7 @@ const fs = require('fs')
 const icon = process.env.ICON
 
 var icon_options = {
-	directory: './src/.temp/',
+	directory: './src/',
 	filename: 'icon.png'
 }
 
@@ -17,9 +17,10 @@ download(icon, icon_options, function(err) {
 	}
 })
 
-let sb = 'SB=' + process.env.SB + os.EOL
+let sb = 'GRIDSOME_SB=' + process.env.GRIDSOME_SB + os.EOL
+let t = 'GRIDSOME_TITLE=' + process.env.GRIDSOME_TITLE + os.EOL
 
-let content = sb
+let content = sb + t
 
 fs.writeFile('./.env', content, err => {
 	if (err) {

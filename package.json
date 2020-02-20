@@ -11,9 +11,9 @@
 		"@mdi/font": "^4.9.95",
 		"download-file": "^0.1.5",
 		"fs": "^0.0.1-security",
-		"gridsome": "^0.7.13",
+		"gridsome": "^0.7.12",
 		"gridsome-source-storyblok": "^0.2.2",
-		"vuetify": "^2.2.13"
+		"vuetify": "^2.2.14"
 	},
 	"devDependencies": {
 		"core-js": "2",
@@ -25,8 +25,5 @@
 		"vue-carousel-3d": "^0.2.0",
 		"vue-packer": "^0.3.0",
 		"vue-typer": "^1.2.0"
-	},
-	"comments": {
-		"devDependencies": "required by gridsome-source-storyblok 0.2.2"
 	}
 }
