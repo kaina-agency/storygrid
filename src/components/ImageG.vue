@@ -68,7 +68,7 @@
 
 						sizes += `(max-width: ${bp}px) ${bp}w, `;
 						srcset += cdn + d + s + q + f + fp + i + ` ${bp}w, `;
-						jpegSrcset += cdn + d + s + q + i + ` ${bp}w, `;
+						jpegSrcset += cdn + d + s + q + fp + i + ` ${bp}w, `;
 					});
 
 					let sources = srcset.split(", ");
