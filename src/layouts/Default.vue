@@ -4,11 +4,13 @@
 		component(:is="'style'") {{ settings.inject_css }}
 		v-app-bar(
 			app
-			:clipped-left="settings.full_width_header || false"
-			dense
+			:clipped-left="settings.full_width || false"
 			color="primary"
-			dark
-			:flat="settings.flat_header"
+			:dense="settings.dense == false ? false : true"
+			:dark="settings.light == true ? false : true"
+			:flat="settings.flat"
+			:hide-on-scroll="settings.hide_on_scroll"
+			:light="settings.light"
 		)
 			v-app-bar-nav-icon(@click="drawer = !drawer")
 			component(
@@ -19,8 +21,10 @@
 			)
 		v-navigation-drawer(
 			app
-			:clipped="settings.full_width_header || false"
+			:clipped="settings.full_width || false"
 			:class="settings.drawer_class || 'secondary'"
+			:dark="settings.light_drawer == true ? false : true"
+			:light="settings.light_drawer"
 			v-if="(settings.drawer || {}).length || false"
 			v-model="drawer")
 			component(
