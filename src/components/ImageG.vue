@@ -1,5 +1,5 @@
 <template lang="pug">
-	.imgG(
+	v-lazy.imgG(
 			:class="blok.class"
 			:style="src.pt + src.filters + blok.style"
 			v-editable="blok"
@@ -18,8 +18,10 @@
 </template>
 
 <script>
+	import { VLazy } from "vuetify/lib";
 	export default {
 		props: ["blok"],
+		components: { VLazy },
 		computed: {
 			src() {
 				const b = this.blok;
