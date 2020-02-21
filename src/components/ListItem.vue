@@ -4,7 +4,10 @@
 		:to="to"
 		v-editable="blok"
 		)
-		v-list-item-avatar(v-if="blok.avatar || blok.icon")
+		v-list-item-avatar(
+			v-if="blok.avatar || blok.icon" 
+			:class="blok.avatar_color"
+		)
 			component(
 				v-for="blok in blok.avatar"
 				:key="blok._uid"
