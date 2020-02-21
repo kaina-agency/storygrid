@@ -2,6 +2,7 @@
 	v-list(
 		:class="addedStyles"
 		dense
+		:flat="blok.flat"
 		:nav="blok.style == 'nav'"
 		:rounded="blok.style == 'rounded'"
 		:shaped="blok.style == 'shaped'"
@@ -31,6 +32,8 @@
 						return "arrow";
 					case "sci-fi":
 						return "sci-fi";
+					case "sci-fi-narrow":
+						return "sci-fi-narrow";
 				}
 			}
 		}
@@ -52,6 +55,17 @@
 				0% 100%
 			);
 			margin-right: 16px;
+		}
+		&.sci-fi-narrow .v-list-item {
+			clip-path: polygon(
+				100% 0,
+				100% calc(100% - 12px),
+				calc(100% - 12px) 100%,
+				0% 100%,
+				0 12px,
+				12px 0
+			);
+			margin: 0 16px;
 		}
 	}
 </style>

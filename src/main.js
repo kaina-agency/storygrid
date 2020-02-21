@@ -20,6 +20,7 @@ import Carousel from '~/components/Carousel.vue'
 import Carousel3D from '~/components/Carousel3D.vue'
 import Column from '~/components/Column.vue'
 import Container from '~/components/Container.vue'
+import Form from '~/components/Form.vue'
 import GoogleMap from '~/components/GoogleMap.vue'
 import ImageG from '~/components/ImageG.vue'
 import List from '~/components/List.vue'
@@ -72,6 +73,7 @@ export default function(
 	Vue.component('Carousel3D', Carousel3D)
 	Vue.component('Column', Column)
 	Vue.component('Container', Container)
+	Vue.component('Form', Form)
 	Vue.component('GoogleMap', GoogleMap)
 	Vue.component('ImageG', ImageG)
 	Vue.component('List', List)
