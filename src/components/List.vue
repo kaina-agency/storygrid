@@ -19,7 +19,9 @@
 </template>
 
 <script>
+	import { VList, VSubheader, VListItemGroup } from "vuetify/lib";
 	export default {
-		props: ["blok"]
+		props: ["blok"],
+		components: { VList, VSubheader, VListItemGroup }
 	};
 </script>

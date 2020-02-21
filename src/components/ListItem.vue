@@ -1,7 +1,7 @@
 <template lang="pug">
 	v-list-item(
 		:href="href"
-		:to="blok.link.linktype == 'story' ? '/' + blok.link.cached_url : ''"
+		:to="to"
 		v-editable="blok"
 		)
 		v-list-item-avatar(v-if="blok.avatar || blok.icon")
@@ -18,20 +18,42 @@
 </template>
 
 <script>
+	import {
+		VListItem,
+		VListItemAvatar,
+		VListItemContent,
+		VListItemTitle,
+		VListItemSubtitle
+	} from "vuetify/lib";
 	export default {
 		props: ["blok"],
+		components: {
+			VListItem,
+			VListItemAvatar,
+			VListItemContent,
+			VListItemTitle,
+			VListItemSubtitle
+		},
 		computed: {
 			href() {
-				if (this.blok.link.linktype == "story") {
+				let b = this.blok;
+				if (b.link.linktype == "story") {
 					return "";
-				} else if (this.blok.link.linktype == "url") {
-					return this.blok.link.url;
-				} else if (this.blok.link.linktype == "email") {
-					return "mailto:" + this.blok.link.url;
-				} else if (this.blok.link.linktype == "asset") {
-					return this.blok.link.url;
+				} else if (b.link.linktype == "url") {
+					return b.link.url;
+				} else if (b.link.linktype == "email") {
+					return "mailto:" + b.link.url;
+				} else if (b.link.linktype == "asset") {
+					return b.link.url;
 				} else {
 					return "";
+				}
+			},
+			to() {
+				let b = this.blok;
+				let path = b.link.cached_url == "home" ? "" : b.link.cached_url;
+				if (b.link.linktype == "story") {
+					return "/" + path;
 				}
 			}
 		}

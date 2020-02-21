@@ -12,8 +12,10 @@
 </template>
 
 <script>
+	import { VContainer } from "vuetify/lib";
 	export default {
 		props: ["blok"],
+		components: { VContainer },
 		computed: {
 			full() {
 				return this.blok.full_width ? "full" : "";

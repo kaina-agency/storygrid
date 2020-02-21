@@ -2,7 +2,6 @@
 	v-btn(
 		:color="blok.color"
 		:depressed="blok.style == 'depressed'"
-		exact
 		:fab="blok.style == 'fab'"
 		:href="href"
 		:icon="blok.style == 'icon'"
@@ -12,7 +11,7 @@
 		:rounded="blok.style == 'rounded'"
 		:text="blok.style == 'text'"
 		:tile="blok.style == 'tile'"
-		:to="blok.link.linktype == 'story' ? '/' + blok.link.cached_url : ''"
+		:to="to"
 		:x-small="blok.size == 'xs'"
 		:small="blok.size == 'sm'"
 		:medium="blok.size == 'md'"
@@ -34,8 +33,10 @@
 </template>
 
 <script>
+	import { VBtn } from "vuetify/lib";
 	export default {
 		props: ["blok"],
+		components: { VBtn },
 		computed: {
 			href() {
 				const b = this.blok;
@@ -49,6 +50,13 @@
 					return b.link.url;
 				} else {
 					return "";
+				}
+			},
+			to() {
+				let b = this.blok;
+				let path = b.link.cached_url == "home" ? "" : b.link.cached_url;
+				if (b.link.linktype == "story") {
+					return "/" + path;
 				}
 			}
 		}

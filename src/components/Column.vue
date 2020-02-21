@@ -16,8 +16,10 @@
 </template>
 
 <script>
+	import { VCol } from "vuetify/lib";
 	export default {
 		props: ["blok"],
+		components: { VCol },
 		computed: {
 			responsive() {
 				let r = this.blok.responsive;

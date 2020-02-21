@@ -8,7 +8,7 @@
 		:raised="blok.options.includes('raised')"
 		:shaped="blok.options.includes('shaped')"
 		:tile="blok.options.includes('tile')"
-		:to="blok.link.linktype == 'story' ? '/' + blok.link.cached_url : ''"
+		:to="to"
 		:class="blok.class"
 		:style="blok.style"
 		v-editable="blok"
@@ -38,8 +38,10 @@
 </template>
 
 <script>
+	import { VCard, VCardText, VCardActions, VDivider } from "vuetify/lib";
 	export default {
 		props: ["blok"],
+		components: { VCard, VCardText, VCardActions, VDivider },
 		computed: {
 			href() {
 				const b = this.blok;
@@ -53,6 +55,13 @@
 					return b.link.url;
 				} else {
 					return "";
+				}
+			},
+			to() {
+				let b = this.blok;
+				let path = b.link.cached_url == "home" ? "" : b.link.cached_url;
+				if (b.link.linktype == "story") {
+					return "/" + path;
 				}
 			}
 		}

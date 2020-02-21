@@ -24,8 +24,10 @@
 </template>
 
 <script>
+	import { VCarousel, VCarouselItem } from "vuetify/lib";
 	export default {
 		props: ["blok"],
+		components: { VCarousel, VCarouselItem },
 		computed: {
 			arrows() {
 				if (this.blok.options.includes("hide-arrows")) {
