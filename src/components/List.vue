@@ -1,5 +1,6 @@
 <template lang="pug">
 	v-list(
+		:class="addedStyles"
 		dense
 		:nav="blok.style == 'nav'"
 		:rounded="blok.style == 'rounded'"
@@ -22,6 +23,35 @@
 	import { VList, VSubheader, VListItemGroup } from "vuetify/lib";
 	export default {
 		props: ["blok"],
-		components: { VList, VSubheader, VListItemGroup }
+		components: { VList, VSubheader, VListItemGroup },
+		computed: {
+			addedStyles() {
+				switch (this.blok.style) {
+					case "arrow":
+						return "arrow";
+					case "sci-fi":
+						return "sci-fi";
+				}
+			}
+		}
 	};
 </script>
+
+<style lang="scss" scoped>
+	.v-list {
+		&.arrow .v-list-item {
+			clip-path: polygon(0% 0%, 90% 0, 100% 50%, 90% 100%, 0% 100%);
+			margin-right: 15px;
+		}
+		&.sci-fi .v-list-item {
+			clip-path: polygon(
+				0% 0%,
+				100% 0,
+				100% calc(100% - 12px),
+				calc(100% - 12px) 100%,
+				0% 100%
+			);
+			margin-right: 15px;
+		}
+	}
+</style>
