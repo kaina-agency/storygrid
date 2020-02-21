@@ -41,7 +41,7 @@
 	.v-list {
 		&.arrow .v-list-item {
 			clip-path: polygon(0% 0%, 90% 0, 100% 50%, 90% 100%, 0% 100%);
-			margin-right: 15px;
+			margin-right: 16px;
 		}
 		&.sci-fi .v-list-item {
 			clip-path: polygon(
@@ -51,7 +51,7 @@
 				calc(100% - 12px) 100%,
 				0% 100%
 			);
-			margin-right: 15px;
+			margin-right: 16px;
 		}
 	}
 </style>
