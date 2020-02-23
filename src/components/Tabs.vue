@@ -13,7 +13,7 @@
 			:key="blok._uid"
 			v-editable="blok"
 		)
-			v-icon.left(v-if="blok.icon" medium)
+			v-icon.left(v-if="blok.icon")
 				| {{'mdi mdi-' + blok.icon}}
 			| {{blok.name}}
 		v-tabs-slider
@@ -42,6 +42,7 @@
 <style lang="scss">
 	.v-tab > .v-icon.left {
 		margin-right: 8px;
+		font-size: 18px;
 	}
 
 	.v-tabs--vertical .v-tab {
