@@ -1,6 +1,11 @@
 <template lang="pug">
-	.q-typer(:class="blok.class" :style="blok.style" v-editable="blok")
-		| {{ blok.sentence }}
+	component.q-typer(
+		:is="blok.tag || 'p'"
+		:class="blok.class"
+		:style="blok.style"
+		v-editable="blok"
+	)
+		| {{ blok.sentence + ' ' }}
 		ClientOnly
 			vue-typer(
 				:text="blok.text.split(',')"
@@ -19,9 +24,10 @@
 </template>
 
 <script>
+	import { VueTyper } from "vue-typer";
 	export default {
 		props: ["blok"],
-		components: { VueTyper: () => import("vue-typer") },
+		components: { VueTyper },
 		computed: {
 			minWidth() {
 				let arr = this.blok.text.split(",");
@@ -33,7 +39,7 @@
 	};
 </script>
 
-<style>
+<style lang="scss">
 	.q-typer {
 		overflow: hidden;
 	}
@@ -43,5 +49,8 @@
 	}
 	.vue-typer {
 		display: inline-block;
+		* {
+			color: inherit !important;
+		}
 	}
 </style>
