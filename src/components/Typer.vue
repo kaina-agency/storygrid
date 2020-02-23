@@ -24,10 +24,14 @@
 </template>
 
 <script>
-	import { VueTyper } from "vue-typer";
 	export default {
 		props: ["blok"],
-		components: { VueTyper },
+		components: {
+			VueTyper: () =>
+				import("vue-typer")
+					.then(m => m.VueTyper)
+					.catch()
+		},
 		computed: {
 			minWidth() {
 				let arr = this.blok.text.split(",");

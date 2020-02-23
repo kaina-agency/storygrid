@@ -222,6 +222,6 @@
 	.theme--dark.v-card,
 	.theme--dark.v-tabs > .v-tabs-bar,
 	.theme--dark.v-tabs-items {
-		background-color: var(--card-bg);
+		background-color: var(--card-bg, #1e1e1e);
 	}
 </style>

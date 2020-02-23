@@ -11,9 +11,6 @@ import Vuetify, {
 import { Ripple } from 'vuetify/lib/directives'
 import '@mdi/font/css/materialdesignicons.css'
 
-import DefaultLayout from '~/layouts/Default.vue'
-import Page from '~/components/Page.vue'
-
 import Button from '~/components/Button.vue'
 import Card from '~/components/Card.vue'
 import Carousel from '~/components/Carousel.vue'
@@ -33,6 +30,9 @@ import TextContent from '~/components/TextContent.vue'
 import Typer from '~/components/Typer.vue'
 import Video from '~/components/Video.vue'
 import VideoBackground from '~/components/VideoBackground.vue'
+
+import DefaultLayout from '~/layouts/Default.vue'
+import Page from '~/components/Page.vue'
 
 export default function(
 	Vue,
@@ -65,8 +65,6 @@ export default function(
 	})
 
 	// Set default layout as a global component
-	Vue.component('Layout', DefaultLayout)
-	Vue.component('Page', Page)
 
 	Vue.component('Button', Button)
 	Vue.component('Card', Card)
@@ -87,4 +85,7 @@ export default function(
 	Vue.component('Typer', Typer)
 	Vue.component('Video', Video)
 	Vue.component('VideoBackground', VideoBackground)
+
+	Vue.component('Layout', DefaultLayout)
+	Vue.component('Page', Page)
 }
