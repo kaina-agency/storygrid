@@ -75,6 +75,7 @@
 				if (s.default_theme === "dark") {
 					this.$vuetify.theme.dark = true;
 					styles["--bg"] = s.background_dark;
+					styles["--card-bg"] = s.card_background;
 				} else {
 					styles["--bg"] = s.background;
 				}
@@ -178,7 +179,7 @@
 	h6 {
 		font-family: var(--heading-font), Roboto, "Helvetica Neue", Arial, sans-serif;
 		line-height: 1;
-		padding: 1rem 0;
+		margin: 1rem 0;
 	}
 
 	h1 {
@@ -216,5 +217,11 @@
 	ul {
 		font-size: 1rem;
 		font-size: var(--bs, 16px);
+	}
+
+	.theme--dark.v-card,
+	.theme--dark.v-tabs > .v-tabs-bar,
+	.theme--dark.v-tabs-items {
+		background-color: var(--card-bg);
 	}
 </style>

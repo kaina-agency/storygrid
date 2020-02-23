@@ -22,11 +22,6 @@
 		v-icon(
 			v-if="blok.icon"
 			:left="blok.style == 'fab' || blok.style == 'icon' ? false : true"
-			:x-small="blok.size == 'xs'"
-			:small="blok.size == 'sm'"
-			:medium="blok.size == 'md'"
-			:large="blok.size == 'lg'"
-			:x-large="blok.size == 'xl'"
 		)
 			| {{'mdi mdi-' + blok.icon}}
 		| {{blok.style == 'fab' || blok.style == 'icon' ? '' : blok.text}}

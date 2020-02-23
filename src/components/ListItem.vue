@@ -14,7 +14,8 @@
 				:blok="blok"
 				:is="blok.component"
 			)
-			v-icon( v-if="!blok.avatar.length > 0" v-text="'mdi mdi-' + blok.icon")
+			v-icon(v-if="!blok.avatar.length > 0")
+				| {{'mdi mdi-' + blok.icon}}
 		v-list-item-content
 			v-list-item-title {{blok.title}}
 			v-list-item-subtitle {{blok.subtitle}}

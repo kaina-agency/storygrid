@@ -54,13 +54,13 @@
 				} else if (b.link.linktype == "asset") {
 					return b.link.url;
 				} else {
-					return "";
+					return undefined;
 				}
 			},
 			to() {
 				let b = this.blok;
 				let path = b.link.cached_url == "home" ? "" : b.link.cached_url;
-				if (b.link.linktype == "story") {
+				if (b.link.linktype == "story" && b.link.cached_url.length > 0) {
 					return "/" + path;
 				}
 			}
@@ -70,6 +70,8 @@
 
 <style lang="scss">
 	.v-card {
+		overflow: hidden;
+
 		.rich-text {
 			*:first-child {
 				margin-top: 0;

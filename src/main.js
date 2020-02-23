@@ -28,6 +28,7 @@ import ListItem from '~/components/ListItem.vue'
 import Masonry from '~/components/Masonry.vue'
 import Row from '~/components/Row.vue'
 import Spacer from '~/components/Spacer.vue'
+import Tabs from '~/components/Tabs.vue'
 import TextContent from '~/components/TextContent.vue'
 import Typer from '~/components/Typer.vue'
 import Video from '~/components/Video.vue'
@@ -81,6 +82,7 @@ export default function(
 	Vue.component('Masonry', Masonry)
 	Vue.component('Row', Row)
 	Vue.component('Spacer', Spacer)
+	Vue.component('Tabs', Tabs)
 	Vue.component('TextContent', TextContent)
 	Vue.component('Typer', Typer)
 	Vue.component('Video', Video)
