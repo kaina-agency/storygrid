@@ -11,12 +11,18 @@ import Vuetify, {
 import { Ripple } from 'vuetify/lib/directives'
 import '@mdi/font/css/materialdesignicons.css'
 
+// Import components
+
+import DefaultLayout from '~/layouts/Default.vue'
+import Page from '~/components/Page.vue'
+
 import Button from '~/components/Button.vue'
 import Card from '~/components/Card.vue'
 import Carousel from '~/components/Carousel.vue'
 import Carousel3D from '~/components/Carousel3D.vue'
 import Column from '~/components/Column.vue'
 import Container from '~/components/Container.vue'
+import Dialog from '~/components/Dialog.vue'
 import Form from '~/components/Form.vue'
 import GoogleMap from '~/components/GoogleMap.vue'
 import ImageG from '~/components/ImageG.vue'
@@ -31,13 +37,35 @@ import Typer from '~/components/Typer.vue'
 import Video from '~/components/Video.vue'
 import VideoBackground from '~/components/VideoBackground.vue'
 
-import DefaultLayout from '~/layouts/Default.vue'
-import Page from '~/components/Page.vue'
-
 export default function(
 	Vue,
 	{ router, head, isClient, appOptions }
 ) {
+	// Assign Components
+	Vue.component('Layout', DefaultLayout)
+	Vue.component('Page', Page)
+
+	Vue.component('Button', Button)
+	Vue.component('Card', Card)
+	Vue.component('Carousel', Carousel)
+	Vue.component('Carousel3D', Carousel3D)
+	Vue.component('Column', Column)
+	Vue.component('Container', Container)
+	Vue.component('Dialog', Dialog)
+	Vue.component('Form', Form)
+	Vue.component('GoogleMap', GoogleMap)
+	Vue.component('ImageG', ImageG)
+	Vue.component('List', List)
+	Vue.component('ListItem', ListItem)
+	Vue.component('Masonry', Masonry)
+	Vue.component('Row', Row)
+	Vue.component('Spacer', Spacer)
+	Vue.component('Tabs', Tabs)
+	Vue.component('TextContent', TextContent)
+	Vue.component('Typer', Typer)
+	Vue.component('Video', Video)
+	Vue.component('VideoBackground', VideoBackground)
+
 	Vue.use(Vuetify, {
 		components: {
 			VApp,
@@ -63,29 +91,4 @@ export default function(
 			}
 		}
 	})
-
-	// Set default layout as a global component
-
-	Vue.component('Button', Button)
-	Vue.component('Card', Card)
-	Vue.component('Carousel', Carousel)
-	Vue.component('Carousel3D', Carousel3D)
-	Vue.component('Column', Column)
-	Vue.component('Container', Container)
-	Vue.component('Form', Form)
-	Vue.component('GoogleMap', GoogleMap)
-	Vue.component('ImageG', ImageG)
-	Vue.component('List', List)
-	Vue.component('ListItem', ListItem)
-	Vue.component('Masonry', Masonry)
-	Vue.component('Row', Row)
-	Vue.component('Spacer', Spacer)
-	Vue.component('Tabs', Tabs)
-	Vue.component('TextContent', TextContent)
-	Vue.component('Typer', Typer)
-	Vue.component('Video', Video)
-	Vue.component('VideoBackground', VideoBackground)
-
-	Vue.component('Layout', DefaultLayout)
-	Vue.component('Page', Page)
 }

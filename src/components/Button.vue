@@ -28,30 +28,40 @@
 </template>
 
 <script>
-	import { VBtn } from "vuetify/lib";
 	export default {
 		props: ["blok"],
-		components: { VBtn },
+		components: { VBtn: () => import("vuetify/lib/components/VBtn") },
 		computed: {
 			href() {
-				const b = this.blok;
-				if (b.link.linktype == "story") {
-					return "";
-				} else if (b.link.linktype == "url") {
-					return b.link.url;
-				} else if (b.link.linktype == "email") {
-					return "mailto:" + b.link.url;
-				} else if (b.link.linktype == "asset") {
-					return b.link.url;
-				} else {
-					return "";
+				const l = this.blok.link;
+				switch (l.linktype) {
+					case "story":
+						return "";
+						break;
+					case "url":
+						return l.url;
+						break;
+					case "email":
+						return "mailto:" + l.url;
+						break;
+					case "asset":
+						return l.url;
+						break;
 				}
 			},
 			to() {
-				let b = this.blok;
-				let path = b.link.cached_url == "home" ? "" : b.link.cached_url;
-				if (b.link.linktype == "story") {
-					return "/" + path;
+				const l = this.blok.link;
+				let path = l.cached_url;
+				if (l.linktype == "story") {
+					switch (path) {
+						case "home":
+							return "/";
+							break;
+						case "":
+							return undefined;
+						default:
+							return "/" + path;
+					}
 				}
 			}
 		}

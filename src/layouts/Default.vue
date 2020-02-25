@@ -1,7 +1,13 @@
 <template lang="pug">
 	v-app(:style="appStyles")
 		div(v-html="settings.inject_html")
-		component(:is="'style'") {{ settings.inject_css }}
+		component(:is="'style'")
+			| body {
+			| --heading-font: {{this.settings.heading_font}};
+			| --body-font: {{this.settings.body_font}};
+			|	--card-bg: {{this.settings.card_background}};
+			| }
+			| {{ settings.inject_css }}
 		v-app-bar(
 			app
 			:clipped-left="settings.full_width || false"
@@ -56,10 +62,7 @@
 		computed: {
 			appStyles() {
 				let s = this.settings;
-				let styles = {
-					"--heading-font": s.heading_font,
-					"--body-font": s.body_font
-				};
+				let styles = {};
 				let responsive =
 					"calc(minpx + (max - min) * ((100vw - 400px) / (1800 - 400)))";
 				let themeColors = [
@@ -75,7 +78,6 @@
 				if (s.default_theme === "dark") {
 					this.$vuetify.theme.dark = true;
 					styles["--bg"] = s.background_dark;
-					styles["--card-bg"] = s.card_background;
 				} else {
 					styles["--bg"] = s.background;
 				}
@@ -217,11 +219,5 @@
 	ul {
 		font-size: 1rem;
 		font-size: var(--bs, 16px);
-	}
-
-	.theme--dark.v-card,
-	.theme--dark.v-tabs > .v-tabs-bar,
-	.theme--dark.v-tabs-items {
-		background-color: var(--card-bg, #1e1e1e);
 	}
 </style>

@@ -50,4 +50,9 @@
 		display: flex;
 		justify-content: flex-start;
 	}
+
+	.theme--dark.v-tabs > .v-tabs-bar,
+	.theme--dark.v-tabs-items {
+		background-color: var(--card-bg, #1e1e1e);
+	}
 </style>

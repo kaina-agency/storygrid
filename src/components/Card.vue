@@ -10,7 +10,7 @@
 		:tile="blok.options.includes('tile')"
 		:to="to"
 		:class="blok.class"
-		:style="blok.style"
+		:style="[{backgroundColor: 'var(--card-bg)'}, blok.style]"
 		v-editable="blok"
 	)
 		component(
@@ -44,24 +44,35 @@
 		components: { VCard, VCardText, VCardActions, VDivider },
 		computed: {
 			href() {
-				const b = this.blok;
-				if (b.link.linktype == "story") {
-					return "";
-				} else if (b.link.linktype == "url") {
-					return b.link.url;
-				} else if (b.link.linktype == "email") {
-					return "mailto:" + b.link.url;
-				} else if (b.link.linktype == "asset") {
-					return b.link.url;
-				} else {
-					return undefined;
+				const l = this.blok.link;
+				switch (l.linktype) {
+					case "story":
+						return "";
+						break;
+					case "url":
+						return l.url;
+						break;
+					case "email":
+						return "mailto:" + l.url;
+						break;
+					case "asset":
+						return l.url;
+						break;
 				}
 			},
 			to() {
-				let b = this.blok;
-				let path = b.link.cached_url == "home" ? "" : b.link.cached_url;
-				if (b.link.linktype == "story" && b.link.cached_url.length > 0) {
-					return "/" + path;
+				const l = this.blok.link;
+				let path = l.cached_url;
+				if (l.linktype == "story") {
+					switch (path) {
+						case "home":
+							return "/";
+							break;
+						case "":
+							return undefined;
+						default:
+							return "/" + path;
+					}
 				}
 			}
 		}
@@ -71,6 +82,10 @@
 <style lang="scss">
 	.v-card {
 		overflow: hidden;
+
+		&.v-card--shaped {
+			border-radius: 24px 4px !important;
+		}
 
 		.rich-text {
 			*:first-child {
