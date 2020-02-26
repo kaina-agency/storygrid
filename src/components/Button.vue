@@ -1,17 +1,18 @@
 <template lang="pug">
 	v-btn(
 		:color="blok.color"
-		:depressed="blok.style == 'depressed'"
-		:fab="blok.style == 'fab'"
+		:depressed="blok.style.includes('depressed')"
+		:fab="blok.style.includes('fab')"
 		:href="href"
-		:icon="blok.style == 'icon'"
-		:outlined="blok.style == 'outlined'"
+		:icon="blok.style.includes('icon')"
+		:outlined="blok.style.includes('outlined')"
 		:replace="blok.link.linktype == 'story'"
 		ripple
-		:rounded="blok.style == 'rounded'"
-		:text="blok.style == 'text'"
-		:tile="blok.style == 'tile'"
+		:rounded="blok.style.includes('rounded')"
+		:text="blok.style.includes('text')"
+		:tile="blok.style.includes('tile')"
 		:to="to"
+		:type="blok.form_button ? 'submit' : undefined"
 		:x-small="blok.size == 'xs'"
 		:small="blok.size == 'sm'"
 		:medium="blok.size == 'md'"
@@ -21,10 +22,10 @@
 	) 
 		v-icon(
 			v-if="blok.icon"
-			:left="blok.style == 'fab' || blok.style == 'icon' ? false : true"
+			:left="blok.style.includes('fab') || blok.style.includes('icon') ? false : true"
 		)
 			| {{'mdi mdi-' + blok.icon}}
-		| {{blok.style == 'fab' || blok.style == 'icon' ? '' : blok.text}}
+		| {{blok.style.includes('fab') || blok.style.includes('icon') ? '' : blok.text}}
 </template>
 
 <script>

@@ -24,6 +24,7 @@ import Column from '~/components/Column.vue'
 import Container from '~/components/Container.vue'
 import Dialog from '~/components/Dialog.vue'
 import Form from '~/components/Form.vue'
+import FormInput from '~/components/FormInput.vue'
 import GoogleMap from '~/components/GoogleMap.vue'
 import ImageG from '~/components/ImageG.vue'
 import List from '~/components/List.vue'
@@ -53,6 +54,7 @@ export default function(
 	Vue.component('Container', Container)
 	Vue.component('Dialog', Dialog)
 	Vue.component('Form', Form)
+	Vue.component('FormInput', FormInput)
 	Vue.component('GoogleMap', GoogleMap)
 	Vue.component('ImageG', ImageG)
 	Vue.component('List', List)

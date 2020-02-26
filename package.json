@@ -24,6 +24,7 @@
 		"sass-loader": "^7",
 		"vue-carousel-3d": "^0.2.0",
 		"vue-packer": "^0.3.0",
+		"vue-the-mask": "^0.11.1",
 		"vue-typer": "^1.2.0"
 	}
 }

@@ -1,6 +1,7 @@
 <template lang="pug">
 	v-dialog(
 		v-model="dialog"
+		eager
 		width="500"
 	)
 		template(v-slot:activator="{ on }")

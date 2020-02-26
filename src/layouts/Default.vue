@@ -2,11 +2,7 @@
 	v-app(:style="appStyles")
 		div(v-html="settings.inject_html")
 		component(:is="'style'")
-			| body {
-			| --heading-font: {{this.settings.heading_font}};
-			| --body-font: {{this.settings.body_font}};
-			|	--card-bg: {{this.settings.card_background}};
-			| }
+			| html, body, #app {background: var(--bg);}
 			| {{ settings.inject_css }}
 		v-app-bar(
 			app
@@ -62,7 +58,11 @@
 		computed: {
 			appStyles() {
 				let s = this.settings;
-				let styles = {};
+				let styles = {
+					"--heading-font": s.heading_font,
+					"--body-font": s.body_font,
+					"--card-bg": s.card_background
+				};
 				let responsive =
 					"calc(minpx + (max - min) * ((100vw - 400px) / (1800 - 400)))";
 				let themeColors = [
@@ -154,23 +154,12 @@
 
 <style lang="scss">
 	body {
-		font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
 		margin: 0;
 		padding: 0;
 	}
 
-	#app {
-		background: var(--bg);
-		&:before {
-			content: "";
-			position: fixed;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			background: var(--bg);
-			z-index: -1;
-		}
+	.v-application {
+		font-family: var(--body-font, Roboto), "Helvetica Neue", Arial, sans-serif;
 	}
 
 	h1,
@@ -179,7 +168,7 @@
 	h4,
 	h5,
 	h6 {
-		font-family: var(--heading-font), Roboto, "Helvetica Neue", Arial, sans-serif;
+		font-family: var(--heading-font, Roboto), "Helvetica Neue", Arial, sans-serif;
 		line-height: 1;
 		margin: 1rem 0;
 	}
