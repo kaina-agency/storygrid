@@ -42,7 +42,7 @@
 			:prepend-inner-icon="'mdi-' + blok.icon"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
-			:type="email"
+			type="email"
 			v-editable="blok"
 		)
 		v-select(
