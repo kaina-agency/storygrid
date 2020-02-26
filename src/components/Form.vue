@@ -1,8 +1,9 @@
 <template lang="pug">
 	v-form(
-		netlify
 		:name="blok.form_name"
-		method="POST"
+		:action="blok.action"
+		:method="'POST'"
+		enctype="multipart/form-data"
 		v-editable="blok"
 	)
 		component(

@@ -27,6 +27,7 @@
 			:prepend-inner-icon="'mdi-' + blok.icon"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
+			type="tel"
 			v-editable="blok"
 		)
 		v-text-field(
@@ -41,6 +42,7 @@
 			:prepend-inner-icon="'mdi-' + blok.icon"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
+			:type="email"
 			v-editable="blok"
 		)
 		v-select(
@@ -78,6 +80,23 @@
 			:rounded="blok.options.includes('rounded')"
 			v-editable="blok"
 		)
+		v-file-input(
+			v-if="blok.type=='file'"
+			:prepend-icon="undefined"
+			clearable
+			:color="blok.color"
+			:dense="blok.options.includes('dense')"
+			hint="There is a 25MB limit for file uploads."
+			:label="blok.label"
+			:outlined="blok.options.includes('outlined')"
+			name="file"
+			prepend-icon
+			:prepend-inner-icon="'$file'"
+			:required="blok.options.includes('required')"
+			:rounded="blok.options.includes('rounded')"
+			type="file"
+			v-editable="blok"
+		)
 		div(v-if="blok.type=='checkbox'" v-editable="blok")
 			p {{blok.label}}
 			v-checkbox(
@@ -87,7 +106,7 @@
 				:color="blok.color"
 				hide-details
 				:label="value"
-				:name="value"
+				:name="blok.label"
 				:value="value"
 			)
 		div(v-if="blok.type=='switch'" v-editable="blok")
@@ -99,7 +118,7 @@
 				:color="blok.color"
 				hide-details
 				:label="value"
-				:name="value"
+				:name="blok.label"
 				:value="value"
 			)
 		div(v-if="blok.type=='radio'" v-editable="blok")
@@ -124,7 +143,8 @@
 		VCheckbox,
 		VRadio,
 		VRadioGroup,
-		VSwitch
+		VSwitch,
+		VFileInput
 	} from "vuetify/lib";
 	import { mask } from "vue-the-mask";
 	export default {
@@ -136,7 +156,8 @@
 			VCheckbox,
 			VRadio,
 			VRadioGroup,
-			VSwitch
+			VSwitch,
+			VFileInput
 		},
 		directives: { mask },
 		data: () => ({ multiple: [], single: "" })
