@@ -82,6 +82,7 @@
 			p {{blok.label}}
 			v-checkbox(
 				v-for="value in blok.values.split('\\n')"
+				:key="value"
 				v-model="multiple"
 				:color="blok.color"
 				hide-details
@@ -93,6 +94,7 @@
 			p {{blok.label}}
 			v-switch(
 				v-for="value in blok.values.split('\\n')"
+				:key="value"
 				v-model="multiple"
 				:color="blok.color"
 				hide-details
@@ -105,6 +107,7 @@
 			v-radio-group(v-model="single")
 				v-radio(
 					v-for="value in blok.values.split('\\n')"
+					:key="value"
 					:color="blok.color"
 					hide-details
 					:label="value"
