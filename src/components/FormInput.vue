@@ -5,14 +5,13 @@
 			clearable
 			:color="blok.color"
 			:dense="blok.options.includes('dense')"
-			hide-details
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
 			:prepend-inner-icon="'mdi-' + blok.icon"
-			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
 			v-editable="blok"
+			:rules="blok.options.includes('required') ? [v => !!v || blok.label + ' is required'] : []"
 		)
 		v-text-field(
 			v-if="blok.type=='phone'"
@@ -20,7 +19,6 @@
 			clearable
 			:color="blok.color"
 			:dense="blok.options.includes('dense')"
-			hide-details
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
@@ -29,13 +27,13 @@
 			:rounded="blok.options.includes('rounded')"
 			type="tel"
 			v-editable="blok"
+	 		:rules="blok.options.includes('required') ? phoneRules : []"
 		)
 		v-text-field(
 			v-if="blok.type=='email'"
 			clearable
 			:color="blok.color"
 			:dense="blok.options.includes('dense')"
-			hide-details
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
@@ -44,6 +42,7 @@
 			:rounded="blok.options.includes('rounded')"
 			type="email"
 			v-editable="blok"
+	 		:rules="blok.options.includes('required') ? emailRules : []"
 		)
 		v-select(
 			v-if="blok.type=='select'"
@@ -51,7 +50,6 @@
 			:color="blok.color"
 			:deletable-chips="blok.options.includes('multiple')"
 			:dense="blok.options.includes('dense')"
-			hide-details
 			:item-color="blok.color"
 			:items="blok.values.split('\\n')"
 			:label="blok.label"
@@ -63,6 +61,7 @@
 			:rounded="blok.options.includes('rounded')"
 			:small-chips="blok.options.includes('multiple')"
 			v-editable="blok"
+			:rules="blok.options.includes('required') ? [v => !!v || blok.label + ' is required'] : []"
 		)
 		v-textarea(
 			v-if="blok.type=='textarea'"
@@ -70,7 +69,6 @@
 			clearable
 			:color="blok.color"
 			:dense="blok.options.includes('dense')"
-			hide-details
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
@@ -79,6 +77,7 @@
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
 			v-editable="blok"
+			:rules="blok.options.includes('required') ? [v => !!v || blok.label + ' is required'] : []"
 		)
 		v-file-input(
 			v-if="blok.type=='file'"
@@ -96,6 +95,7 @@
 			:rounded="blok.options.includes('rounded')"
 			type="file"
 			v-editable="blok"
+			:rules="blok.options.includes('required') ? [v => !!v || 'You must select a file'] : []"
 		)
 		div(v-if="blok.type=='checkbox'" v-editable="blok")
 			p {{blok.label}}
@@ -108,6 +108,7 @@
 				:label="value"
 				:name="blok.label"
 				:value="value"
+				:rules="blok.options.includes('required') ? [v => !!v || blok.label + ' is required'] : []"
 			)
 		div(v-if="blok.type=='switch'" v-editable="blok")
 			p {{blok.label}}
@@ -120,17 +121,21 @@
 				:label="value"
 				:name="blok.label"
 				:value="value"
+				:rules="blok.options.includes('required') ? [v => !!v || blok.label + ' is required'] : []"
 			)
 		div(v-if="blok.type=='radio'" v-editable="blok")
 			p {{blok.label}}
-			v-radio-group(v-model="single")
+			v-radio-group(
+				v-model="single"
+				:name="blok.label"
+				:rules="blok.options.includes('required') ? [v => !!v || blok.label + ' is required'] : []"
+			)
 				v-radio(
 					v-for="value in blok.values.split('\\n')"
 					:key="value"
 					:color="blok.color"
 					hide-details
 					:label="value"
-					:name="value"
 					:value="value"
 				)
 </template>
@@ -160,7 +165,21 @@
 			VFileInput
 		},
 		directives: { mask },
-		data: () => ({ multiple: [], single: "" })
+		data: () => ({
+			multiple: [],
+			single: "",
+			emailRules: [
+				v => !!v || "Email is required",
+				v =>
+					/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+						v
+					) || "E-mail must be valid"
+			],
+			phoneRules: [
+				v => !!v || "Phone number is required",
+				v => (v && v.length === 14) || "Enter a valid phone number"
+			]
+		})
 	};
 </script>
 
