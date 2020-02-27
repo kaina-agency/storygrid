@@ -26,6 +26,7 @@ import Container from '~/components/Container.vue'
 import Dialog from '~/components/Dialog.vue'
 import Form from '~/components/Form.vue'
 import FormInput from '~/components/FormInput.vue'
+import FullPage from '~/components/FullPage.vue'
 import GoogleMap from '~/components/GoogleMap.vue'
 import ImageG from '~/components/ImageG.vue'
 import List from '~/components/List.vue'
@@ -56,6 +57,7 @@ export default function(
 	Vue.component('Dialog', Dialog)
 	Vue.component('Form', Form)
 	Vue.component('FormInput', FormInput)
+	Vue.component('FullPage', FullPage)
 	Vue.component('GoogleMap', GoogleMap)
 	Vue.component('ImageG', ImageG)
 	Vue.component('List', List)
