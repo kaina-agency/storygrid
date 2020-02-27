@@ -2,7 +2,6 @@
 	v-app(:style="appStyles")
 		div(v-html="settings.inject_html")
 		component(:is="'style'")
-			| html, body, #app {background: var(--bg);}
 			| {{ settings.inject_css }}
 		v-app-bar(
 			app
@@ -160,6 +159,20 @@
 
 	.v-application {
 		font-family: var(--body-font, Roboto), "Helvetica Neue", Arial, sans-serif;
+	}
+
+	#app {
+		background: var(--bg);
+
+		&:before {
+			content: "";
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: var(--bg);
+		}
 	}
 
 	h1,

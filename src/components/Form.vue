@@ -8,6 +8,7 @@
 		v-model="valid"
 		v-editable="blok"
 	)
+		div.g-recaptcha(:data-sitekey="blok.recaptcha_key")
 		component(
 			v-for="blok in blok.content"
 			:key="blok._uid"
@@ -48,6 +49,21 @@
 		methods: {
 			reset() {
 				this.$refs.form.reset();
+			}
+		},
+		mounted() {
+			if (this.blok.recaptcha_key) {
+				this.$loadScript(
+					`https://www.google.com/recaptcha/api.js?render=${this.blok.recaptcha_key}`
+				)
+					.then(() => {
+						console.log("ReCAPTCHA script loaded");
+					})
+					.catch(err => {
+						console.error("ReCAPTCHA script failed to load: ", err);
+					});
+			} else {
+				console.info("No ReCAPTCHA key entered");
 			}
 		}
 	};

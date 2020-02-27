@@ -10,6 +10,7 @@ import Vuetify, {
 } from 'vuetify/lib'
 import { Ripple } from 'vuetify/lib/directives'
 import '@mdi/font/css/materialdesignicons.css'
+import LoadScript from 'vue-plugin-load-script'
 
 // Import components
 
@@ -93,4 +94,5 @@ export default function(
 			}
 		}
 	})
+	Vue.use(LoadScript)
 }

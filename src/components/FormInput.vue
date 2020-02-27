@@ -8,7 +8,7 @@
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
-			:prepend-inner-icon="'mdi-' + blok.icon"
+			:prepend-icon="'mdi-' + blok.icon"
 			:rounded="blok.options.includes('rounded')"
 			v-editable="blok"
 			:rules="blok.options.includes('required') ? [v => !!v || blok.label + ' is required'] : []"
@@ -22,7 +22,7 @@
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
-			:prepend-inner-icon="'mdi-' + blok.icon"
+			:prepend-icon="'mdi-' + blok.icon"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
 			type="tel"
@@ -37,7 +37,7 @@
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
-			:prepend-inner-icon="'mdi-' + blok.icon"
+			:prepend-icon="'mdi-' + blok.icon"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
 			type="email"
@@ -56,7 +56,7 @@
 			:multiple="blok.options.includes('multiple')"
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
-			:prepend-inner-icon="'mdi-' + blok.icon"
+			:prepend-icon="'mdi-' + blok.icon"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
 			:small-chips="blok.options.includes('multiple')"
@@ -73,7 +73,7 @@
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
 			no-resize
-			:prepend-inner-icon="'mdi-' + blok.icon"
+			:prepend-icon="'mdi-' + blok.icon"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
 			v-editable="blok"
@@ -89,8 +89,6 @@
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
 			name="file"
-			prepend-icon
-			:prepend-inner-icon="'$file'"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
 			type="file"
@@ -106,9 +104,13 @@
 				:color="blok.color"
 				hide-details
 				:label="value"
-				:name="blok.label"
 				:value="value"
 				:rules="blok.options.includes('required') ? [v => !!v || blok.label + ' is required'] : []"
+			)
+			input(
+				type="hidden"
+				:name="blok.label"
+				:value="multiple.join(', ')"
 			)
 		div(v-if="blok.type=='switch'" v-editable="blok")
 			p {{blok.label}}
@@ -119,9 +121,13 @@
 				:color="blok.color"
 				hide-details
 				:label="value"
-				:name="blok.label"
 				:value="value"
 				:rules="blok.options.includes('required') ? [v => !!v || blok.label + ' is required'] : []"
+			)
+			input(
+				type="hidden"
+				:name="blok.label"
+				:value="multiple.join(', ')"
 			)
 		div(v-if="blok.type=='radio'" v-editable="blok")
 			p {{blok.label}}
