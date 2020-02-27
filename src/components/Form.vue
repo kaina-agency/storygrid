@@ -8,7 +8,6 @@
 		v-model="valid"
 		v-editable="blok"
 	)
-		div.g-recaptcha(:data-sitekey="blok.recaptcha_key")
 		component(
 			v-for="blok in blok.content"
 			:key="blok._uid"
@@ -38,6 +37,12 @@
 				| {{blok.submit_button[0].text}}
 			v-spacer
 			v-btn(text color="error" @click="reset") reset form
+		div.g-recaptcha(:data-sitekey="blok.recaptcha_key")
+		// Goddam recaptcha not being SPA-friendly
+		component(:is="'style'")
+			| {{pageClass}} .grecaptcha-badge {
+			|		display: block !important; visibility: visible !important;
+			|	}
 </template>
 
 <script>
@@ -64,6 +69,11 @@
 					});
 			} else {
 				console.info("No ReCAPTCHA key entered");
+			}
+		},
+		computed: {
+			pageClass() {
+				return this.$route.path.replace("/", ".");
 			}
 		}
 	};

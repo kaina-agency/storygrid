@@ -147,6 +147,13 @@
 					initStoryblokEvents();
 				});
 			}
+
+			document.body.classList = this.$route.path.replace("/", " ").trim();
+		},
+		watch: {
+			$route(to, from) {
+				document.body.classList = this.$route.path.replace("/", " ").trim();
+			}
 		}
 	};
 </script>
@@ -173,6 +180,10 @@
 			left: 0;
 			background: var(--bg);
 		}
+	}
+
+	.grecaptcha-badge {
+		display: none !important;
 	}
 
 	h1,
