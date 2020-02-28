@@ -34,8 +34,8 @@
 		width: 25%;
 		width: var(--masonry_lg, 25%);
 		@media (max-width: 599px) {
-			width: 100%;
-			width: var(--masonry_xs, 100%);
+			width: 50%;
+			width: var(--masonry_xs, 50%);
 		}
 		@media (min-width: 600px) and (max-width: 1023px) {
 			width: 50%;
