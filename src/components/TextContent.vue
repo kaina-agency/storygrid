@@ -20,8 +20,20 @@
 	};
 </script>
 
-<style>
+<style lang="scss">
 	.rich-text {
 		position: relative;
+	}
+
+	.v-card__text,
+	.v-expansion-panel-content__wrap {
+		.rich-text {
+			*:first-child {
+				margin-top: 0;
+			}
+			*:last-child {
+				margin-bottom: 0;
+			}
+		}
 	}
 </style>

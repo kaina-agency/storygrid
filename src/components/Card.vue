@@ -90,15 +90,6 @@
 		&.v-card--shaped {
 			border-radius: 24px 4px !important;
 		}
-
-		.rich-text {
-			*:first-child {
-				margin-top: 0;
-			}
-			*:last-child {
-				margin-bottom: 0;
-			}
-		}
 	}
 
 	.theme--light.v-card .v-card__subtitle,

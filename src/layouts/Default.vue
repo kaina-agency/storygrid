@@ -111,7 +111,7 @@
 			}
 		},
 		mounted() {
-			if (this.$route.path.includes("editor")) {
+			if (window.location !== window.parent.location) {
 				const loadStory = () => {
 					window.storyblok.get(
 						{
