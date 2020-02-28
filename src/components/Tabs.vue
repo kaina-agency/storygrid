@@ -1,11 +1,11 @@
 <template lang="pug">
+div(:class="blok.class" :style="blok.style")
 	v-tabs(
 		v-model="tab"
-		:background-color="blok.background_color"
+		:background-color="color"
 		:color="blok.color"
 		:centered="blok.options.includes('centered')"
 		:right="blok.options.includes('right')"
-		:vertical="blok.options.includes('vertical')"
 		v-editable="blok"
 	)
 		v-tab(
@@ -17,42 +17,45 @@
 				| {{'mdi mdi-' + blok.icon}}
 			| {{blok.name}}
 		v-tabs-slider
-		v-tabs-items(v-model="tab")
-			v-tab-item(
+	v-divider
+	v-tabs-items(v-model="tab" style="background-color: var(--card-bg);")
+		v-tab-item(
+			v-for="blok in blok.content"
+			:key="blok._uid"
+		)
+			component(
 				v-for="blok in blok.content"
 				:key="blok._uid"
+				:blok="blok"
+				:is="blok.component"
 			)
-				component(
-					v-for="blok in blok.content"
-					:key="blok._uid"
-					:blok="blok"
-					:is="blok.component"
-				)
 </template>
 
 <script>
-	import { VTabs, VTab, VTabsSlider, VTabsItems, VTabItem } from "vuetify/lib";
+	import {
+		VTabs,
+		VTab,
+		VTabsSlider,
+		VTabsItems,
+		VTabItem,
+		VDivider
+	} from "vuetify/lib";
 	export default {
 		props: ["blok"],
-		components: { VTabs, VTab, VTabsSlider, VTabsItems, VTabItem },
-		data: () => ({ tab: null })
+		components: { VTabs, VTab, VTabsSlider, VTabsItems, VTabItem, VDivider },
+		data: () => ({ tab: null }),
+		computed: {
+			color() {
+				return this.blok.background_color
+					? this.blok.background_color
+					: "var(--card-bg)";
+			}
+		}
 	};
 </script>
 
 <style lang="scss">
 	.v-tab > .v-icon.left {
 		margin-right: 8px;
-		font-size: 18px;
-	}
-
-	.v-tabs--vertical .v-tab {
-		text-align: left;
-		display: flex;
-		justify-content: flex-start;
-	}
-
-	.theme--dark.v-tabs > .v-tabs-bar,
-	.theme--dark.v-tabs-items {
-		background-color: var(--card-bg, #1e1e1e);
 	}
 </style>

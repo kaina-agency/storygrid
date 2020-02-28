@@ -3,9 +3,9 @@
 		:class="addedStyles"
 		dense
 		:flat="blok.flat"
-		:nav="blok.style == 'nav'"
-		:rounded="blok.style == 'rounded'"
-		:shaped="blok.style == 'shaped'"
+		:nav="blok.shape == 'nav'"
+		:rounded="blok.shape == 'rounded'"
+		:shaped="blok.shape == 'shaped'"
 		:three-line="blok.line_cap == 'three'"
 		:two-line="blok.line_cap == 'two'"
 		v-editable="blok"
@@ -27,7 +27,7 @@
 		components: { VList, VSubheader, VListItemGroup },
 		computed: {
 			addedStyles() {
-				switch (this.blok.style) {
+				switch (this.blok.shape) {
 					case "arrow":
 						return "arrow";
 					case "sci-fi":

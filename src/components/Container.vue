@@ -1,6 +1,6 @@
 <template lang="pug">
 	v-container(
-		:class="[blok.bottom_margin, blok.class, full]"
+		:class="[blok.bottom_margin, blok.class, 'pb-0', full]"
 		:style="blok.style"
 	)
 		component(

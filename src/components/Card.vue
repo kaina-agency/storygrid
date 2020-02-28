@@ -1,5 +1,6 @@
 <template lang="pug">
 	v-card(
+		:color="color"
 		:dark="blok.options.includes('dark')"
 		:flat="blok.options.includes('flat')"
 		:hover="blok.options.includes('hover')"
@@ -10,7 +11,7 @@
 		:tile="blok.options.includes('tile')"
 		:to="to"
 		:class="blok.class"
-		:style="[{backgroundColor: 'var(--card-bg)'}, blok.style]"
+		:style="blok.style"
 		v-editable="blok"
 	)
 		component(
@@ -43,6 +44,9 @@
 		props: ["blok"],
 		components: { VCard, VCardText, VCardActions, VDivider },
 		computed: {
+			color() {
+				return this.blok.color ? this.blok.color : "var(--card-bg)";
+			},
 			href() {
 				const l = this.blok.link;
 				switch (l.linktype) {

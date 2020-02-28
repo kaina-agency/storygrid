@@ -17,6 +17,7 @@ import LoadScript from 'vue-plugin-load-script'
 import DefaultLayout from '~/layouts/Default.vue'
 import Page from '~/components/Page.vue'
 
+import Accordion from '~/components/Accordion.vue'
 import Button from '~/components/Button.vue'
 import Card from '~/components/Card.vue'
 import Carousel from '~/components/Carousel.vue'
@@ -48,6 +49,7 @@ export default function(
 	Vue.component('Layout', DefaultLayout)
 	Vue.component('Page', Page)
 
+	Vue.component('Accordion', Accordion)
 	Vue.component('Button', Button)
 	Vue.component('Card', Card)
 	Vue.component('Carousel', Carousel)

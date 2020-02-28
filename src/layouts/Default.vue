@@ -12,6 +12,7 @@
 			:flat="settings.flat"
 			:hide-on-scroll="settings.hide_on_scroll"
 			:light="settings.light"
+			v-if="(settings.header || {}).length || settings.mobile_only ? $vuetify.breakpoint.mdAndDown : true"
 		)
 			v-app-bar-nav-icon(@click="drawer = !drawer")
 			component(
@@ -40,7 +41,6 @@
 
 <script>
 	import config from "../../gridsome.config";
-
 	export default {
 		data: () => ({
 			settings: {},
@@ -77,8 +77,10 @@
 				if (s.default_theme === "dark") {
 					this.$vuetify.theme.dark = true;
 					styles["--bg"] = s.background_dark;
+					styles["--card-bg"] = s.card_background_dark;
 				} else {
 					styles["--bg"] = s.background;
+					styles["--card-bg"] = s.card_background;
 				}
 
 				themeColors.forEach(color => {
@@ -104,8 +106,7 @@
 			}
 		},
 		mounted() {
-			if (window.location != window.parent.location) {
-				console.info("Layout is in edit mode");
+			if (this.$route.path.includes("editor")) {
 				const loadStory = () => {
 					window.storyblok.get(
 						{
