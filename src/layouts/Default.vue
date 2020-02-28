@@ -12,7 +12,7 @@
 			:flat="settings.flat"
 			:hide-on-scroll="settings.hide_on_scroll"
 			:light="settings.light"
-			v-if="(settings.header || {}).length || settings.mobile_only ? $vuetify.breakpoint.mdAndDown : true"
+			v-if="showHeader"
 		)
 			v-app-bar-nav-icon(@click="drawer = !drawer")
 			component(
@@ -103,6 +103,11 @@
 					.replace(/max/g, s.body_max);
 
 				return styles;
+			},
+			showHeader() {
+				return (this.settings.header || {}).length || this.settings.mobile_only
+					? this.$vuetify.breakpoint.mdAndDown
+					: true;
 			}
 		},
 		mounted() {
