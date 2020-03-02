@@ -27,6 +27,7 @@
 			:class="settings.drawer_class || 'secondary'"
 			:dark="settings.light_drawer == true ? false : true"
 			:light="settings.light_drawer"
+			:width="300"
 			v-if="(settings.drawer || {}).length || false"
 			v-model="drawer")
 			component(
