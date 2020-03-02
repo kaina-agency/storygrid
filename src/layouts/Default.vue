@@ -200,35 +200,41 @@
 	h6 {
 		font-family: var(--heading-font, Roboto), "Helvetica Neue", Arial, sans-serif;
 		line-height: 1;
-		margin: 1rem 0;
+		margin: 0.5em 0;
 	}
 
-	h1 {
+	h1,
+	.h1 {
 		font-size: 60;
 		font-size: var(--h1-fs, 60px);
 	}
 
-	h2 {
+	h2,
+	.h2 {
 		font-size: 48;
 		font-size: var(--h2-fs, 48px);
 	}
 
-	h3 {
+	h3,
+	.h3 {
 		font-size: 34;
 		font-size: var(--h3-fs, 34px);
 	}
 
-	h4 {
+	h4,
+	.h4 {
 		font-size: 24;
 		font-size: var(--h4-fs, 24px);
 	}
 
-	h5 {
+	h5,
+	.h5 {
 		font-size: 20;
 		font-size: var(--h5-fs, 20px);
 	}
 
-	h6 {
+	h6,
+	.h6 {
 		font-size: 18;
 		font-size: var(--h6-fs, 18px);
 	}

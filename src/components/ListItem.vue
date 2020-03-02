@@ -6,7 +6,7 @@
 		)
 		v-list-item-avatar(
 			v-if="blok.avatar || blok.icon" 
-			:class="blok.avatar_color"
+			:class="[blok.avatar_color, blok.avatar_color.length > 0 ? 'filled' : '']"
 		)
 			component(
 				v-for="blok in blok.avatar"
@@ -14,7 +14,9 @@
 				:blok="blok"
 				:is="blok.component"
 			)
-			v-icon(v-if="!blok.avatar.length > 0")
+			v-icon(
+				v-if="!blok.avatar.length > 0" :color="blok.icon_color"
+			)
 				| {{'mdi mdi-' + blok.icon}}
 		v-list-item-content
 			v-list-item-title {{blok.title}}
@@ -74,3 +76,9 @@
 		}
 	};
 </script>
+
+<style>
+	.v-avatar.filled .v-icon:before {
+		font-size: 20px;
+	}
+</style>

@@ -1,9 +1,10 @@
 <template lang="pug">
 	v-lazy.imgG(
-			:class="blok.class"
-			:style="src.pt + src.filters + blok.style"
-			v-editable="blok"
-		)
+		:class="blok.class"
+		:style="src.pt + src.filters + blok.style"
+		v-editable="blok"
+	)
+		div
 			picture
 				source(:srcset="src.srcset" :sizes="src.sizes" type="image/webp")
 				source(:srcset="src.jpegSrcset" :sizes="src.sizes" type="image/jpeg")
@@ -14,6 +15,13 @@
 					:src="src.src"
 					:alt="blok.alt_text"
 					:style="{objectFit: src.contain}"
+				)
+			.imgG__content(:class="blok.content_class" :style="blok.content_style")
+				component(
+					v-for="blok in blok.content"
+					:key="blok._uid"
+					:blok="blok"
+					:is="blok.component"
 				)
 </template>
 
@@ -106,7 +114,8 @@
 		overflow: hidden;
 
 		img,
-		picture {
+		picture,
+		&__content {
 			position: absolute;
 			top: 0;
 			right: 0;
