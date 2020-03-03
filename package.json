@@ -5,7 +5,7 @@
 		"build": "gridsome build",
 		"develop": "gridsome develop",
 		"publish": "gridsome build && ntl deploy --prod",
-		"switch": "ntl unlink && ntl link && ntl dev -c 'node switch.js'"
+		"switch": "rm .env && ntl unlink && ntl link && ntl dev -c 'node switch.js'"
 	},
 	"dependencies": {
 		"@mdi/font": "^4.9.95",
