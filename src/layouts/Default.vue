@@ -240,9 +240,17 @@
 		font-size: var(--bs, 16px);
 	}
 
-	hr {
+	hr:not(.v-divider) {
 		border: none;
 		border-top: 1px solid gray;
 		margin: 2rem 0 !important;
+	}
+
+	.bold {
+		font-weight: bold;
+	}
+
+	.italic {
+		font-style: italic;
 	}
 </style>

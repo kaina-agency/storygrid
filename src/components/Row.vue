@@ -2,6 +2,9 @@
 	v-row(
 		:dense="blok.gutters == 'dense'"
 		:no-gutters="blok.gutters == 'no-gutters'"
+		:class="blok.class"
+		:style="blok.style"
+		v-editable="blok"
 	)
 		component(
 			v-for="blok in blok.content"
