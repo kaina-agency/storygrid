@@ -171,11 +171,8 @@
 		padding: 0;
 	}
 
-	.v-application {
+	#app.v-application {
 		font-family: var(--body-font, Roboto), "Helvetica Neue", Arial, sans-serif;
-	}
-
-	#app {
 		background: var(--bg);
 
 		&:before {
@@ -196,8 +193,8 @@
 	h5,
 	h6 {
 		font-family: var(--heading-font, Roboto), "Helvetica Neue", Arial, sans-serif;
-		line-height: 1;
-		margin: 0.5em 0;
+		line-height: 1.25;
+		margin: 0.25em 0;
 	}
 
 	h1,
@@ -241,5 +238,11 @@
 	ul {
 		font-size: 1rem;
 		font-size: var(--bs, 16px);
+	}
+
+	hr {
+		border: none;
+		border-top: 1px solid gray;
+		margin: 2rem 0 !important;
 	}
 </style>
