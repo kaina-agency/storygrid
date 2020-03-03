@@ -2,6 +2,7 @@
 	v-btn(
 		:color="blok.color"
 		:depressed="blok.style.includes('depressed')"
+		:disabled="disabled"
 		:fab="blok.style.includes('fab')"
 		:href="href"
 		:icon="blok.style.includes('icon')"
@@ -12,7 +13,7 @@
 		:text="blok.style.includes('text')"
 		:tile="blok.style.includes('tile')"
 		:to="to"
-		:type="blok.form_button ? 'submit' : undefined"
+		:type="type"
 		:x-small="blok.size == 'xs'"
 		:small="blok.size == 'sm'"
 		:medium="blok.size == 'md'"
@@ -30,7 +31,8 @@
 
 <script>
 	export default {
-		props: ["blok"],
+		name: "Button",
+		props: ["blok", "disabled", "type"],
 		components: { VBtn: () => import("vuetify/lib/components/VBtn") },
 		computed: {
 			href() {

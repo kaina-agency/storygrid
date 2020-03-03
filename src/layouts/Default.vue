@@ -189,10 +189,6 @@
 		}
 	}
 
-	.grecaptcha-badge {
-		display: none !important;
-	}
-
 	h1,
 	h2,
 	h3,
