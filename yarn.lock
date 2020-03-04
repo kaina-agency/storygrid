@@ -830,12 +830,12 @@
     levenary "^1.1.1"
     semver "^5.5.0"
 
-"@babel/runtime-corejs2@^7.4.2":
-  version "7.6.2"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs2/-/runtime-corejs2-7.6.2.tgz#062f8e31f3df30fc1a3dea68aa1bd854e06e9ba6"
-  integrity sha512-wdyVKnTv9Be4YlwF/7pByYNfcl23qC21aAQ0aIaZOo2ZOvhFEyJdBLJClYZ9i+Pmrz7sUQgg/MwbJa2RZTkygg==
+"@babel/runtime-corejs3@^7.4.5":
+  version "7.8.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.8.4.tgz#ccc4e042e2fae419c67fa709567e5d2179ed3940"
+  integrity sha512-+wpLqy5+fbQhvbllvlJEVRIpYj+COUWnnsm+I4jZlA8Lo7/MJmBhGTCHyk1/RWfOqBRJ2MbadddG6QltTKTlrg==
   dependencies:
-    core-js "^2.6.5"
+    core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.2"
 
 "@babel/runtime@^7.8.4":
@@ -2606,15 +2606,15 @@ core-js-compat@^3.6.2, core-js-compat@^3.6.4:
     browserslist "^4.8.3"
     semver "7.0.0"
 
-core-js@^2, core-js@^2.4.0:
+core-js-pure@^3.0.0:
+  version "3.6.4"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.6.4.tgz#4bf1ba866e25814f149d4e9aaa08c36173506e3a"
+  integrity sha512-epIhRLkXdgv32xIUFaaAry2wdxZYBi6bgM7cB136dzzXXa+dFyRLTZeLUJxnd8ShrmyVXBub63n2NHo2JAt8Cw==
+
+core-js@^2.4.0:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
   integrity sha512-5wjnpaT/3dV+XB4borEsnAYQchn00XSgTAWKDkEqv+K8KevjbzmofK6hfJ9TZIlpj2N0xQpazy7PiRQiWHqzWg==
-
-core-js@^2.6.5:
-  version "2.6.9"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.9.tgz#6b4b214620c834152e179323727fc19741b084f2"
-  integrity sha512-HOpZf6eXmnl7la+cUdMnLvUxKNqLUzJvgIziQ0DiF3JwSImNphIqdGqzj6hIKyX04MmV0poclQ7+wjWvxQyR2A==
 
 core-js@^3.6.4:
   version "3.6.4"
@@ -4236,12 +4236,12 @@ graphql@^14.4.2:
   dependencies:
     iterall "^1.2.2"
 
-gridsome-source-storyblok@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/gridsome-source-storyblok/-/gridsome-source-storyblok-0.2.2.tgz#dbe8c94684af756d2b1d9634c5c08f0d68fa062c"
-  integrity sha512-FQjlXZ6xrPHg/VKXibWEAnZxgF7emwvr9c/dM9T4mjydS7JEhEu6LdMMzOpN5Fn0qiBPRDPvTuGDLE/592Ggng==
+gridsome-source-storyblok@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/gridsome-source-storyblok/-/gridsome-source-storyblok-0.3.0.tgz#fb8c899480e2f6fa5d08591f93e97f02e0ac17e5"
+  integrity sha512-Gr1a56jgJ0PLkIrMl/lj7ksS2R6wYE7jcosqX+CrOPb5WEGst9XP4GnuGSqsnkpP+ZH07F20v896GpDyy0UCeQ==
   dependencies:
-    storyblok-js-client "^1.0.34"
+    storyblok-js-client "^2.0.12"
     storyblok-vue "^1.0.5"
 
 gridsome@^0.7.13:
@@ -7667,10 +7667,10 @@ sass-loader@^7:
     pify "^4.0.1"
     semver "^6.3.0"
 
-sass@^1.25.0:
-  version "1.25.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.25.0.tgz#f8bd7dfbb39d6b0305e27704a8ebe637820693f3"
-  integrity sha512-uQMjye0Y70SEDGO56n0j91tauqS9E1BmpKHtiYNQScXDHeaE9uHwNEqQNFf4Bes/3DHMNinB6u79JsG10XWNyw==
+sass@^1.26.2:
+  version "1.26.2"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.26.2.tgz#4e17c5c2394e2ee7ffd653ac1d862314a6a5767b"
+  integrity sha512-9TRp1d1NH0mWH8rqaR/jCS05f/TFD1ykPF2zSYviprMhLb0EmXVqtKMUHsvDt3YIT/jbSK6qAvUlfCW/HJkdCw==
   dependencies:
     chokidar ">=2.0.0 <4.0.0"
 
@@ -8091,12 +8091,12 @@ static-extend@^0.1.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
-storyblok-js-client@^1.0.34:
-  version "1.0.34"
-  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-1.0.34.tgz#bc6076f052c5e820d8779a7e0fe1b3f22e18993e"
-  integrity sha512-8Jj9G7lcLT3wiTxs7UCctWAmazLdXS7qqjNe0QZ0qF2c9fnDbcBlF7MOgvkI48/8tVs8PvEITWfUVFKUH3K6JA==
+storyblok-js-client@^2.0.12:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-2.0.12.tgz#cd8920bbb107e0bb8866ff57b26b74bba3f6c77a"
+  integrity sha512-A+We2uBEL4s44MvfltU3fwjIIOtF7PaTOoE3JQFoZtskrt2kahJgZ5Gf4sy5s0l3FkkaELvT+NFI/Yxi1jBcyA==
   dependencies:
-    "@babel/runtime-corejs2" "^7.4.2"
+    "@babel/runtime-corejs3" "^7.4.5"
     axios "^0.19.0"
     qs "^6.5.2"
 
@@ -8977,10 +8977,10 @@ vue@^2.6.10:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
 
-vuetify@^2.2.14:
-  version "2.2.14"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.2.14.tgz#d846e81812d90b1c7c0684a1eab8bcc9ca0d5ab2"
-  integrity sha512-oaWbhWe6qilAhMMzmqZ+EnSht1UsP9EyW1gKwAipl+89Bwb0ZFjcJBNXNoVJ6INN3vP9cVrLsQjbxHOMFYrI/Q==
+vuetify@^2.2.15:
+  version "2.2.15"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.2.15.tgz#03466acb6b9afcba056abef3a6278d396cae18ff"
+  integrity sha512-okz+Q7YfCkLLJsxdldlYWUHcbRX/G+fo/0zSS3rXU+Ir76sxZzIOkSsqox1exFWQJn1PqA0itiHR0QTWygv8VA==
 
 watchpack@^1.6.0:
   version "1.6.0"

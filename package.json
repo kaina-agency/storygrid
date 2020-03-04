@@ -10,18 +10,17 @@
 	"dependencies": {
 		"@mdi/font": "^4.9.95",
 		"gridsome": "^0.7.13",
-		"gridsome-source-storyblok": "^0.2.2",
+		"gridsome-source-storyblok": "^0.3.0",
 		"vue-plugin-load-script": "^1.2.0",
-		"vuetify": "^2.2.14"
+		"vuetify": "^2.2.15"
 	},
 	"devDependencies": {
-		"core-js": "^2",
 		"download-file": "^0.1.5",
 		"fs": "^0.0.1-security",
 		"os": "^0.1.1",
 		"pug": "^2.0.4",
 		"pug-plain-loader": "^1.0.0",
-		"sass": "^1.25.0",
+		"sass": "^1.26.2",
 		"sass-loader": "^7",
 		"vue-carousel-3d": "^0.2.0",
 		"vue-packer": "^0.3.0",
