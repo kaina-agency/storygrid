@@ -193,8 +193,11 @@
 	h5,
 	h6 {
 		font-family: var(--heading-font, Roboto), "Helvetica Neue", Arial, sans-serif;
-		line-height: 1.25;
-		margin: 0.25em 0;
+
+		&:not(.v-sheet) {
+			line-height: 1.25;
+			margin: 0.25em 0;
+		}
 	}
 
 	h1,

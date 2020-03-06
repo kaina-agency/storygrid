@@ -37,6 +37,7 @@ import Row from '~/components/Row.vue'
 import Spacer from '~/components/Spacer.vue'
 import Tabs from '~/components/Tabs.vue'
 import TextContent from '~/components/TextContent.vue'
+import Toolbar from '~/components/Toolbar.vue'
 import Typer from '~/components/Typer.vue'
 import Video from '~/components/Video.vue'
 import VideoBackground from '~/components/VideoBackground.vue'
@@ -69,6 +70,7 @@ export default function(
 	Vue.component('Spacer', Spacer)
 	Vue.component('Tabs', Tabs)
 	Vue.component('TextContent', TextContent)
+	Vue.component('Toolbar', Toolbar)
 	Vue.component('Typer', Typer)
 	Vue.component('Video', Video)
 	Vue.component('VideoBackground', VideoBackground)
