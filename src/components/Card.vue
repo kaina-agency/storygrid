@@ -90,6 +90,12 @@
 		&.v-card--shaped {
 			border-radius: 24px 4px !important;
 		}
+
+		&__actions {
+			.v-btn.v-btn--flat {
+				padding: 0 8px !important;
+			}
+		}
 	}
 
 	.theme--light.v-card .v-card__subtitle,
