@@ -70,10 +70,10 @@
 			settings() {
 				let settings = {};
 
-				if (!this.draft) {
-					settings = this.$static.allStoryblokEntry.edges[0].node.content;
-				} else {
+				if (this.$route.path.includes("editor")) {
 					settings = this.draft;
+				} else {
+					settings = this.$static.allStoryblokEntry.edges[0].node.content;
 				}
 
 				if (settings.default_theme === "dark") {
