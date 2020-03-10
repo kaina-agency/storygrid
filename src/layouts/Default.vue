@@ -1,5 +1,5 @@
 <template lang="pug">
-	v-app(:class="pageClass")
+	v-app
 		v-app-bar(
 			app
 			:clipped-left="set.full_width || false"
@@ -64,8 +64,7 @@
 			dark: false,
 			appBar: false,
 			drawer: null,
-			draft: {},
-			pageClass: "home"
+			draft: {}
 		}),
 		computed: {
 			set() {
@@ -92,8 +91,6 @@
 			}
 		},
 		mounted() {
-			this.pageClass = this.$route.path.split("/")[1];
-
 			if (window.location.href.includes("editor?")) {
 				const loadStory = () => {
 					window.storyblok.get(
