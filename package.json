@@ -11,7 +11,6 @@
 		"@mdi/js": "^5.0.45",
 		"gridsome": "^0.7.13",
 		"gridsome-source-storyblok": "^0.3.0",
-		"vue-plugin-load-script": "^1.2.0",
 		"vuetify": "^2.2.15"
 	},
 	"devDependencies": {
