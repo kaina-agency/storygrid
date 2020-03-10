@@ -2,33 +2,33 @@
 	v-app
 		v-app-bar(
 			app
-			:clipped-left="settings.full_width || false"
+			:clipped-left="set.full_width || false"
 			color="primary"
-			:dense="settings.dense == false ? false : true"
-			:dark="settings.light == true ? false : true"
-			:flat="settings.flat"
-			:hide-on-scroll="settings.hide_on_scroll"
-			:light="settings.light"
-			v-if="showHeader"
+			:dense="set.dense == false ? false : true"
+			:dark="set.light == true ? false : true"
+			:flat="set.flat"
+			:hide-on-scroll="set.hide_on_scroll"
+			:light="set.light"
+			v-if="appBar"
 		)
 			v-app-bar-nav-icon(@click="drawer = !drawer")
 			component(
-				v-for="blok in settings.header"
+				v-for="blok in set.header"
 				:key="blok._uid"
 				:blok="blok"
 				:is="blok.component"
 			)
 		v-navigation-drawer(
 			app
-			:clipped="settings.full_width || false"
-			:class="settings.drawer_class || 'secondary'"
-			:dark="settings.light_drawer == true ? false : true"
-			:light="settings.light_drawer"
+			:clipped="set.full_width || false"
+			:class="set.drawer_class || 'secondary'"
+			:dark="set.light_drawer == true ? false : true"
+			:light="set.light_drawer"
 			:width="300"
-			v-if="(settings.drawer || {}).length || false"
+			v-if="(set.drawer || {}).length || false"
 			v-model="drawer")
 			component(
-				v-for="blok in settings.drawer"
+				v-for="blok in set.drawer"
 				:key="blok._uid"
 				:blok="blok"
 				:is="blok.component"
@@ -36,26 +36,25 @@
 		v-content(app)
 			slot
 	
-		div(v-html="settings.inject_html")
+		div(v-html="set.inject_html")
 		component(:is="'style'")
 			| :root {
-			|		--v-primary-base: {{!dark ? settings.primary : settings.primary_dark}};
-			| 	--v-secondary-base: {{!dark ? settings.secondary : settings.secondary_dark}};
-			| 	--v-accent-base: {{!dark ? settings.accent : settings.accent_dark}};
-			| 	--bg: {{!dark ? settings.background : settings.background_dark}};
-			| 	--card-bg: {{!dark ? settings.card_background : settings.card_background_dark}};
-			| 	--heading-font: {{settings.heading_font}};
-			| 	--body-font: {{settings.body_font}};
-			| 	{{smoothType('--h1-fs', settings.h1_min, settings.h1_max)}}
-			| 	{{smoothType('--h2-fs', settings.h2_min, settings.h2_max)}}
-			| 	{{smoothType('--h3-fs', settings.h3_min, settings.h3_max)}}
-			| 	{{smoothType('--h4-fs', settings.h4_min, settings.h4_max)}}
-			| 	{{smoothType('--h5-fs', settings.h5_min, settings.h5_max)}}
-			| 	{{smoothType('--h6-fs', settings.h6_min, settings.h6_max)}}
-			| 	{{smoothType('--bs', settings.body_min, settings.body_max)}}
+			|		--v-primary-base: {{!dark ? set.primary : set.primary_dark}};
+			| 	--v-secondary-base: {{!dark ? set.secondary : set.secondary_dark}};
+			| 	--v-accent-base: {{!dark ? set.accent : set.accent_dark}};
+			| 	--bg: {{!dark ? set.background : set.background_dark}};
+			| 	--card-bg: {{!dark ? set.card_background : set.card_background_dark}};
+			| 	--heading-font: {{set.heading_font}};
+			| 	--body-font: {{set.body_font}};
+			| 	{{smoothType('--h1-fs', set.h1_min, set.h1_max)}}
+			| 	{{smoothType('--h2-fs', set.h2_min, set.h2_max)}}
+			| 	{{smoothType('--h3-fs', set.h3_min, set.h3_max)}}
+			| 	{{smoothType('--h4-fs', set.h4_min, set.h4_max)}}
+			| 	{{smoothType('--h5-fs', set.h5_min, set.h5_max)}}
+			| 	{{smoothType('--h6-fs', set.h6_min, set.h6_max)}}
+			| 	{{smoothType('--bs', set.body_min, set.body_max)}}
 			| }
-			| .{{$route.path.split("/")[1] + '-only'}} {display: auto;}
-			| {{ settings.inject_css }}
+			| {{ set.inject_css }}
 </template>
 
 <script>
@@ -63,11 +62,12 @@
 	export default {
 		data: () => ({
 			dark: false,
+			appBar: false,
 			drawer: null,
 			draft: {}
 		}),
 		computed: {
-			settings() {
+			set() {
 				let settings = {};
 
 				if (this.$route.path.includes("editor")) {
@@ -81,12 +81,13 @@
 					this.dark = true;
 				}
 
+				if ((settings.header || {}).length || settings.mobile_only) {
+					this.appBar = this.$vuetify.breakpoint.mdAndDown;
+				} else {
+					this.appBar = true;
+				}
+
 				return settings;
-			},
-			showHeader() {
-				return (this.settings.header || {}).length || this.settings.mobile_only
-					? this.$vuetify.breakpoint.mdAndDown
-					: true;
 			}
 		},
 		mounted() {
@@ -134,17 +135,10 @@
 					initStoryblokEvents();
 				});
 			}
-
-			document.body.classList = this.$route.path.split("/")[1];
 		},
 		methods: {
 			smoothType(selector, min, max) {
 				return `${selector}: calc(${min}px + (${max} - ${min}) * ((100vw - 400px) / (1800 - 400)));`;
-			}
-		},
-		watch: {
-			$route(to, from) {
-				document.body.classList = this.$route.path.split("/")[1];
 			}
 		}
 	};
