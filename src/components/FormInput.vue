@@ -1,5 +1,9 @@
 <template lang="pug">
-	div
+	.g-input-wrapper
+		.g-icon(
+			v-if="['text', 'phone', 'email', 'select', 'textarea'].includes(blok.type)"
+			v-html="blok.icon"
+		)
 		v-text-field(
 			v-if="blok.type=='text'"
 			clearable
@@ -8,7 +12,7 @@
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
-			:prepend-icon="'mdi-' + blok.icon"
+			:prepend-icon="blok.icon ? '⠀' : undefined"
 			:rounded="blok.options.includes('rounded')"
 			v-editable="blok"
 			:rules="blok.options.includes('required') ? [v => !!v || blok.label + ' is required'] : []"
@@ -22,7 +26,7 @@
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
-			:prepend-icon="'mdi-' + blok.icon"
+			:prepend-icon="blok.icon ? ' ' : undefined"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
 			type="tel"
@@ -37,7 +41,7 @@
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
-			:prepend-icon="'mdi-' + blok.icon"
+			:prepend-icon="blok.icon ? ' ' : undefined"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
 			type="email"
@@ -56,7 +60,7 @@
 			:multiple="blok.options.includes('multiple')"
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
-			:prepend-icon="'mdi-' + blok.icon"
+			:prepend-icon="blok.icon ? ' ' : undefined"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
 			:small-chips="blok.options.includes('multiple')"
@@ -73,7 +77,7 @@
 			:outlined="blok.options.includes('outlined')"
 			:name="blok.label"
 			no-resize
-			:prepend-icon="'mdi-' + blok.icon"
+			:prepend-icon="blok.icon ? ' ' : undefined"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
 			v-editable="blok"
@@ -189,8 +193,17 @@
 	};
 </script>
 
-<style>
+<style lang="scss">
 	.v-application--is-ltr .v-text-field .v-input__prepend-inner {
 		padding-right: 8px;
+	}
+
+	.g-input-wrapper {
+		position: relative;
+
+		.g-icon {
+			position: absolute;
+			top: 16px;
+		}
 	}
 </style>

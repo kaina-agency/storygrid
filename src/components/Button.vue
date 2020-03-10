@@ -21,11 +21,12 @@
 		:x-large="blok.size == 'xl'"
 		v-editable="blok"
 	) 
-		v-icon(
+		div.g-icon(
 			v-if="blok.icon"
-			:left="blok.style.includes('fab') || blok.style.includes('icon') ? false : true"
+			v-html="blok.icon"
+			notranslate
+			:style="left ? 'margin-right: 8px;' : ''"
 		)
-			| {{'mdi mdi-' + blok.icon}}
 		| {{blok.style.includes('fab') || blok.style.includes('icon') ? '' : blok.text}}
 </template>
 
@@ -66,7 +67,18 @@
 							return "/" + path;
 					}
 				}
+			},
+			left() {
+				return this.blok.style.includes("fab") || this.blok.style.includes("icon")
+					? false
+					: true;
 			}
 		}
 	};
 </script>
+
+<style>
+	.v-btn--rounded .g-icon {
+		margin-left: 4px;
+	}
+</style>

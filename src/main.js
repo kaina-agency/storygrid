@@ -9,7 +9,7 @@ import Vuetify, {
 	VNavigationDrawer
 } from 'vuetify/lib'
 import { Ripple } from 'vuetify/lib/directives'
-import '@mdi/font/css/materialdesignicons.css'
+// import '@mdi/font/css/materialdesignicons.css'
 
 // Import components
 
@@ -88,6 +88,7 @@ export default function(
 		}
 	})
 	appOptions.vuetify = new Vuetify({
+		icons: { iconfont: 'mdiSvg' },
 		theme: {
 			options: {
 				customProperties: true,

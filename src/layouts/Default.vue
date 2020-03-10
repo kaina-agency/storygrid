@@ -165,6 +165,24 @@
 		}
 	}
 
+	.g-icon svg {
+		fill: currentColor;
+		border-radius: none;
+		display: block;
+		.v-size--x-small & {
+			height: 12px;
+			width: 12px;
+		}
+		.v-size--small & {
+			height: 16px;
+			width: 16px;
+		}
+		.v-size--default & {
+			height: 20px;
+			width: 20px;
+		}
+	}
+
 	h1,
 	h2,
 	h3,
@@ -220,6 +238,7 @@
 	ul {
 		font-size: 1rem;
 		font-size: var(--bs, 16px);
+		margin: 1rem 0;
 	}
 
 	hr:not(.v-divider) {

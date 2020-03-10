@@ -13,8 +13,11 @@ div(:class="blok.class" :style="blok.style")
 			:key="blok._uid"
 			v-editable="blok"
 		)
-			v-icon.left(v-if="blok.icon")
-				| {{'mdi mdi-' + blok.icon}}
+			div.g-icon(
+				v-if="blok.icon"
+				v-html="blok.icon"
+				notranslate
+			)
 			| {{blok.name}}
 		v-tabs-slider
 	v-divider
@@ -55,7 +58,12 @@ div(:class="blok.class" :style="blok.style")
 </script>
 
 <style lang="scss">
-	.v-tab > .v-icon.left {
+	.v-tab > .g-icon {
 		margin-right: 8px;
+
+		svg {
+			height: 24px;
+			width: 24px;
+		}
 	}
 </style>

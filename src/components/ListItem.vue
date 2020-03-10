@@ -14,10 +14,11 @@
 				:blok="blok"
 				:is="blok.component"
 			)
-			v-icon(
-				v-if="!blok.avatar.length > 0" :color="blok.icon_color"
+			div.g-icon(
+				v-if="!blok.avatar.length > 0"
+				v-html="blok.icon"
+				notranslate
 			)
-				| {{'mdi mdi-' + blok.icon}}
 		v-list-item-content
 			v-list-item-title {{blok.title}}
 			v-list-item-subtitle {{blok.subtitle}}
@@ -77,8 +78,13 @@
 	};
 </script>
 
-<style>
-	.v-avatar.filled .v-icon:before {
-		font-size: 20px;
+<style lang="scss">
+	.v-avatar.filled .g-icon svg {
+		height: 20px;
+		width: 20px;
+		fill: white;
+	}
+	.v-avatar svg {
+		display: block;
 	}
 </style>
