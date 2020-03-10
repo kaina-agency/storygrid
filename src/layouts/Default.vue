@@ -1,5 +1,5 @@
 <template lang="pug">
-	v-app
+	v-app(:class="$route.path.split('/')[1] || 'home'")
 		v-app-bar(
 			app
 			:clipped-left="set.full_width || false"
