@@ -6,7 +6,7 @@
 			:blok="story.content"
 			:is="story.content.component"
 		/>
-		<component :is="'css'">
+		<component :is="'style'">
 			{{ story.content.inject_css }}
 		</component>
 	</Layout>
