@@ -87,8 +87,13 @@
 	.v-card {
 		overflow: hidden;
 
+		&.no-focus:focus:before {
+			opacity: 0;
+		}
+
 		&.v-card--shaped {
 			border-radius: 24px 4px !important;
+			overflow: hidden;
 		}
 
 		&__actions {
