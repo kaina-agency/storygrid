@@ -70,7 +70,7 @@
 			set() {
 				let settings = {};
 
-				if (this.$route.path.includes("editor")) {
+				if (this.draft._uid) {
 					settings = this.draft;
 				} else {
 					settings = this.$static.allStoryblokEntry.edges[0].node.content;
@@ -91,7 +91,7 @@
 			}
 		},
 		mounted() {
-			if (window.location.href.includes("editor?")) {
+			if (window.top !== window.self) {
 				const loadStory = () => {
 					window.storyblok.get(
 						{
@@ -193,7 +193,7 @@
 
 		&:not(.v-sheet) {
 			line-height: 1.25;
-			margin: 0.25em 0;
+			margin: calc(1rem) 0;
 		}
 	}
 
@@ -238,7 +238,6 @@
 	ul {
 		font-size: 1rem;
 		font-size: var(--bs, 16px);
-		margin: 1rem 0;
 	}
 
 	hr:not(.v-divider) {
