@@ -1,5 +1,6 @@
 <template lang="pug">
 	v-list-item(
+		:active-class="activeClass"
 		:href="href"
 		:to="to"
 		v-editable="blok"
@@ -33,7 +34,7 @@
 		VListItemSubtitle
 	} from "vuetify/lib";
 	export default {
-		props: ["blok"],
+		props: ["blok", "activeClass"],
 		components: {
 			VListItem,
 			VListItemAvatar,

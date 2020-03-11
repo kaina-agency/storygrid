@@ -17,6 +17,7 @@
 				:key="blok._uid"
 				:blok="blok"
 				:is="blok.component"
+				:activeClass="activeClass"
 			)
 </template>
 
@@ -35,6 +36,9 @@
 					case "sci-fi-narrow":
 						return "sci-fi-narrow";
 				}
+			},
+			activeClass() {
+				return this.blok.active_class;
 			}
 		}
 	};

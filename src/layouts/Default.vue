@@ -92,6 +92,8 @@
 		},
 		mounted() {
 			if (window.top !== window.self) {
+				document.body.classList.add("in-editor");
+
 				const loadStory = () => {
 					window.storyblok.get(
 						{
@@ -246,8 +248,9 @@
 		margin: 2rem 0 !important;
 	}
 
-	.bold {
-		font-weight: bold;
+	.bold,
+	.bold * {
+		font-weight: bold !important;
 	}
 
 	.italic {
