@@ -21,7 +21,7 @@
 				notranslate
 			)
 		v-list-item-content
-			v-list-item-title {{blok.title}}
+			v-list-item-title(:class="blok.subtitle ? '' : 'mb-0'") {{blok.title}}
 			v-list-item-subtitle {{blok.subtitle}}
 </template>
 

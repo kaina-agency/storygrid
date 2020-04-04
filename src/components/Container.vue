@@ -47,33 +47,55 @@
 			}
 
 			&-arrow {
-				-webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
-				clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+				-webkit-clip-path: polygon(
+					0 0,
+					100% 0,
+					100% calc(100% - 24px),
+					50% 100%,
+					0 calc(100% - 24px)
+				);
+				clip-path: polygon(
+					0 0,
+					100% 0,
+					100% calc(100% - 24px),
+					50% 100%,
+					0 calc(100% - 24px)
+				);
 				padding-bottom: 36px;
 			}
 
 			&-lean {
 				&-left {
-					-webkit-clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
-					clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+					-webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 24px), 0 100%);
+					clip-path: polygon(0 0, 100% 0, 100% calc(100% - 24px), 0 100%);
 				}
 
 				&-right {
-					-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 92%);
-					clip-path: polygon(0 0, 100% 0, 100% 100%, 0 92%);
+					-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 24px));
+					clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 24px));
 				}
 			}
 		}
 
 		&.slope {
 			&-clockwise {
-				-webkit-clip-path: polygon(0 0, 100% 8%, 100% 100%, 0 92%);
-				clip-path: polygon(0 0, 100% 8%, 100% 100%, 0 92%);
+				-webkit-clip-path: polygon(
+					0 0,
+					100% 24px,
+					100% 100%,
+					0 calc(100% - 24px)
+				);
+				clip-path: polygon(0 0, 100% 24px, 100% 100%, 0 calc(100% - 24px));
 			}
 
 			&-counter-clockwise {
-				-webkit-clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
-				clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
+				-webkit-clip-path: polygon(
+					0 24px,
+					100% 0,
+					100% calc(100% - 24px),
+					0 100%
+				);
+				clip-path: polygon(0 24px, 100% 0, 100% calc(100% - 24px), 0 100%);
 			}
 		}
 	}

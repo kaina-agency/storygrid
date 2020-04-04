@@ -10,7 +10,7 @@ let t = 'GRIDSOME_TITLE=' + process.env.GRIDSOME_TITLE + os.EOL
 
 let content = sb + t
 
-fs.writeFile('./.env', content, err => {
+fs.writeFile('./.env', content, (err) => {
 	if (err) {
 		console.error(err)
 	} else {
@@ -25,11 +25,11 @@ fs.writeFile('./.env', content, err => {
 
 var icon_options = {
 	directory: './src/',
-	filename: 'icon.png'
+	filename: 'icon.png',
 }
 
 if (icon) {
-	download(icon, icon_options, function(err) {
+	download(icon, icon_options, function (err) {
 		if (err) {
 			console.error(err)
 		} else {
