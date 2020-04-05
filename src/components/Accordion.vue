@@ -14,6 +14,12 @@
 			v-editable="blok"
 		)
 			v-expansion-panel-header(:color="color") {{blok.title}}
+				component(
+					v-for="blok in blok.header"
+					:key="blok._uid"
+					:blok="blok"
+					:is="blok.component"
+				)
 			v-expansion-panel-content(:color="color")
 				component(
 					v-for="blok in blok.content"
