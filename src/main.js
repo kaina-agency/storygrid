@@ -6,7 +6,7 @@ import Vuetify, {
 	VAppBarNavIcon,
 	VContent,
 	VIcon,
-	VNavigationDrawer
+	VNavigationDrawer,
 } from 'vuetify/lib'
 import { Ripple } from 'vuetify/lib/directives'
 
@@ -19,6 +19,7 @@ import Accordion from '~/components/Accordion.vue'
 import Button from '~/components/Button.vue'
 import Card from '~/components/Card.vue'
 import Carousel from '~/components/Carousel.vue'
+import CarouselSlide from '~/components/CarouselSlide.vue'
 import Carousel3D from '~/components/Carousel3D.vue'
 import Column from '~/components/Column.vue'
 import Container from '~/components/Container.vue'
@@ -52,6 +53,7 @@ export default function(
 	Vue.component('Button', Button)
 	Vue.component('Card', Card)
 	Vue.component('Carousel', Carousel)
+	Vue.component('CarouselSlide', CarouselSlide)
 	Vue.component('Carousel3D', Carousel3D)
 	Vue.component('Column', Column)
 	Vue.component('Container', Container)
@@ -80,11 +82,11 @@ export default function(
 			VAppBarNavIcon,
 			VContent,
 			VIcon,
-			VNavigationDrawer
+			VNavigationDrawer,
 		},
 		directives: {
-			Ripple
-		}
+			Ripple,
+		},
 	})
 	appOptions.vuetify = new Vuetify({
 		icons: { iconfont: 'mdiSvg' },
@@ -95,8 +97,8 @@ export default function(
 					return process.env.NODE_ENV === 'production'
 						? css.replace(/[\r\n|\r|\n]/g, '')
 						: css
-				}
-			}
-		}
+				},
+			},
+		},
 	})
 }

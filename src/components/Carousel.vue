@@ -1,5 +1,6 @@
 <template lang="pug">
 	v-carousel(
+		v-editable="blok"
 		:class="blok.options.includes('vertical') ? 'vertical' : ''"
 		:cycle="blok.options.includes('cycle')"
 		:height="blok.height"
