@@ -1,6 +1,6 @@
 const download = require('download-file')
 const icon = process.env.ICON
-// test
+
 var icon_options = {
 	directory: './src/',
 	filename: 'icon.png',
