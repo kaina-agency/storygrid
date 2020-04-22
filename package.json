@@ -2,10 +2,11 @@
 	"name": "my-project",
 	"private": true,
 	"scripts": {
-		"build": "gridsome build",
+		"Netlify⠀Link": "ntl unlink && ntl link && ntl dev -c 'node switch.js' && ntl dev",
+		"Netlify⠀Dev": "ntl dev",
+		"Netlify⠀Publish": "ntl dev -c 'gridsome build' && ntl deploy --prod",
 		"develop": "gridsome develop",
-		"publish": "gridsome build && ntl deploy --prod",
-		"switch": "ntl unlink && ntl link && ntl dev -c 'node switch.js'"
+		"build": "gridsome build"
 	},
 	"dependencies": {
 		"@mdi/js": "^5.0.45",
