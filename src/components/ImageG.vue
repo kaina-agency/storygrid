@@ -106,7 +106,7 @@
 	};
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 	.imgG {
 		position: relative;
 		display: flex;

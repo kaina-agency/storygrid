@@ -37,6 +37,9 @@
 			bottom: 0;
 			left: 0;
 		}
+		&-image {
+			padding-top: 0 !important;
+		}
 		&-content {
 			display: flex;
 			flex-direction: column;
