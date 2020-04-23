@@ -28,16 +28,13 @@
 <style scoped lang="scss">
 	.container {
 		position: relative;
-		max-width: 1600px;
 
 		@media (min-width: 1024px) {
 			padding: 24px;
 		}
 
 		&.full {
-			padding: 0;
-			margin: 0 0;
-			max-width: none;
+			max-width: none !important;
 		}
 
 		&.bottom {
