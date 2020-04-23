@@ -6,7 +6,7 @@
 			:style="`opacity: ${blok.background_opacity};`"
 		)
 		.carousel-slide-content(
-			:class="[blok.text_color, blok.text_shadow ? 'text-shadow' : '', blok.class]"
+			:class="[blok.text_color, blok.dark ? 'white--text text-shadow' : '', blok.class]"
 			:style="blok.style"
 			v-editable="blok"
 		)

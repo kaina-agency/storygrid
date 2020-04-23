@@ -32,6 +32,7 @@ import ImageG from '~/components/ImageG.vue'
 import List from '~/components/List.vue'
 import ListItem from '~/components/ListItem.vue'
 import Masonry from '~/components/Masonry.vue'
+import Parallax from '~/components/Parallax.vue'
 import Row from '~/components/Row.vue'
 import Spacer from '~/components/Spacer.vue'
 import Tabs from '~/components/Tabs.vue'
@@ -66,6 +67,7 @@ export default function(
 	Vue.component('List', List)
 	Vue.component('ListItem', ListItem)
 	Vue.component('Masonry', Masonry)
+	Vue.component('Parallax', Parallax)
 	Vue.component('Row', Row)
 	Vue.component('Spacer', Spacer)
 	Vue.component('Tabs', Tabs)
