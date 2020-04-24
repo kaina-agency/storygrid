@@ -4,12 +4,13 @@
 	"scripts": {
 		"Netlify⠀Link": "ntl unlink && ntl link && ntl dev -c 'node switch.js' && ntl dev",
 		"Netlify⠀Dev": "ntl dev",
-		"Netlify⠀Publish": "ntl dev -c 'gridsome build' && ntl deploy --prod",
+		"Netlify⠀Publish": "ntl build && ntl deploy --prod",
 		"develop": "gridsome develop",
 		"build": "gridsome build"
 	},
 	"dependencies": {
 		"@mdi/js": "^5.0.45",
+		"@netlify/plugin-sitemap": "^0.3.3",
 		"gridsome": "^0.7.13",
 		"gridsome-source-storyblok": "^0.3.0",
 		"vuetify": "^2.2.15"
