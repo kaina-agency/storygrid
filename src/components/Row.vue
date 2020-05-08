@@ -2,7 +2,7 @@
 	v-row(
 		:dense="blok.gutters == 'dense'"
 		:no-gutters="blok.gutters == 'no-gutters'"
-		:class="blok.class"
+		:class="[blok.class, blok.alignment]"
 		:style="blok.style"
 		v-editable="blok"
 	)

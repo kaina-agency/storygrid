@@ -45,7 +45,7 @@
 		components: { VCard, VCardText, VCardActions, VDivider },
 		computed: {
 			color() {
-				return this.blok.color ? this.blok.color : "var(--card-bg)";
+				return this.blok.color ? this.blok.color : null;
 			},
 			href() {
 				const l = this.blok.link;
