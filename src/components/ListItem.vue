@@ -1,10 +1,11 @@
 <template lang="pug">
 	v-list-item(
 		:active-class="activeClass"
+		:disabled="blok.disabled"
 		:href="href"
 		:to="to"
 		v-editable="blok"
-		)
+	)
 		v-list-item-avatar(
 			v-if="blok.avatar || blok.icon" 
 			:class="[blok.avatar_color, blok.avatar_color.length > 0 ? 'filled' : '']"
