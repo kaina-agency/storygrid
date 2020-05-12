@@ -5,8 +5,13 @@ import Vuetify, {
 	VAppBar,
 	VAppBarNavIcon,
 	VContent,
-	VIcon,
 	VNavigationDrawer,
+	VRow,
+	VCol,
+	VCard,
+	VCardText,
+	VCardActions,
+	VDivider,
 } from 'vuetify/lib'
 import { Ripple } from 'vuetify/lib/directives'
 
@@ -33,6 +38,7 @@ import List from '~/components/List.vue'
 import ListItem from '~/components/ListItem.vue'
 import Masonry from '~/components/Masonry.vue'
 import Parallax from '~/components/Parallax.vue'
+import Posts from '~/components/Posts.vue'
 import Row from '~/components/Row.vue'
 import Spacer from '~/components/Spacer.vue'
 import Tabs from '~/components/Tabs.vue'
@@ -42,10 +48,7 @@ import Typer from '~/components/Typer.vue'
 import Video from '~/components/Video.vue'
 import VideoBackground from '~/components/VideoBackground.vue'
 
-export default function(
-	Vue,
-	{ router, head, isClient, appOptions }
-) {
+export default function(Vue, { router, head, isClient, appOptions }) {
 	// Assign Components
 	Vue.component('Layout', DefaultLayout)
 	Vue.component('Page', Page)
@@ -68,6 +71,7 @@ export default function(
 	Vue.component('ListItem', ListItem)
 	Vue.component('Masonry', Masonry)
 	Vue.component('Parallax', Parallax)
+	Vue.component('Posts', Posts)
 	Vue.component('Row', Row)
 	Vue.component('Spacer', Spacer)
 	Vue.component('Tabs', Tabs)
@@ -83,8 +87,13 @@ export default function(
 			VAppBar,
 			VAppBarNavIcon,
 			VContent,
-			VIcon,
 			VNavigationDrawer,
+			VRow,
+			VCol,
+			VCard,
+			VCardText,
+			VCardActions,
+			VDivider,
 		},
 		directives: {
 			Ripple,

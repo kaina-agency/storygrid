@@ -15,9 +15,7 @@
 </template>
 
 <script>
-	import { VRow } from "vuetify/lib";
 	export default {
-		props: ["blok"],
-		components: { VRow }
+		props: ["blok"]
 	};
 </script>
