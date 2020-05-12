@@ -9,11 +9,12 @@
 		"build": "gridsome build"
 	},
 	"dependencies": {
-		"@mdi/js": "^5.0.45",
+		"@gridsome/plugin-google-analytics": "^0.1.0",
+		"@mdi/js": "^5.1.45",
 		"@netlify/plugin-sitemap": "^0.3.3",
-		"gridsome": "^0.7.13",
-		"gridsome-source-storyblok": "^0.3.0",
-		"vuetify": "^2.2.15"
+		"gridsome": "^0.7.14",
+		"gridsome-source-storyblok": "^1.0.1",
+		"vuetify": "^2.2.27"
 	},
 	"devDependencies": {
 		"download-file": "^0.1.5",
@@ -21,7 +22,7 @@
 		"os": "^0.1.1",
 		"pug": "^2.0.4",
 		"pug-plain-loader": "^1.0.0",
-		"sass": "^1.26.2",
+		"sass": "^1.26.5",
 		"sass-loader": "^7",
 		"vue-carousel-3d": "^0.2.0",
 		"vue-packer": "^0.3.0",
