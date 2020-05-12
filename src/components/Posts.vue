@@ -32,7 +32,6 @@
 					div.text-truncate
 						b {{post.node.content.meta.title}}
 					div.text-truncate {{post.node.content.meta.description}}
-					
 </template>
 
 <script>

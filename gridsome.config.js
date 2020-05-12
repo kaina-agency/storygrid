@@ -6,6 +6,7 @@
 
 module.exports = {
 	siteName: process.env.GRIDSOME_TITLE,
+	titleTemplate: process.env.GRIDSOME_TITLE,
 	siteDescription: 'Remember to update this',
 	icon: './src/icon.png',
 	plugins: [
