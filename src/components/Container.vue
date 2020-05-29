@@ -31,6 +31,7 @@
 
 		@media (min-width: 1024px) {
 			padding: 24px;
+			max-width: 1440px;
 		}
 
 		&.full {

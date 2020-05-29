@@ -1,7 +1,6 @@
 <template lang="pug">
-	ClientOnly
+	no-ssr
 		carousel-3d(
-			:animationSpeed="blok.animationSpeed * 1000"
 			:autoplay="blok.autoplay"
 			:autoplayHoverPause="blok.autoplayHoverPause"
 			:autoplayTimeout="blok.autoplayTimeout * 1000"
@@ -24,9 +23,13 @@
 </template>
 
 <script>
+	// import { Carousel3d, Slide } from "vue-carousel-3d/src/index.js";
+	import NoSSR from "vue-no-ssr";
+
 	export default {
 		props: ["blok"],
 		components: {
+			"no-ssr": NoSSR,
 			Carousel3d: () => import("vue-carousel-3d"),
 			Slide: () => import("vue-carousel-3d")
 		},
