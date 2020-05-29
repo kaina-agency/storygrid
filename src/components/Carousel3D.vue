@@ -30,8 +30,14 @@
 		props: ["blok"],
 		components: {
 			"no-ssr": NoSSR,
-			Carousel3d: () => import("vue-carousel-3d"),
-			Slide: () => import("vue-carousel-3d")
+			Carousel3d: () =>
+				import("vue-carousel-3d")
+					.then(m => m.Carousel3d)
+					.catch(),
+			Slide: () =>
+				import("vue-carousel-3d")
+					.then(m => m.Slide)
+					.catch()
 		},
 		computed: {
 			contentClass() {

@@ -1,6 +1,6 @@
 <template lang="pug">
 	v-list(
-		:class="addedStyles"
+		:class="[addedStyles, blok.class]"
 		dense
 		:flat="blok.flat"
 		:nav="blok.shape == 'nav'"
@@ -71,5 +71,9 @@
 			);
 			margin: 0 16px;
 		}
+	}
+
+	.theme--light.v-list {
+		background: transparent;
 	}
 </style>
