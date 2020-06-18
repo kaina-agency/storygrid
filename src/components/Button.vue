@@ -20,6 +20,7 @@
 		:large="blok.size == 'lg'"
 		:x-large="blok.size == 'xl'"
 		v-editable="blok"
+		@click="hashHandler"
 	) 
 		div.g-icon(
 			v-if="blok.icon"
@@ -72,6 +73,15 @@
 				return this.blok.style.includes("fab") || this.blok.style.includes("icon")
 					? false
 					: true;
+			}
+		},
+		methods: {
+			hashHandler() {
+				let l = this.blok.link;
+				if (l.linktype === "url" && l.url.startsWith("#")) {
+					let name = l.url.replace("#", "");
+					document.querySelector(`[data-name='${name}'`).scrollIntoView();
+				}
 			}
 		}
 	};

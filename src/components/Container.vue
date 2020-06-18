@@ -1,5 +1,6 @@
 <template lang="pug">
 	v-container(
+		:data-name="blok.name"
 		:class="[full, blok.bottom_margin, blok.shape, blok.class]"
 		:style="blok.style"
 		v-editable="blok"

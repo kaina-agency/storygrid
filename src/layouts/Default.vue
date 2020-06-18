@@ -81,7 +81,7 @@
 					this.dark = true;
 				}
 
-				if ((settings.header || {}).length || settings.mobile_only) {
+				if (settings.mobile_only) {
 					this.appBar = this.$vuetify.breakpoint.mdAndDown;
 				} else {
 					this.appBar = true;
@@ -91,8 +91,9 @@
 			}
 		},
 		mounted() {
-			if (window.top !== window.self) {
+			if (window.top !== window.self || location.hostname === "localhost") {
 				document.body.classList.add("in-editor");
+				console.log("Edit Mode");
 
 				const loadStory = () => {
 					window.storyblok.get(
@@ -204,37 +205,43 @@
 	}
 
 	h1,
-	.h1 {
+	.h1,
+	.h1 > * {
 		font-size: 60;
 		font-size: var(--h1-fs, 60px);
 	}
 
 	h2,
-	.h2 {
+	.h2,
+	.h2 > * {
 		font-size: 48;
 		font-size: var(--h2-fs, 48px);
 	}
 
 	h3,
-	.h3 {
+	.h3,
+	.h3 > * {
 		font-size: 34;
 		font-size: var(--h3-fs, 34px);
 	}
 
 	h4,
-	.h4 {
+	.h4,
+	.h4 > * {
 		font-size: 24;
 		font-size: var(--h4-fs, 24px);
 	}
 
 	h5,
-	.h5 {
+	.h5,
+	.h5 > * {
 		font-size: 20;
 		font-size: var(--h5-fs, 20px);
 	}
 
 	h6,
-	.h6 {
+	.h6,
+	.h6 > * {
 		font-size: 18;
 		font-size: var(--h6-fs, 18px);
 	}
