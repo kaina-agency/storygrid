@@ -147,6 +147,10 @@
 </script>
 
 <style lang="scss">
+	html {
+		overflow-y: auto;
+	}
+
 	body {
 		margin: 0;
 		padding: 0;
