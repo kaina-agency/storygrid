@@ -51,6 +51,16 @@
 		},
 		mounted() {
 			this.scrollHandler();
+
+			// iOS scrolling fix
+			let firstSlide = document.querySelectorAll(".fullpage_slide")[0];
+			firstSlide.scrollIntoView();
+			setTimeout(() => {
+				firstSlide.scrollIntoView();
+			}, 100);
+			// setTimeout(() => {
+			// 	firstSlide.scrollIntoView();
+			// }, 200);
 		},
 		computed: {
 			size() {
@@ -66,9 +76,9 @@
 	.fullpage {
 		position: absolute;
 		top: 0;
-		right: 0;
-		bottom: 0;
 		left: 0;
+		height: 100%;
+		width: 100%;
 		overflow-y: auto;
 		overflow-x: hidden;
 		-webkit-overflow-scrolling: touch;
