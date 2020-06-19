@@ -11,7 +11,10 @@
 			:light="set.light"
 			v-if="appBar"
 		)
-			v-app-bar-nav-icon(@click="drawer = !drawer")
+			v-app-bar-nav-icon(
+				@click="drawer = !drawer"
+				v-if="(set.drawer || {}).length || false"
+			)
 			component(
 				v-for="blok in set.header"
 				:key="blok._uid"
