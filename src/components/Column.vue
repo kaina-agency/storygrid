@@ -5,6 +5,7 @@
 		:md="responsive.md"
 		:lg="responsive.lg"
 		:xl="responsive.xl"
+		:class="blok.class"
 		v-editable="blok"
 	)
 		component(
