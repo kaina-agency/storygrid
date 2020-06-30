@@ -1,7 +1,6 @@
 <template lang="pug">
 	v-list(
 		:class="[addedStyles, blok.class]"
-		dense
 		:flat="blok.flat"
 		:nav="blok.shape == 'nav'"
 		:rounded="blok.shape == 'rounded'"

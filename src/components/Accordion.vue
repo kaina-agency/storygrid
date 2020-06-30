@@ -13,13 +13,16 @@
 			:key="blok._uid"
 			v-editable="blok"
 		)
-			v-expansion-panel-header(:color="color") {{blok.title}}
-				component(
-					v-for="blok in blok.header"
-					:key="blok._uid"
-					:blok="blok"
-					:is="blok.component"
+			v-expansion-panel-header(:color="color")
+				v-list-item-avatar(
+					v-if="blok.icon"
+					class="expansion-icon"
 				)
+					div.g-icon(
+						v-html="blok.icon"
+						notranslate
+					)
+				| {{blok.title}}
 			v-expansion-panel-content(:color="color")
 				component(
 					v-for="blok in blok.content"
@@ -51,3 +54,14 @@
 		}
 	};
 </script>
+
+<style>
+	.v-expansion-panel-header {
+		font-size: 1rem;
+	}
+	.expansion-icon {
+		flex: 0 0 auto !important;
+		margin-right: 8px;
+		width: 40px;
+	}
+</style>
