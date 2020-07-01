@@ -14,6 +14,12 @@
 			v-editable="blok"
 		)
 			v-expansion-panel-header(:color="color")
+				component(
+					v-for="blok in blok.header"
+					:key="blok._uid"
+					:blok="blok"
+					:is="blok.component"
+				)
 				v-list-item-avatar(
 					v-if="blok.icon"
 					class="expansion-icon"
@@ -37,7 +43,8 @@
 		VExpansionPanels,
 		VExpansionPanel,
 		VExpansionPanelHeader,
-		VExpansionPanelContent
+		VExpansionPanelContent,
+		VListItemAvatar
 	} from "vuetify/lib";
 	export default {
 		props: ["blok"],
@@ -45,7 +52,8 @@
 			VExpansionPanels,
 			VExpansionPanel,
 			VExpansionPanelHeader,
-			VExpansionPanelContent
+			VExpansionPanelContent,
+			VListItemAvatar
 		},
 		computed: {
 			color() {
@@ -56,8 +64,9 @@
 </script>
 
 <style>
-	.v-expansion-panel-header {
+	.v-list-item-group .v-expansion-panel-header {
 		font-size: 1rem;
+		padding: 0 16px;
 	}
 	.expansion-icon {
 		flex: 0 0 auto !important;

@@ -175,6 +175,10 @@
 		}
 	}
 
+	.v-navigation-drawer__content {
+		border-right: 1px solid transparent;
+	}
+
 	.g-icon svg {
 		fill: currentColor;
 		border-radius: none;
