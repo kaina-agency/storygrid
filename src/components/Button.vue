@@ -35,7 +35,6 @@
 	export default {
 		name: "Button",
 		props: ["blok", "disabled", "type"],
-		components: { VBtn: () => import("vuetify/lib/components/VBtn") },
 		computed: {
 			href() {
 				const l = this.blok.link;

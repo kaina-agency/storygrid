@@ -39,22 +39,8 @@
 </template>
 
 <script>
-	import {
-		VExpansionPanels,
-		VExpansionPanel,
-		VExpansionPanelHeader,
-		VExpansionPanelContent,
-		VListItemAvatar
-	} from "vuetify/lib";
 	export default {
 		props: ["blok"],
-		components: {
-			VExpansionPanels,
-			VExpansionPanel,
-			VExpansionPanelHeader,
-			VExpansionPanelContent,
-			VListItemAvatar
-		},
 		computed: {
 			color() {
 				return this.blok.color ? this.blok.color : "var(--card-bg)";

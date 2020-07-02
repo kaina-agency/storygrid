@@ -35,17 +35,8 @@ div(:class="blok.class" :style="blok.style")
 </template>
 
 <script>
-	import {
-		VTabs,
-		VTab,
-		VTabsSlider,
-		VTabsItems,
-		VTabItem,
-		VDivider
-	} from "vuetify/lib";
 	export default {
 		props: ["blok"],
-		components: { VTabs, VTab, VTabsSlider, VTabsItems, VTabItem, VDivider },
 		data: () => ({ tab: null }),
 		computed: {
 			color() {

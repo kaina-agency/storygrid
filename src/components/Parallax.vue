@@ -18,10 +18,8 @@
 </template>
 
 <script>
-	import { VParallax } from "vuetify/lib";
 	export default {
-		props: ["blok"],
-		components: { VParallax }
+		props: ["blok"]
 	};
 </script>
 

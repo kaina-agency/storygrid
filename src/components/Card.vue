@@ -39,10 +39,8 @@
 </template>
 
 <script>
-	import { VCard, VCardText, VCardActions, VDivider } from "vuetify/lib";
 	export default {
 		props: ["blok"],
-		components: { VCard, VCardText, VCardActions, VDivider },
 		computed: {
 			color() {
 				return this.blok.color ? this.blok.color : null;

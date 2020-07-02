@@ -30,10 +30,8 @@
 </template>
 
 <script>
-	import { VBtn } from "vuetify/lib";
 	export default {
 		props: ["blok"],
-		components: { VBtn },
 		data: () => ({ current: "" }),
 		methods: {
 			scrollToSlide(blok) {

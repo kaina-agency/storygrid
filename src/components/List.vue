@@ -21,10 +21,8 @@
 </template>
 
 <script>
-	import { VList, VSubheader, VListItemGroup } from "vuetify/lib";
 	export default {
 		props: ["blok"],
-		components: { VList, VSubheader, VListItemGroup },
 		computed: {
 			addedStyles() {
 				switch (this.blok.shape) {

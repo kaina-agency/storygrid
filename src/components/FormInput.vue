@@ -151,29 +151,9 @@
 </template>
 
 <script>
-	import {
-		VTextField,
-		VTextarea,
-		VSelect,
-		VCheckbox,
-		VRadio,
-		VRadioGroup,
-		VSwitch,
-		VFileInput
-	} from "vuetify/lib";
 	import { mask } from "vue-the-mask";
 	export default {
 		props: ["blok"],
-		components: {
-			VTextField,
-			VTextarea,
-			VSelect,
-			VCheckbox,
-			VRadio,
-			VRadioGroup,
-			VSwitch,
-			VFileInput
-		},
 		directives: { mask },
 		data: () => ({
 			multiple: [],

@@ -23,7 +23,6 @@
 <script>
 	export default {
 		props: ["blok"],
-		components: { VDialog: () => import("vuetify/lib/components/VDialog") },
 		data: () => ({ dialog: false })
 	};
 </script>

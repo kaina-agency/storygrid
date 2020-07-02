@@ -35,11 +35,8 @@
 </template>
 
 <script>
-	import { VImg, VAvatar } from "vuetify/lib";
-
 	export default {
 		props: ["blok"],
-		components: { VImg, VAvatar },
 		computed: {
 			posts() {
 				return this.$static.allStoryblokEntry.edges.filter(entry =>

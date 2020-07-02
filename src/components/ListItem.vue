@@ -27,22 +27,8 @@
 </template>
 
 <script>
-	import {
-		VListItem,
-		VListItemAvatar,
-		VListItemContent,
-		VListItemTitle,
-		VListItemSubtitle
-	} from "vuetify/lib";
 	export default {
 		props: ["blok", "activeClass"],
-		components: {
-			VListItem,
-			VListItemAvatar,
-			VListItemContent,
-			VListItemTitle,
-			VListItemSubtitle
-		},
 		computed: {
 			href() {
 				const l = this.blok.link;

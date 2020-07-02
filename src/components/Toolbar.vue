@@ -22,9 +22,7 @@
 </template>
 
 <script>
-	import { VToolbar, VToolbarTitle, VSpacer } from "vuetify/lib";
 	export default {
-		props: ["blok"],
-		components: { VToolbar, VToolbarTitle, VSpacer }
+		props: ["blok"]
 	};
 </script>

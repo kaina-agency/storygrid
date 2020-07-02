@@ -25,11 +25,9 @@
 </template>
 
 <script>
-	import { VLazy } from "vuetify/lib";
 	export default {
 		name: "ImageG",
 		props: ["blok"],
-		components: { VLazy },
 		computed: {
 			src() {
 				const b = this.blok;

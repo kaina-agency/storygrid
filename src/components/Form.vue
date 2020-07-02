@@ -25,13 +25,10 @@
 </template>
 
 <script>
-	import Vue from "vue";
-	import { VForm, VRow, VBtn, VSpacer } from "vuetify/lib";
 	import { Button } from "./Button";
 
 	export default {
 		props: ["blok"],
-		components: { VForm, VRow, VBtn, VSpacer },
 		data: () => ({ valid: false }),
 		methods: {
 			reset() {

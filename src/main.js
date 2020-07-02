@@ -1,19 +1,7 @@
 // This is the main.js file. Import global CSS and scripts here.
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
-import Vuetify, {
-	VApp,
-	VAppBar,
-	VAppBarNavIcon,
-	VContent,
-	VNavigationDrawer,
-	VRow,
-	VCol,
-	VCard,
-	VCardText,
-	VCardActions,
-	VDivider,
-} from 'vuetify/lib'
-import { Ripple } from 'vuetify/lib/directives'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
 // Import components
 
@@ -81,24 +69,7 @@ export default function(Vue, { router, head, isClient, appOptions }) {
 	Vue.component('Video', Video)
 	Vue.component('VideoBackground', VideoBackground)
 
-	Vue.use(Vuetify, {
-		components: {
-			VApp,
-			VAppBar,
-			VAppBarNavIcon,
-			VContent,
-			VNavigationDrawer,
-			VRow,
-			VCol,
-			VCard,
-			VCardText,
-			VCardActions,
-			VDivider,
-		},
-		directives: {
-			Ripple,
-		},
-	})
+	Vue.use(Vuetify)
 	appOptions.vuetify = new Vuetify({
 		icons: { iconfont: 'mdiSvg' },
 		theme: {

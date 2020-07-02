@@ -7,10 +7,8 @@
 </template>
 
 <script>
-	import { VSpacer } from "vuetify/lib";
 	export default {
-		props: ["blok"],
-		components: { VSpacer }
+		props: ["blok"]
 	};
 </script>
 
