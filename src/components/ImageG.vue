@@ -15,7 +15,7 @@
 					:alt="blok.alt_text"
 					:style="{objectFit: src.contain}"
 				)
-			.imgG__content(:class="blok.content_class" :style="blok.content_style")
+			.imgG__content
 				component(
 					v-for="blok in blok.content"
 					:key="blok._uid"
@@ -112,8 +112,7 @@
 		overflow: hidden;
 
 		img,
-		picture,
-		&__content {
+		picture {
 			position: absolute;
 			top: 0;
 			right: 0;
@@ -123,6 +122,14 @@
 			max-height: 100%;
 			min-width: 100%;
 			max-width: 100%;
+		}
+
+		&__content {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background: rgba(0, 0, 0, 0.5);
 		}
 	}
 </style>
