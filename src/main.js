@@ -29,6 +29,8 @@ import Masonry from '~/components/Masonry.vue'
 import Parallax from '~/components/Parallax.vue'
 import Posts from '~/components/Posts.vue'
 import Row from '~/components/Row.vue'
+import SimpleCard from '~/components/SimpleCard.vue'
+import SimpleGrid from '~/components/SimpleGrid.vue'
 import Spacer from '~/components/Spacer.vue'
 import Tabs from '~/components/Tabs.vue'
 import TextContent from '~/components/TextContent.vue'
@@ -63,6 +65,8 @@ export default function(Vue, { router, head, isClient, appOptions }) {
 	Vue.component('Parallax', Parallax)
 	Vue.component('Posts', Posts)
 	Vue.component('Row', Row)
+	Vue.component('SimpleCard', SimpleCard)
+	Vue.component('SimpleGrid', SimpleGrid)
 	Vue.component('Spacer', Spacer)
 	Vue.component('Tabs', Tabs)
 	Vue.component('TextContent', TextContent)

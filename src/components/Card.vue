@@ -85,7 +85,7 @@
 	.v-card {
 		overflow: hidden;
 
-		&.no-focus:focus:before {
+		&:focus:before {
 			opacity: 0;
 		}
 

@@ -1,5 +1,5 @@
 <template lang="pug">
-	v-app(:class="$route.path.split('/')[1] || 'home'")
+	v-app(:class="path")
 		v-app-bar(
 			app
 			:clipped-left="set.full_width || false"
@@ -91,6 +91,16 @@
 				}
 
 				return settings;
+			},
+			path() {
+				let path = this.$route.path;
+				if (path.includes("/editor")) {
+					return (
+						window.location.search.split("%")[0].replace("?path=", "") || "home"
+					);
+				} else {
+					return path.split("/")[1] || "home";
+				}
 			}
 		},
 		mounted() {

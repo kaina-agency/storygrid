@@ -1,5 +1,5 @@
 <template lang="pug">
-	div.rich-text(
+	.rich-text(
 		v-html="richtext"
 		:class="blok.class"
 		:style="blok.style"
@@ -23,6 +23,11 @@
 <style lang="scss">
 	.rich-text {
 		position: relative;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
 	}
 
 	.v-card__text,
