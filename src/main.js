@@ -9,6 +9,7 @@ import DefaultLayout from '~/layouts/Default.vue'
 import Page from '~/components/Page.vue'
 
 import Accordion from '~/components/Accordion.vue'
+import Breadcrumbs from '~/components/Breadcrumbs.vue'
 import Button from '~/components/Button.vue'
 import Card from '~/components/Card.vue'
 import Carousel from '~/components/Carousel.vue'
@@ -42,6 +43,7 @@ export default function(Vue, { router, head, isClient, appOptions }) {
 	Vue.component('Page', Page)
 
 	Vue.component('Accordion', Accordion)
+	Vue.component('Breadcrumbs', Breadcrumbs)
 	Vue.component('Button', Button)
 	Vue.component('Card', Card)
 	Vue.component('Carousel', Carousel)
