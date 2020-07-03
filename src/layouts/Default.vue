@@ -1,5 +1,5 @@
 <template lang="pug">
-	v-app(:class="$route.path.split('/')[1] || 'home'")
+	v-app(:class="path")
 		v-app-bar(
 			app
 			:clipped-left="set.full_width || false"
@@ -67,7 +67,8 @@
 			dark: false,
 			appBar: false,
 			drawer: null,
-			draft: {}
+			draft: {},
+			path: ""
 		}),
 		computed: {
 			set() {
@@ -97,6 +98,8 @@
 			if (window.top !== window.self || location.hostname === "localhost") {
 				document.body.classList.add("in-editor");
 				console.log("Edit Mode");
+
+				this.path = window.location.search.replace("?path=", "").split("%")[0];
 
 				const loadStory = () => {
 					window.storyblok.get(
@@ -140,11 +143,18 @@
 				loadStoryblokBridge(() => {
 					initStoryblokEvents();
 				});
+			} else {
+				this.path = this.$route.path.split("/")[1];
 			}
 		},
 		methods: {
 			smoothType(selector, min, max) {
 				return `${selector}: calc(${min}px + (${max} - ${min}) * ((100vw - 400px) / (1800 - 400)));`;
+			}
+		},
+		watch: {
+			$route(to, from) {
+				this.path = this.$route.path.split("/")[1];
 			}
 		}
 	};
