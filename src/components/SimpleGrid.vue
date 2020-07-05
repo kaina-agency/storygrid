@@ -1,5 +1,5 @@
 <template lang="pug">
-	.simple-grid
+	.simple-grid(v-editable="blok")
 		component(
 			v-for="blok in blok.content"
 			:key="blok._uid"

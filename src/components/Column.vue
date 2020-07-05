@@ -33,9 +33,3 @@
 		}
 	};
 </script>
-
-<style>
-	[class*="col-"] > .v-card {
-		height: 100%;
-	}
-</style>

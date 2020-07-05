@@ -284,6 +284,11 @@
 	.italic {
 		font-style: italic;
 	}
+
+	blockquote {
+		padding: 0 0 0 16px;
+		border-left: 6px solid var(--v-primary-base);
+	}
 </style>
 
 <static-query>

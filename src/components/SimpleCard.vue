@@ -84,3 +84,9 @@
 		}
 	};
 </script>
+
+<style lang="scss" scoped>
+	.v-card.rounded {
+		border-radius: 20px;
+	}
+</style>
