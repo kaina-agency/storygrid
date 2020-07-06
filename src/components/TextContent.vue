@@ -12,9 +12,11 @@
 		props: ["blok"],
 		computed: {
 			richtext() {
-				return !this.blok.html && this.blok.rich_text
-					? this.$storyapi.richTextResolver.render(this.blok.rich_text)
-					: this.blok.html;
+				if (this.blok.html) {
+					return this.blok.html;
+				} else {
+					return this.$storyapi.richTextResolver.render(this.blok.rich_text);
+				}
 			}
 		}
 	};
@@ -23,11 +25,18 @@
 <style lang="scss">
 	.rich-text {
 		position: relative;
-	}
 
-	img {
-		max-width: 100%;
-		height: auto;
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.caption {
+			display: block;
+			position: relative;
+			top: -1rem;
+			margin-bottom: -1rem;
+		}
 	}
 
 	.v-card__text,

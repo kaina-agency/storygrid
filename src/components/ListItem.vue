@@ -7,17 +7,12 @@
 		v-editable="blok"
 	)
 		v-list-item-avatar(
-			v-if="blok.avatar || blok.icon" 
+			v-if="blok.avatar.filename || blok.icon" 
 			:class="[blok.avatar_color, blok.avatar_color.length > 0 ? 'filled' : '']"
 		)
-			component(
-				v-for="blok in blok.avatar"
-				:key="blok._uid"
-				:blok="blok"
-				:is="blok.component"
-			)
+			img(v-if="blok.avatar.filename" :src="image(blok.avatar)" height="100%" width="100%")
 			div.g-icon(
-				v-if="!blok.avatar.length > 0"
+				v-if="!blok.avatar.filename"
 				v-html="blok.icon"
 				notranslate
 			)
@@ -60,6 +55,18 @@
 						default:
 							return "/" + path;
 					}
+				}
+			}
+		},
+		methods: {
+			image(img) {
+				if (img.filename) {
+					let asset = img.filename.replace("https://a.storyblok.com", "");
+					return (
+						"https://img2.storyblok.com/100x100/smart/filters:format(jpg)" + asset
+					);
+				} else {
+					return undefined;
 				}
 			}
 		}
