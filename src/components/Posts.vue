@@ -1,5 +1,5 @@
 <template lang="pug">
-	.simple-grid
+	.simple-grid(v-editable="blok")
 		v-card(
 			v-for="(post, n) in posts"
 			:key="n"
@@ -11,7 +11,7 @@
 				:src="post.node.content.post_image"
 				aspect-ratio="1.777"
 			)
-				.d-flex.flex-column.justify-center.align-center.white--text(
+				.overlay-image(
 					v-if="blok.options.includes('overlay image')"
 					style="height: 100%; width: 100%; background: rgba(0,0,0,0.5);"
 				)
@@ -58,6 +58,20 @@
 		}
 	};
 </script>
+
+<style lang="scss" scoped>
+	.overlay-image {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		color: white;
+
+		.text-truncate {
+			max-width: 80%;
+		}
+	}
+</style>
 
 <static-query>
 query {
