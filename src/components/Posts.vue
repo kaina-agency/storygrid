@@ -1,37 +1,28 @@
 <template lang="pug">
-	v-row(v-editable="blok" :dense="blok.options.includes('dense')")
-		v-col(
+	.simple-grid
+		v-card(
 			v-for="(post, n) in posts"
 			:key="n"
-			:cols="responsive.xs"
-			:sm="responsive.sm"
-			:md="responsive.md"
-			:lg="responsive.lg"
-			:xl="responsive.xl"
+			:to="post.node.full_slug"
+			:outlined="blok.options.includes('flat')"
+			:flat="blok.options.includes('flat')"
 		)
-			v-card(
-				:href="post.node.full_slug"
-				:shaped="blok.options.includes('shaped')"
-				:outlined="blok.options.includes('outlined')"
-				:flat="blok.options.includes('outlined')"
+			v-img(
+				:src="post.node.content.post_image"
+				aspect-ratio="1.777"
 			)
-				v-img(
-					v-if="!blok.options.includes('hide images')"
-					:src="post.node.content.post_image"
-					aspect-ratio="1.777"
+				.d-flex.flex-column.justify-center.align-center.white--text(
+					v-if="blok.options.includes('overlay image')"
+					style="height: 100%; width: 100%; background: rgba(0,0,0,0.5);"
 				)
-					.d-flex.flex-column.justify-center.align-center.white--text(
-						v-if="blok.options.includes('overlay image')"
-						style="height: 100%; width: 100%; background: rgba(0,0,0,0.5);"
-					)
-						div.text-truncate
-							b {{post.node.content.meta.title}}
-						div.text-truncate {{post.node.content.meta.description}}
-				v-divider(v-if="divider")
-				v-card-text(v-if="!blok.options.includes('overlay image')")
-					div.text-truncate
-						b {{post.node.content.meta.title}}
-					div.text-truncate {{post.node.content.meta.description}}
+					.text-truncate
+						b(style="font-size: 1rem;") {{post.node.content.meta.title}}
+					.text-truncate {{post.node.content.meta.description}}
+			v-divider(v-if="divider")
+			v-card-text(v-if="!blok.options.includes('overlay image')")
+				.text-truncate
+					b(style="font-size: 1rem;") {{post.node.content.meta.title}}
+				.text-truncate {{post.node.content.meta.description}}
 </template>
 
 <script>
@@ -39,9 +30,17 @@
 		props: ["blok"],
 		computed: {
 			posts() {
-				return this.$static.allStoryblokEntry.edges.filter(entry =>
-					entry.node.full_slug.includes("posts")
-				);
+				let path = this.blok.path.cached_url;
+				if (path) {
+					let posts = this.$static.allStoryblokEntry.edges.filter(entry =>
+						entry.node.full_slug.includes(path)
+					);
+					return posts.filter(
+						post => post.node.full_slug != this.blok.path.cached_url
+					);
+				} else {
+					return undefined;
+				}
 			},
 			responsive() {
 				let r = this.blok.responsive;
@@ -54,13 +53,7 @@
 				};
 			},
 			divider() {
-				if (this.blok.options.includes("overlay image")) {
-					return false;
-				} else if (this.blok.options.includes("hide images")) {
-					return false;
-				} else {
-					return true;
-				}
+				this.blok.options.includes("overlay image") ? false : true;
 			}
 		}
 	};
