@@ -39,7 +39,8 @@
 				return [
 					this.blok.text_position || "bottom",
 					this.blok.text_color || "white--text",
-					this.blok.blur_background ? "blur" : ""
+					this.blok.text_shadow ? "shadow" : "",
+					this.blok.background_blur ? "blur" : ""
 				];
 			},
 			textStyle() {
@@ -77,6 +78,9 @@
 		&__text {
 			&.blur {
 				backdrop-filter: blur(5px);
+			}
+			&.shadow {
+				text-shadow: 2px 2px 2px black;
 			}
 			display: flex;
 			flex-direction: column;
