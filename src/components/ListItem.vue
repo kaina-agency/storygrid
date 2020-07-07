@@ -4,6 +4,7 @@
 		:disabled="blok.disabled"
 		:href="href"
 		:to="to"
+		exact
 		v-editable="blok"
 	)
 		v-list-item-avatar(

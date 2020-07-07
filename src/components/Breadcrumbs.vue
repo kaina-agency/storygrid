@@ -34,7 +34,7 @@
 					let slug = pathArray[i];
 					if (slug) {
 						crumbs.push({
-							text: slug,
+							text: slug.replace("-", " "),
 							to: path.split(slug)[0] + slug
 						});
 					}
@@ -62,5 +62,8 @@
 		margin: 0 0.5em;
 		display: inline-block;
 		text-decoration: none;
+	}
+	.g-crumb:last-of-type {
+		pointer-events: none;
 	}
 </style>
