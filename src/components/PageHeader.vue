@@ -102,6 +102,9 @@
 			}
 			&__content {
 				position: relative;
+				max-width: 1440px;
+				margin: 0px auto;
+				width: 100%;
 				padding: 0 12px;
 				@media (min-width: 1024px) {
 					padding: 0 24px;
