@@ -95,7 +95,7 @@
 			}
 		},
 		mounted() {
-			if (window.top !== window.self || location.hostname === "localhost") {
+			if (window.top !== window.self) {
 				document.body.classList.add("in-editor");
 				console.log("Edit Mode");
 

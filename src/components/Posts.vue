@@ -3,9 +3,10 @@
 		v-card(
 			v-for="(post, n) in posts"
 			:key="n"
-			:to="post.node.full_slug"
+			:to="'/' + post.node.full_slug"
 			:outlined="blok.options.includes('flat')"
 			:flat="blok.options.includes('flat')"
+			exact
 		)
 			v-img(
 				:src="image(post.node.content.post_image)"

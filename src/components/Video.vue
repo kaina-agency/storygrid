@@ -1,10 +1,16 @@
 <template lang="pug">
-	.embed-container
+	.embed-container(v-editable="blok")
 		iframe(
+			v-if="blok.video_url"
 			:src="videoURL"
 			frameborder="0"
 			allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 			allowfullscreen
+		)
+		iframe(
+			v-else
+			src="https://www.youtube.com/embed/UbzKuFnXxiU"
+			frameborder="0"
 		)
 </template>
 
@@ -14,22 +20,24 @@
 		computed: {
 			videoURL() {
 				var input = this.blok.video_url;
-				var baseURL = "";
-				var videoID = "";
-				if (input.includes("youtu")) {
-					baseURL = "https://www.youtube.com/embed/";
-					if (input.includes("youtube")) {
-						videoID = input.split("?v=")[1];
-					} else if (input.includes("youtu.be")) {
-						videoID = input.split(".be/")[1];
+				{
+					var baseURL = "";
+					var videoID = "";
+					if (input.includes("youtu")) {
+						baseURL = "https://www.youtube.com/embed/";
+						if (input.includes("youtube")) {
+							videoID = input.split("?v=")[1];
+						} else if (input.includes("youtu.be")) {
+							videoID = input.split(".be/")[1];
+						}
+					} else if (input.includes("vimeo")) {
+						baseURL = "https://player.vimeo.com/video/";
+						videoID = input.split("vimeo.com/")[1];
 					}
-				} else if (input.includes("vimeo")) {
-					baseURL = "https://player.vimeo.com/video/";
-					videoID = input.split("vimeo.com/")[1];
+					let autoplay = `?autoplay=${this.blok.auto_play ? "1" : "0"}`;
+					let mute = `&mute=${this.blok.mute ? "1" : "0"}`;
+					return baseURL + videoID + autoplay + mute + "&rel=0";
 				}
-				let autoplay = `?autoplay=${this.blok.auto_play ? "1" : "0"}`;
-				let mute = `&mute=${this.blok.mute ? "1" : "0"}`;
-				return baseURL + videoID + autoplay + mute + "&rel=0";
 			}
 		}
 	};
@@ -50,5 +58,9 @@
 			width: 100%;
 			height: 100%;
 		}
+	}
+
+	.in-editor .embed-container iframe {
+		pointer-events: none;
 	}
 </style>

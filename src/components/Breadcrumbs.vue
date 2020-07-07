@@ -1,5 +1,9 @@
 <template lang="pug">
-	.g-crumbs(:color="blok.color" v-editable="blok")
+	.g-crumbs(
+		:class="blok.class"
+		:color="blok.color"
+		v-editable="blok"
+	)
 		g-link(
 			v-for="(item, i) in items"
 			:key="i"
