@@ -58,6 +58,7 @@
 		position: relative;
 		img {
 			width: 100%;
+			object-fit: cover;
 		}
 
 		&__background {

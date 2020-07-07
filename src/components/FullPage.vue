@@ -108,6 +108,7 @@
 			flex-direction: column;
 			justify-content: center;
 			pointer-events: none;
+			filter: drop-shadow(2px 2px 3px black);
 
 			.v-btn {
 				pointer-events: all;
