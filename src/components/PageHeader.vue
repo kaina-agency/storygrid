@@ -64,13 +64,13 @@
 		&__background {
 			&--small {
 				display: block;
-				@media (min-width: 1264px) {
+				@media (min-width: 768px) {
 					display: none;
 				}
 			}
 			&--large {
 				display: none;
-				@media (min-width: 1264px) {
+				@media (min-width: 768px) {
 					display: block;
 				}
 			}
