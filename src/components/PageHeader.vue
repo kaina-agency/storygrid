@@ -10,6 +10,12 @@
 			.page-header__text__content(:style="{textAlign: blok.text_alignment}")
 				h1(v-if="blok.header") {{blok.header}}
 				p(v-if="blok.subheader") {{blok.subheader}}
+				component(
+					v-for="blok in blok.button"
+					:key="blok._uid"
+					:blok="blok"
+					:is="blok.component"
+				)
 </template>
 
 <script>
@@ -24,7 +30,7 @@
 					let smart = img.focus ? "" : "/smart";
 					let asset = img.filename.replace("https://a.storyblok.com", "");
 
-					let small = "/800x600";
+					let small = "/800x800";
 					let large = "/1600x685";
 
 					return {
