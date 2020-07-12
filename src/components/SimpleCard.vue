@@ -87,6 +87,14 @@
 </script>
 
 <style lang="scss" scoped>
+	.v-card {
+		display: flex;
+		flex-direction: column;
+
+		&-text {
+			flex-grow: 1;
+		}
+	}
 	.v-card.rounded {
 		border-radius: 20px;
 	}
