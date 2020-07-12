@@ -11,7 +11,7 @@
 			:dense="blok.options.includes('dense')"
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
-			:name="blok.label"
+			:name="blok.name || blok.label"
 			:prepend-icon="blok.icon ? '⠀' : undefined"
 			:rounded="blok.options.includes('rounded')"
 			v-editable="blok"
@@ -25,7 +25,7 @@
 			:dense="blok.options.includes('dense')"
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
-			:name="blok.label"
+			:name="blok.name || blok.label"
 			:prepend-icon="blok.icon ? ' ' : undefined"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
@@ -40,7 +40,7 @@
 			:dense="blok.options.includes('dense')"
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
-			:name="blok.label"
+			:name="blok.name || blok.label"
 			:prepend-icon="blok.icon ? ' ' : undefined"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
@@ -59,7 +59,7 @@
 			:label="blok.label"
 			:multiple="blok.options.includes('multiple')"
 			:outlined="blok.options.includes('outlined')"
-			:name="blok.label"
+			:name="blok.name || blok.label"
 			:prepend-icon="blok.icon ? ' ' : undefined"
 			:required="blok.options.includes('required')"
 			:rounded="blok.options.includes('rounded')"
@@ -75,7 +75,7 @@
 			:dense="blok.options.includes('dense')"
 			:label="blok.label"
 			:outlined="blok.options.includes('outlined')"
-			:name="blok.label"
+			:name="blok.name || blok.label"
 			no-resize
 			:prepend-icon="blok.icon ? ' ' : undefined"
 			:required="blok.options.includes('required')"
@@ -113,7 +113,7 @@
 			)
 			input(
 				type="hidden"
-				:name="blok.label"
+				:name="blok.name || blok.label"
 				:value="multiple.join(', ')"
 			)
 		div(v-if="blok.type=='switch'" v-editable="blok")
@@ -130,14 +130,14 @@
 			)
 			input(
 				type="hidden"
-				:name="blok.label"
+				:name="blok.name || blok.label"
 				:value="multiple.join(', ')"
 			)
 		div(v-if="blok.type=='radio'" v-editable="blok")
 			p {{blok.label}}
 			v-radio-group(
 				v-model="single"
-				:name="blok.label"
+				:name="blok.name || blok.label"
 				:rules="blok.options.includes('required') ? [v => !!v || blok.label + ' is required'] : []"
 			)
 				v-radio(
