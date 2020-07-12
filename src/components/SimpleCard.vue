@@ -1,10 +1,11 @@
 <template lang="pug">
 	v-card(
 		v-editable="blok"
-		:class="blok.shape === 'rounded' ? 'rounded' : ''"
-		:flat="blok.flat"
+		:class="[blok.shape === 'rounded' ? 'rounded' : '', blok.blend ? 'transparent' : '', blok.class]"
+		:style="blok.style"
+		:flat="blok.blend ? true : blok.flat"
 		:href="blok.button_text ? undefined : href"
-		:outlined="blok.flat"
+		:outlined="blok.blend ? false : blok.flat"
 		:shaped="blok.shape === 'goofy'"
 		:tile="blok.shape === 'tile'"
 		:to="blok.button_text ? undefined : to"
