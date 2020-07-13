@@ -85,7 +85,7 @@
 	.v-card {
 		overflow: hidden;
 
-		display: flex;
+		display: flex !important;
 		flex-direction: column;
 
 		&__text {

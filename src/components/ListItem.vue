@@ -10,6 +10,7 @@
 		v-list-item-avatar(
 			v-if="blok.avatar.filename || blok.icon" 
 			:class="[blok.avatar_color, blok.avatar_color.length > 0 ? 'filled' : '']"
+			style="justify-content: center;"
 		)
 			img(v-if="blok.avatar.filename" :src="image(blok.avatar)" height="100%" width="100%")
 			div.g-icon(
@@ -75,12 +76,15 @@
 </script>
 
 <style lang="scss">
-	.v-avatar.filled .g-icon svg {
-		height: 20px;
-		width: 20px;
-		fill: white;
-	}
-	.v-avatar svg {
-		display: block;
+	.v-avatar {
+		justify-content: center;
+		&.filled .g-icon svg {
+			height: 20px;
+			width: 20px;
+			fill: white;
+		}
+		svg {
+			display: block;
+		}
 	}
 </style>
