@@ -18,16 +18,19 @@
 		"yarn": "^1.22.4"
 	},
 	"devDependencies": {
+		"deepmerge": "^4.2.2",
 		"download-file": "^0.1.5",
+		"fibers": "^5.0.0",
 		"fs": "^0.0.1-security",
 		"os": "^0.1.1",
 		"pug": "^2.0.4",
 		"pug-plain-loader": "^1.0.0",
-		"sass": "^1.26.5",
-		"sass-loader": "^7",
+		"sass": "^1.26.10",
+		"sass-loader": "7.3.1",
 		"vue-carousel-3d": "^0.2.0",
 		"vue-packer": "^0.3.0",
 		"vue-the-mask": "^0.11.1",
-		"vue-typer": "^1.2.0"
+		"vue-typer": "^1.2.0",
+		"vuetify-loader": "^1.6.0"
 	}
 }

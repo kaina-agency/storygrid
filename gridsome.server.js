@@ -5,9 +5,15 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
+
 module.exports = function(api) {
 	api.loadSource(({ addCollection }) => {
 		// Use the Data Store API here: https://gridsome.org/docs/data-store-api/
+	})
+
+	api.chainWebpack((config, { isServer }) => {
+		config.plugin('vuetify-loader').use(VuetifyLoaderPlugin)
 	})
 
 	api.createPages(async ({ graphql, createPage }) => {
@@ -36,8 +42,8 @@ module.exports = function(api) {
 					path: '/',
 					component: './src/templates/StoryblokEntry.vue',
 					context: {
-						id: node.id
-					}
+						id: node.id,
+					},
 				})
 			}
 
@@ -45,8 +51,8 @@ module.exports = function(api) {
 				path: `/${node.full_slug}`,
 				component: './src/templates/StoryblokEntry.vue',
 				context: {
-					id: node.id
-				}
+					id: node.id,
+				},
 			})
 		})
 	})
