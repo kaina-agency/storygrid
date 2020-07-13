@@ -38,7 +38,6 @@
 		computed: {
 			href() {
 				const l = this.blok.link;
-				console.log(l);
 				switch (l.linktype) {
 					case "story":
 						return "";
