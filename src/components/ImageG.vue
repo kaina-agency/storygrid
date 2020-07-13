@@ -35,7 +35,7 @@
 
 				let [sizes, srcset, jpegSrcset, src, c, pt] = ["", "", "", "", "", ""];
 
-				const sb = "//a.storyblok.com";
+				const sb = "https://a.storyblok.com";
 
 				const ba = b.aspect_ratio || "16/9";
 				const br = ba.split("/")[1] / ba.split("/")[0];
@@ -56,7 +56,9 @@
 					const s = bo.includes("smart") ? "/smart" : "";
 					const q = `/filters:quality(${b.quality || "50"})`;
 					const f = ":format(webp)";
-					const i = b.image.filename.replace(sb, "");
+					const i = b.image.filename
+						.replace(sb, "")
+						.replace("//a.storyblok.com", "");
 					const ia = String(i.match(/\d+x\d+/g));
 					const ih = ia.split("x")[1];
 					const iw = ia.split("x")[0];
@@ -64,7 +66,7 @@
 					const ipt = `padding-top: ${ir * 100}%;`;
 					pt = bo.includes("natural") ? ipt : bpt;
 
-					const fp = `:focal(${b.image.focus})`;
+					const fp = b.image.focus ? `:focal(${b.image.focus})` : "";
 
 					const bps = b.max_quality.split(",") || [400, 800];
 
