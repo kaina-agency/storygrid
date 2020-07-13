@@ -36,7 +36,7 @@
 						return l.url;
 						break;
 					case "email":
-						return "mailto:" + l.url;
+						return "mailto:" + l.email;
 						break;
 					case "asset":
 						return l.url;
