@@ -1,7 +1,8 @@
 <template lang="pug">
-	v-lazy.imgG(
+	.imgG(
 		:class="blok.class"
 		:style="src.filters + blok.style"
+		loading="lazy"
 		v-editable="blok"
 	)
 		div(:style="src.pt")

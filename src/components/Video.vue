@@ -4,6 +4,7 @@
 			v-if="blok.video_url"
 			:src="videoURL"
 			frameborder="0"
+			loading="lazy"
 			allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 			allowfullscreen
 		)
