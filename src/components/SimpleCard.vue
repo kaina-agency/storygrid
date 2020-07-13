@@ -16,6 +16,7 @@
 			img(
 				:src="image.png"
 				:alt="image.alt"
+				loading="lazy"
 				style="width: 100%; display: block;"
 			)
 		v-card-text(v-if="blok.text.content[0].content")
