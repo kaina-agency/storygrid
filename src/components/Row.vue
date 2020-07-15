@@ -24,6 +24,13 @@
 	.match-cards {
 		.v-card {
 			height: 100%;
+
+			display: flex !important;
+			flex-direction: column;
+
+			&__text {
+				flex-grow: 1;
+			}
 		}
 	}
 </style>

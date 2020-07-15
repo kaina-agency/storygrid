@@ -85,13 +85,6 @@
 	.v-card {
 		overflow: hidden;
 
-		display: flex !important;
-		flex-direction: column;
-
-		&__text {
-			flex-grow: 1;
-		}
-
 		&:focus:before {
 			opacity: 0;
 		}
