@@ -1,7 +1,13 @@
 <template lang="pug">
-	.page-header(v-editable="blok")
-		img.page-header__background--small(:src="image.small")
-		img.page-header__background--large(:src="image.large")
+	.page-header(v-editable="blok" :data-name="blok.name")
+		img.page-header__background--small(
+			:src="image.small"
+			v-if="blok.image"
+		)
+		img.page-header__background--large(
+			:src="image.large"
+			v-if="blok.image"
+		)
 		.page-header__text(:class="textClass")
 			.page-header__text__background(
 				:class="blok.background_color || 'black'"
@@ -114,6 +120,10 @@
 				padding: 0 12px;
 				@media (min-width: 1024px) {
 					padding: 0 24px;
+				}
+
+				.fullpage & {
+					padding: 0 36px;
 				}
 			}
 		}
