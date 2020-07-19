@@ -14,6 +14,7 @@
 			v-app-bar-nav-icon(
 				@click="drawer = !drawer"
 				v-if="(set.drawer || {}).length || false"
+				:class="set.drawer_mobile_only ? 'hidden-md-and-up' : ''"
 			)
 			component(
 				v-for="blok in set.header"
@@ -25,11 +26,13 @@
 			app
 			:clipped="set.full_width || false"
 			:class="set.drawer_class || 'secondary'"
+			:disable-resize-watcher="set.drawer_mobile_only"
 			:dark="set.light_drawer == true ? false : true"
 			:light="set.light_drawer"
 			:width="300"
 			v-if="(set.drawer || {}).length || false"
-			v-model="drawer")
+			v-model="drawer"
+		)
 			component(
 				v-for="blok in set.drawer"
 				:key="blok._uid"
@@ -66,7 +69,7 @@
 		data: () => ({
 			dark: false,
 			appBar: false,
-			drawer: null,
+			drawer: false,
 			draft: {},
 			path: ""
 		}),
@@ -89,6 +92,10 @@
 					this.appBar = this.$vuetify.breakpoint.mdAndDown;
 				} else {
 					this.appBar = true;
+				}
+
+				if (!settings.drawer_mobile_only) {
+					this.drawer = null;
 				}
 
 				return settings;

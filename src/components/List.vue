@@ -69,8 +69,4 @@
 			margin: 0 16px;
 		}
 	}
-
-	.theme--light.v-list {
-		background: transparent;
-	}
 </style>
