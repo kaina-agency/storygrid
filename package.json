@@ -2,7 +2,7 @@
 	"name": "my-project",
 	"private": true,
 	"scripts": {
-		"Netlify⠀Link": "ntl unlink && ntl link && ntl dev -c 'node switch.js' && ntl dev",
+		"Netlify⠀Link": "ntl unlink && ntl link && ntl dev -c \"node switch.js\" && ntl dev",
 		"Netlify⠀Dev": "ntl dev",
 		"Netlify⠀Publish": "ntl build && ntl deploy --prod",
 		"develop": "gridsome develop",
