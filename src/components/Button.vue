@@ -94,3 +94,29 @@ v-btn(
 		},
 	};
 </script>
+
+<style lang="scss">
+	.v-btn__content .v-icon,
+	.v-btn__content .v-icon--left {
+		&[style*="12"],
+		&[style*="12"] svg {
+			height: 12px;
+			width: 12px;
+		}
+		&[style*="16"],
+		&[style*="16"] svg {
+			height: 16px;
+			width: 16px;
+		}
+		&[style*="36"],
+		&[style*="36"] svg {
+			height: 32px;
+			width: 32px;
+		}
+		&[style*="40"],
+		&[style*="40"] svg {
+			height: 36px;
+			width: 36px;
+		}
+	}
+</style>
