@@ -22,11 +22,15 @@ v-btn(
 	v-editable="blok",
 	@click="hashHandler"
 ) 
-	.g-icon(
+	v-icon(
 		v-if="blok.icon",
-		v-html="blok.icon",
-		notranslate,
-		:style="left ? 'margin-right: 8px;' : ''"
+		ref="icon",
+		:left="!blok.style.includes('fab') && !blok.style.includes('icon')",
+		:x-small="blok.size == 'xs'",
+		:small="blok.size == 'sm'",
+		:medium="blok.size == 'md'",
+		:large="blok.size == 'lg'",
+		:x-large="blok.size == 'xl'"
 	)
 	| {{ blok.style.includes('fab') || blok.style.includes('icon') ? '' : blok.text }}
 </template>
@@ -35,6 +39,11 @@ v-btn(
 	export default {
 		name: "Button",
 		props: ["blok", "disabled", "type"],
+		mounted() {
+			if (this.blok.icon) {
+				this.$refs.icon.$el.innerHTML = this.blok.icon;
+			}
+		},
 		computed: {
 			href() {
 				const l = this.blok.link;
@@ -85,9 +94,3 @@ v-btn(
 		},
 	};
 </script>
-
-<style>
-	.v-btn--rounded .g-icon {
-		margin-left: 4px;
-	}
-</style>

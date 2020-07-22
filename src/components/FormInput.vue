@@ -1,9 +1,5 @@
 <template lang="pug">
 .g-input-wrapper
-	.g-icon(
-		v-if="['text', 'phone', 'email', 'select', 'textarea'].includes(blok.type)",
-		v-html="blok.icon"
-	)
 	v-text-field(
 		v-if="blok.type == 'text'",
 		clearable,
@@ -12,11 +8,11 @@
 		:label="blok.label",
 		:outlined="blok.options.includes('outlined')",
 		:name="blok.name || blok.label",
-		:prepend-icon="blok.icon ? '⠀' : undefined",
 		:rounded="blok.options.includes('rounded')",
 		v-editable="blok",
 		:rules="blok.options.includes('required') ? [(v) => !!v || blok.label + ' is required'] : []"
 	)
+		v-icon(v-if="blok.icon", ref="icon", slot="prepend")
 	v-text-field(
 		v-if="blok.type == 'phone'",
 		v-mask="'(###) ###-####'",
@@ -26,13 +22,13 @@
 		:label="blok.label",
 		:outlined="blok.options.includes('outlined')",
 		:name="blok.name || blok.label",
-		:prepend-icon="blok.icon ? ' ' : undefined",
 		:required="blok.options.includes('required')",
 		:rounded="blok.options.includes('rounded')",
 		type="tel",
 		v-editable="blok",
 		:rules="blok.options.includes('required') ? phoneRules : []"
 	)
+		v-icon(v-if="blok.icon", ref="icon", slot="prepend")
 	v-text-field(
 		v-if="blok.type == 'email'",
 		clearable,
@@ -41,13 +37,13 @@
 		:label="blok.label",
 		:outlined="blok.options.includes('outlined')",
 		:name="blok.name || blok.label",
-		:prepend-icon="blok.icon ? ' ' : undefined",
 		:required="blok.options.includes('required')",
 		:rounded="blok.options.includes('rounded')",
 		type="email",
 		v-editable="blok",
 		:rules="blok.options.includes('required') ? emailRules : []"
 	)
+		v-icon(v-if="blok.icon", ref="icon", slot="prepend")
 	v-select(
 		v-if="blok.type == 'select'",
 		clearable,
@@ -60,13 +56,13 @@
 		:multiple="blok.options.includes('multiple')",
 		:outlined="blok.options.includes('outlined')",
 		:name="blok.name || blok.label",
-		:prepend-icon="blok.icon ? ' ' : undefined",
 		:required="blok.options.includes('required')",
 		:rounded="blok.options.includes('rounded')",
 		:small-chips="blok.options.includes('multiple')",
 		v-editable="blok",
 		:rules="blok.options.includes('required') ? [(v) => !!v || blok.label + ' is required'] : []"
 	)
+		v-icon(v-if="blok.icon", ref="icon", slot="prepend")
 	v-textarea(
 		v-if="blok.type == 'textarea'",
 		auto-grow,
@@ -77,15 +73,14 @@
 		:outlined="blok.options.includes('outlined')",
 		:name="blok.name || blok.label",
 		no-resize,
-		:prepend-icon="blok.icon ? ' ' : undefined",
 		:required="blok.options.includes('required')",
 		:rounded="blok.options.includes('rounded')",
 		v-editable="blok",
 		:rules="blok.options.includes('required') ? [(v) => !!v || blok.label + ' is required'] : []"
 	)
+		v-icon(v-if="blok.icon", ref="icon", slot="prepend")
 	v-file-input(
 		v-if="blok.type == 'file'",
-		:prepend-icon="undefined",
 		clearable,
 		:color="blok.color",
 		:dense="blok.options.includes('dense')",
@@ -170,20 +165,16 @@
 				(v) => (v && v.length === 14) || "Enter a valid phone number",
 			],
 		}),
+		mounted() {
+			if (this.blok.icon) {
+				this.$refs.icon.$el.innerHTML = this.blok.icon;
+			}
+		},
 	};
 </script>
 
-<style lang="scss">
-	.v-application--is-ltr .v-text-field .v-input__prepend-inner {
-		padding-right: 8px;
-	}
-
-	.g-input-wrapper {
-		position: relative;
-
-		.g-icon {
-			position: absolute;
-			top: 16px;
-		}
+<style>
+	.v-input .theme--light.v-icon {
+		color: currentColor;
 	}
 </style>

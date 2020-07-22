@@ -22,7 +22,7 @@ v-expansion-panels(
 			)
 			v-list-item-avatar.expansion-icon(v-if="blok.icon")
 				.g-icon(v-html="blok.icon", notranslate)
-				| {{ blok.title }}
+			span(v-if="blok.title") {{ blok.title }}
 		v-expansion-panel-content(:color="color")
 			component(
 				v-for="blok in blok.content",

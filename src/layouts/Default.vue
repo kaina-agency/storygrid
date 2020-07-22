@@ -195,24 +195,6 @@ v-app(:class="path")
 		border-right: 1px solid transparent;
 	}
 
-	.g-icon svg {
-		fill: currentColor;
-		border-radius: none;
-		display: block;
-		.v-size--x-small & {
-			height: 12px;
-			width: 12px;
-		}
-		.v-size--small & {
-			height: 16px;
-			width: 16px;
-		}
-		.v-size--default & {
-			height: 20px;
-			width: 20px;
-		}
-	}
-
 	h1,
 	h2,
 	h3,
@@ -294,6 +276,32 @@ v-app(:class="path")
 	blockquote {
 		padding: 0 0 0 16px;
 		border-left: 6px solid var(--v-primary-base);
+	}
+
+	.v-icon {
+		svg {
+			fill: currentColor;
+		}
+		&[style*="12"],
+		&[style*="12"] svg {
+			height: 12px;
+			width: 12px;
+		}
+		&[style*="16"],
+		&[style*="16"] svg {
+			height: 16px;
+			width: 16px;
+		}
+		&[style*="36"],
+		&[style*="36"] svg {
+			height: 32px;
+			width: 32px;
+		}
+		&[style*="40"],
+		&[style*="40"] svg {
+			height: 36px;
+			width: 36px;
+		}
 	}
 </style>
 

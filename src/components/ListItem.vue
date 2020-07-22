@@ -18,7 +18,7 @@ v-list-item(
 			height="100%",
 			width="100%"
 		)
-		.g-icon(v-if="!blok.avatar.filename", v-html="blok.icon", notranslate)
+		v-icon(v-if="!blok.avatar.filename", ref="icon", :color="blok.icon_color")
 	v-list-item-content
 		v-list-item-title(:class="blok.subtitle ? '' : 'mb-0'") {{ blok.title }}
 		v-list-item-subtitle {{ blok.subtitle }}
@@ -27,6 +27,11 @@ v-list-item(
 <script>
 	export default {
 		props: ["blok", "activeClass"],
+		mounted() {
+			if (this.blok.icon) {
+				this.$refs.icon.$el.innerHTML = this.blok.icon;
+			}
+		},
 		computed: {
 			href() {
 				const l = this.blok.link;
@@ -76,16 +81,13 @@ v-list-item(
 	};
 </script>
 
-<style lang="scss">
-	.v-avatar {
-		justify-content: center;
-		&.filled .g-icon svg {
-			height: 20px;
-			width: 20px;
-			fill: white;
-		}
-		svg {
-			display: block;
-		}
+<style>
+	.v-avatar svg {
+		height: auto;
+		width: auto;
+		border-radius: unset;
+	}
+	.theme--light.v-icon {
+		color: black;
 	}
 </style>

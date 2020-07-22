@@ -9,7 +9,7 @@ div(:class="blok.class", :style="blok.style")
 		v-editable="blok"
 	)
 		v-tab(v-for="blok in blok.content", :key="blok._uid", v-editable="blok")
-			.g-icon(v-if="blok.icon", v-html="blok.icon", notranslate)
+			.tab-icon(v-if="blok.icon", v-html="blok.icon", notranslate)
 			| {{ blok.name }}
 		v-tabs-slider
 	v-divider
@@ -38,10 +38,11 @@ div(:class="blok.class", :style="blok.style")
 </script>
 
 <style lang="scss">
-	.v-tab > .g-icon {
+	.v-tab > .tab-icon {
 		margin-right: 8px;
 
 		svg {
+			fill: currentColor;
 			height: 24px;
 			width: 24px;
 		}
