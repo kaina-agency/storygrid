@@ -1,18 +1,18 @@
 <template lang="pug">
-	.embed-container(v-editable="blok")
-		iframe(
-			v-if="blok.video_url"
-			:src="videoURL"
-			frameborder="0"
-			loading="lazy"
-			allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-			allowfullscreen
-		)
-		iframe(
-			v-else
-			src="https://www.youtube.com/embed/UbzKuFnXxiU"
-			frameborder="0"
-		)
+.embed-container(v-editable="blok")
+	iframe(
+		v-if="blok.video_url",
+		:src="videoURL",
+		frameborder="0",
+		loading="lazy",
+		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+		allowfullscreen
+	)
+	iframe(
+		v-else,
+		src="https://www.youtube.com/embed/UbzKuFnXxiU",
+		frameborder="0"
+	)
 </template>
 
 <script>
@@ -39,8 +39,8 @@
 					let mute = `&mute=${this.blok.mute ? "1" : "0"}`;
 					return baseURL + videoID + autoplay + mute + "&rel=0";
 				}
-			}
-		}
+			},
+		},
 	};
 </script>
 

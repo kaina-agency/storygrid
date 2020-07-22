@@ -1,10 +1,10 @@
 <template lang="pug">
-	.rich-text(
-		v-html="richtext"
-		:class="blok.class"
-		:style="blok.style"
-		v-editable="blok"
-	)
+.rich-text(
+	v-html="richtext",
+	:class="blok.class",
+	:style="blok.style",
+	v-editable="blok"
+)
 </template>
 
 <script>
@@ -17,8 +17,8 @@
 				} else {
 					return this.$storyapi.richTextResolver.render(this.blok.rich_text);
 				}
-			}
-		}
+			},
+		},
 	};
 </script>
 

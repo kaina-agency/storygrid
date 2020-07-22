@@ -1,19 +1,15 @@
 <template lang="pug">
-	.video-container(
-		:class="blok.class" 
-		:style="blok.style" 
-		v-editable="blok"
+.video-container(:class="blok.class", :style="blok.style", v-editable="blok")
+	video(
+		autoplay,
+		muted,
+		loop,
+		playsinline,
+		:style="`object-position: ${blok.horizontal_alignment} ${blok.vertical_alignment};`"
 	)
-		video(
-			autoplay
-			muted
-			loop
-			playsinline
-			:style="`object-position: ${blok.horizontal_alignment} ${blok.vertical_alignment};`"
-		)
-			source(v-if="blok.webm" :src="blok.webm" type="video/webm")
-			source(v-if="blok.mp4" :src="blok.mp4" type="video/mp4")
-		.video-overlay(:style="overlay")
+		source(v-if="blok.webm", :src="blok.webm", type="video/webm")
+		source(v-if="blok.mp4", :src="blok.mp4", type="video/mp4")
+	.video-overlay(:style="overlay")
 </template>
 
 <script>
@@ -24,8 +20,8 @@
 				return this.blok.overlay
 					? `background: black; opacity: ${this.blok.overlay}`
 					: 0;
-			}
-		}
+			},
+		},
 	};
 </script>
 

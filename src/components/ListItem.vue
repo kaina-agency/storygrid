@@ -1,26 +1,27 @@
 <template lang="pug">
-	v-list-item(
-		:active-class="activeClass"
-		:disabled="blok.disabled"
-		:href="href"
-		:to="to"
-		exact
-		v-editable="blok"
+v-list-item(
+	:active-class="activeClass",
+	:disabled="blok.disabled",
+	:href="href",
+	:to="to",
+	exact,
+	v-editable="blok"
+)
+	v-list-item-avatar(
+		v-if="blok.avatar.filename || blok.icon",
+		:class="[blok.avatar_color, blok.avatar_color.length > 0 ? 'filled' : '']",
+		style="justify-content: center;"
 	)
-		v-list-item-avatar(
-			v-if="blok.avatar.filename || blok.icon" 
-			:class="[blok.avatar_color, blok.avatar_color.length > 0 ? 'filled' : '']"
-			style="justify-content: center;"
+		img(
+			v-if="blok.avatar.filename",
+			:src="image(blok.avatar)",
+			height="100%",
+			width="100%"
 		)
-			img(v-if="blok.avatar.filename" :src="image(blok.avatar)" height="100%" width="100%")
-			div.g-icon(
-				v-if="!blok.avatar.filename"
-				v-html="blok.icon"
-				notranslate
-			)
-		v-list-item-content
-			v-list-item-title(:class="blok.subtitle ? '' : 'mb-0'") {{blok.title}}
-			v-list-item-subtitle {{blok.subtitle}}
+		.g-icon(v-if="!blok.avatar.filename", v-html="blok.icon", notranslate)
+	v-list-item-content
+		v-list-item-title(:class="blok.subtitle ? '' : 'mb-0'") {{ blok.title }}
+		v-list-item-subtitle {{ blok.subtitle }}
 </template>
 
 <script>
@@ -58,7 +59,7 @@
 							return "/" + path;
 					}
 				}
-			}
+			},
 		},
 		methods: {
 			image(img) {
@@ -70,8 +71,8 @@
 				} else {
 					return undefined;
 				}
-			}
-		}
+			},
+		},
 	};
 </script>
 

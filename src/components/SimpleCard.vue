@@ -1,28 +1,30 @@
 <template lang="pug">
-	v-card(
-		v-editable="blok"
-		:class="[blok.shape === 'rounded' ? 'rounded' : '', blok.blend ? 'transparent' : '', blok.class]"
-		:style="blok.style"
-		:flat="blok.blend ? true : blok.flat"
-		:href="blok.button_text ? undefined : href"
-		:outlined="blok.blend ? false : blok.flat"
-		:shaped="blok.shape === 'goofy'"
-		:tile="blok.shape === 'tile'"
-		:to="blok.button_text ? undefined : to"
+v-card(
+	v-editable="blok",
+	:class="[blok.shape === 'rounded' ? 'rounded' : '', blok.blend ? 'transparent' : '', blok.class]",
+	:style="blok.style",
+	:flat="blok.blend ? true : blok.flat",
+	:href="blok.button_text ? undefined : href",
+	:outlined="blok.blend ? false : blok.flat",
+	:shaped="blok.shape === 'goofy'",
+	:tile="blok.shape === 'tile'",
+	:to="blok.button_text ? undefined : to"
+)
+	picture(v-if="blok.image.filename")
+		source(:src="image.webp", type="image/webp")
+		source(:src="image.png", type="image/png")
+		img(
+			:src="image.png",
+			:alt="image.alt",
+			loading="lazy",
+			style="width: 100%; display: block;"
+		)
+	v-card-text(v-if="blok.text.content[0].content")
+		.rich-text(v-html="richtext")
+	v-card-actions(
+		v-if="(blok.link.url || blok.link.cached_url) && blok.button_text"
 	)
-		picture(v-if="blok.image.filename")
-			source(:src="image.webp" type="image/webp")
-			source(:src="image.png" type="image/png")
-			img(
-				:src="image.png"
-				:alt="image.alt"
-				loading="lazy"
-				style="width: 100%; display: block;"
-			)
-		v-card-text(v-if="blok.text.content[0].content")
-			.rich-text(v-html="richtext")
-		v-card-actions(v-if="(blok.link.url || blok.link.cached_url) && blok.button_text")
-			v-btn(color="accent" :href="href" text :to="to") {{blok.button_text || 'Change This'}}
+		v-btn(color="accent", :href="href", text, :to="to") {{ blok.button_text || 'Change This' }}
 </template>
 
 <script>
@@ -45,7 +47,7 @@
 				return {
 					webp: webp,
 					png: png,
-					alt: alt
+					alt: alt,
 				};
 			},
 			richtext() {
@@ -82,8 +84,8 @@
 							return "/" + path;
 					}
 				}
-			}
-		}
+			},
+		},
 	};
 </script>
 

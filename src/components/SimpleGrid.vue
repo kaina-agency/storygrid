@@ -1,16 +1,16 @@
 <template lang="pug">
-	.simple-grid(v-editable="blok")
-		component(
-			v-for="blok in blok.content"
-			:key="blok._uid"
-			:blok="blok"
-			:is="blok.component"
-		)
+.simple-grid(v-editable="blok")
+	component(
+		v-for="blok in blok.content",
+		:key="blok._uid",
+		:blok="blok",
+		:is="blok.component"
+	)
 </template>
 
 <script>
 	export default {
-		props: ["blok"]
+		props: ["blok"],
 	};
 </script>
 

@@ -1,28 +1,28 @@
 <template lang="pug">
-	.imgG(
-		:class="blok.class"
-		:style="src.filters + blok.style"
-		loading="lazy"
-		v-editable="blok"
-	)
-		div(:style="src.pt")
-			picture
-				source(:srcset="src.srcset" :sizes="src.sizes" type="image/webp")
-				source(:srcset="src.jpegSrcset" :sizes="src.sizes" type="image/jpeg")
-				img(
-					:srcset="src.srcset"
-					:sizes="src.sizes"
-					:src="src.src"
-					:alt="blok.image.alt || blok.image.name"
-					:style="{objectFit: src.contain}"
-				)
-			.imgG__content
-				component(
-					v-for="blok in blok.content"
-					:key="blok._uid"
-					:blok="blok"
-					:is="blok.component"
-				)
+.imgG(
+	:class="blok.class",
+	:style="src.filters + blok.style",
+	loading="lazy",
+	v-editable="blok"
+)
+	div(:style="src.pt")
+		picture
+			source(:srcset="src.srcset", :sizes="src.sizes", type="image/webp")
+			source(:srcset="src.jpegSrcset", :sizes="src.sizes", type="image/jpeg")
+			img(
+				:srcset="src.srcset",
+				:sizes="src.sizes",
+				:src="src.src",
+				:alt="blok.image.alt || blok.image.name",
+				:style="{ objectFit: src.contain }"
+			)
+		.imgG__content
+			component(
+				v-for="blok in blok.content",
+				:key="blok._uid",
+				:blok="blok",
+				:is="blok.component"
+			)
 </template>
 
 <script>
@@ -71,7 +71,7 @@
 
 					const bps = b.max_quality.split(",") || [400, 800];
 
-					bps.forEach(bp => {
+					bps.forEach((bp) => {
 						const w = bp;
 						const h = keepAspect ? "" : Math.floor(w * br);
 						const d = `/${w}x${h}`;
@@ -94,10 +94,10 @@
 					pt: pt,
 					src: src,
 					contain: contain,
-					filters: filters
+					filters: filters,
 				};
-			}
-		}
+			},
+		},
 	};
 </script>
 

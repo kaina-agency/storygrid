@@ -1,14 +1,14 @@
 <template lang="pug">
-	v-spacer(v-editable="blok")
-		p.dot-leader(
-			v-if="blok.dot_leader"
-			:class="blok.remove_margin ? 'no-margin' : ''"
-		) ⠀
+v-spacer(v-editable="blok")
+	p.dot-leader(
+		v-if="blok.dot_leader",
+		:class="blok.remove_margin ? 'no-margin' : ''"
+	) ⠀
 </template>
 
 <script>
 	export default {
-		props: ["blok"]
+		props: ["blok"],
 	};
 </script>
 

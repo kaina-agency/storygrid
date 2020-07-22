@@ -1,17 +1,12 @@
 <template lang="pug">
-	.g-crumbs(
-		:class="blok.class"
-		:color="blok.color"
-		v-editable="blok"
+.g-crumbs(:class="blok.class", :color="blok.color", v-editable="blok")
+	g-link.g-crumb(
+		v-for="(item, i) in items",
+		:key="i",
+		:to="item.to",
+		:style="`color: ${blok.color}`"
 	)
-		g-link(
-			v-for="(item, i) in items"
-			:key="i"
-			:to="item.to"
-			class="g-crumb"
-			:style="`color: ${blok.color}`"
-		)
-			| {{item.text}}
+		| {{ item.text }}
 </template>
 
 <script>
@@ -22,8 +17,8 @@
 				let crumbs = [
 					{
 						text: "home",
-						to: "/"
-					}
+						to: "/",
+					},
 				];
 
 				let path = this.$route.path;
@@ -35,14 +30,14 @@
 					if (slug) {
 						crumbs.push({
 							text: slug.replace("-", " "),
-							to: path.split(slug)[0] + slug
+							to: path.split(slug)[0] + slug,
 						});
 					}
 				}
 
 				return crumbs;
-			}
-		}
+			},
+		},
 	};
 </script>
 

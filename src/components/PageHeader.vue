@@ -1,27 +1,21 @@
 <template lang="pug">
-	.page-header(v-editable="blok" :data-name="blok.name")
-		img.page-header__background--small(
-			:src="image.small"
-			v-if="blok.image"
+.page-header(v-editable="blok", :data-name="blok.name")
+	img.page-header__background--small(:src="image.small", v-if="blok.image")
+	img.page-header__background--large(:src="image.large", v-if="blok.image")
+	.page-header__text(:class="textClass")
+		.page-header__text__background(
+			:class="blok.background_color || 'black'",
+			:style="textStyle"
 		)
-		img.page-header__background--large(
-			:src="image.large"
-			v-if="blok.image"
-		)
-		.page-header__text(:class="textClass")
-			.page-header__text__background(
-				:class="blok.background_color || 'black'"
-				:style="textStyle"
+		.page-header__text__content(:style="{ textAlign: blok.text_alignment }")
+			h1(v-if="blok.header") {{ blok.header }}
+			p(v-if="blok.subheader") {{ blok.subheader }}
+			component(
+				v-for="blok in blok.button",
+				:key="blok._uid",
+				:blok="blok",
+				:is="blok.component"
 			)
-			.page-header__text__content(:style="{textAlign: blok.text_alignment}")
-				h1(v-if="blok.header") {{blok.header}}
-				p(v-if="blok.subheader") {{blok.subheader}}
-				component(
-					v-for="blok in blok.button"
-					:key="blok._uid"
-					:blok="blok"
-					:is="blok.component"
-				)
 </template>
 
 <script>
@@ -41,7 +35,7 @@
 
 					return {
 						small: service + small + smart + focus + ":format(jpeg)" + asset,
-						large: service + large + smart + focus + ":format(jpeg)" + asset
+						large: service + large + smart + focus + ":format(jpeg)" + asset,
 					};
 				} else {
 					return {};
@@ -52,15 +46,15 @@
 					this.blok.text_position || "bottom",
 					this.blok.text_color || "white--text",
 					this.blok.text_shadow ? "shadow" : "",
-					this.blok.background_blur ? "blur" : ""
+					this.blok.background_blur ? "blur" : "",
 				];
 			},
 			textStyle() {
 				return {
-					opacity: this.blok.background_transparency || "0.66"
+					opacity: this.blok.background_transparency || "0.66",
 				};
-			}
-		}
+			},
+		},
 	};
 </script>
 

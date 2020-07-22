@@ -1,25 +1,26 @@
 <template lang="pug">
-	no-ssr
-		carousel-3d(
-			:autoplay="blok.autoplay"
-			:autoplayHoverPause="blok.autoplayHoverPause"
-			:autoplayTimeout="blok.autoplayTimeout * 1000"
-			:border="blok.border"
-			:display="blok.display"
-			:height="blok.height"
-			:loop="blok.loop"
-			:perspective="blok.perspective"
-			:space="blok.space || 'auto'"
-			:width="blok.width"
-			v-editable="blok"
+no-ssr
+	carousel-3d(
+		:autoplay="blok.autoplay",
+		:autoplayHoverPause="blok.autoplayHoverPause",
+		:autoplayTimeout="blok.autoplayTimeout * 1000",
+		:border="blok.border",
+		:display="blok.display",
+		:height="blok.height",
+		:loop="blok.loop",
+		:perspective="blok.perspective",
+		:space="blok.space || 'auto'",
+		:width="blok.width",
+		v-editable="blok"
+	)
+		slide(
+			v-for="(blok, index) in blok.content",
+			:index="index",
+			:key="blok._uid",
+			:class="contentClass",
+			:style="contentStyle"
 		)
-			slide(
-				v-for="(blok, index) in blok.content"
-				:index="index", :key="blok._uid"
-				:class="contentClass"
-				:style="contentStyle"
-			)
-				component(:is="blok.component" :blok="blok")
+			component(:is="blok.component", :blok="blok")
 </template>
 
 <script>
@@ -32,12 +33,12 @@
 			"no-ssr": NoSSR,
 			Carousel3d: () =>
 				import("vue-carousel-3d")
-					.then(m => m.Carousel3d)
+					.then((m) => m.Carousel3d)
 					.catch(),
 			Slide: () =>
 				import("vue-carousel-3d")
-					.then(m => m.Slide)
-					.catch()
+					.then((m) => m.Slide)
+					.catch(),
 		},
 		computed: {
 			contentClass() {
@@ -45,7 +46,7 @@
 			},
 			contentStyle() {
 				return this.blok.contentStyle;
-			}
-		}
+			},
+		},
 	};
 </script>

@@ -1,66 +1,66 @@
 <template lang="pug">
-	v-app(:class="path")
-		v-app-bar(
-			app
-			:clipped-left="set.full_width || false"
-			color="primary"
-			:dense="set.dense == false ? false : true"
-			:dark="set.light == true ? false : true"
-			:flat="set.flat"
-			:hide-on-scroll="set.hide_on_scroll"
-			:light="set.light"
-			v-if="appBar"
+v-app(:class="path")
+	v-app-bar(
+		app,
+		:clipped-left="set.full_width || false",
+		color="primary",
+		:dense="set.dense == false ? false : true",
+		:dark="set.light == true ? false : true",
+		:flat="set.flat",
+		:hide-on-scroll="set.hide_on_scroll",
+		:light="set.light",
+		v-if="appBar"
+	)
+		v-app-bar-nav-icon(
+			@click="drawer = !drawer",
+			v-if="(set.drawer || {}).length || false",
+			:class="set.drawer_mobile_only ? 'hidden-md-and-up' : ''"
 		)
-			v-app-bar-nav-icon(
-				@click="drawer = !drawer"
-				v-if="(set.drawer || {}).length || false"
-				:class="set.drawer_mobile_only ? 'hidden-md-and-up' : ''"
-			)
-			component(
-				v-for="blok in set.header"
-				:key="blok._uid"
-				:blok="blok"
-				:is="blok.component"
-			)
-		v-navigation-drawer(
-			app
-			:clipped="set.full_width || false"
-			:class="set.drawer_class || 'secondary'"
-			:disable-resize-watcher="set.drawer_mobile_only"
-			:dark="set.light_drawer == true ? false : true"
-			:light="set.light_drawer"
-			:width="300"
-			v-if="(set.drawer || {}).length || false"
-			v-model="drawer"
+		component(
+			v-for="blok in set.header",
+			:key="blok._uid",
+			:blok="blok",
+			:is="blok.component"
 		)
-			component(
-				v-for="blok in set.drawer"
-				:key="blok._uid"
-				:blok="blok"
-				:is="blok.component"
-			)
-		v-content(app)
-			slot
-	
-		div(v-html="set.inject_html")
-		component(:is="'style'")
-			| :root {
-			|		--v-primary-base: {{!dark ? set.primary : set.primary_dark}};
-			| 	--v-secondary-base: {{!dark ? set.secondary : set.secondary_dark}};
-			| 	--v-accent-base: {{!dark ? set.accent : set.accent_dark}};
-			| 	--bg: {{!dark ? set.background : set.background_dark}};
-			| 	--card-bg: {{!dark ? set.card_background : set.card_background_dark}};
-			| 	--heading-font: {{set.heading_font}};
-			| 	--body-font: {{set.body_font}};
-			| 	{{smoothType('--h1-fs', set.h1_min, set.h1_max)}}
-			| 	{{smoothType('--h2-fs', set.h2_min, set.h2_max)}}
-			| 	{{smoothType('--h3-fs', set.h3_min, set.h3_max)}}
-			| 	{{smoothType('--h4-fs', set.h4_min, set.h4_max)}}
-			| 	{{smoothType('--h5-fs', set.h5_min, set.h5_max)}}
-			| 	{{smoothType('--h6-fs', set.h6_min, set.h6_max)}}
-			| 	{{smoothType('--bs', set.body_min, set.body_max)}}
-			| }
-			| {{ set.inject_css }}
+	v-navigation-drawer(
+		app,
+		:clipped="set.full_width || false",
+		:class="set.drawer_class || 'secondary'",
+		:disable-resize-watcher="set.drawer_mobile_only",
+		:dark="set.light_drawer == true ? false : true",
+		:light="set.light_drawer",
+		:width="300",
+		v-if="(set.drawer || {}).length || false",
+		v-model="drawer"
+	)
+		component(
+			v-for="blok in set.drawer",
+			:key="blok._uid",
+			:blok="blok",
+			:is="blok.component"
+		)
+	v-content(app)
+		slot
+
+	div(v-html="set.inject_html")
+	component(:is="'style'")
+		| :root {
+		| --v-primary-base: {{ !dark ? set.primary : set.primary_dark }};
+		| --v-secondary-base: {{ !dark ? set.secondary : set.secondary_dark }};
+		| --v-accent-base: {{ !dark ? set.accent : set.accent_dark }};
+		| --bg: {{ !dark ? set.background : set.background_dark }};
+		| --card-bg: {{ !dark ? set.card_background : set.card_background_dark }};
+		| --heading-font: {{ set.heading_font }};
+		| --body-font: {{ set.body_font }};
+		| {{ smoothType('--h1-fs', set.h1_min, set.h1_max) }}
+		| {{ smoothType('--h2-fs', set.h2_min, set.h2_max) }}
+		| {{ smoothType('--h3-fs', set.h3_min, set.h3_max) }}
+		| {{ smoothType('--h4-fs', set.h4_min, set.h4_max) }}
+		| {{ smoothType('--h5-fs', set.h5_min, set.h5_max) }}
+		| {{ smoothType('--h6-fs', set.h6_min, set.h6_max) }}
+		| {{ smoothType('--bs', set.body_min, set.body_max) }}
+		| }
+		| {{ set.inject_css }}
 </template>
 
 <script>
@@ -71,35 +71,34 @@
 			appBar: false,
 			drawer: false,
 			draft: {},
-			path: ""
+			path: "",
+			set: {},
 		}),
-		computed: {
-			set() {
-				let settings = {};
+		created() {
+			let settings = {};
 
-				if (this.draft._uid) {
-					settings = this.draft;
-				} else {
-					settings = this.$static.allStoryblokEntry.edges[0].node.content;
-				}
-
-				if (settings.default_theme === "dark") {
-					this.$vuetify.theme.dark = true;
-					this.dark = true;
-				}
-
-				if (settings.mobile_only) {
-					this.appBar = this.$vuetify.breakpoint.mdAndDown;
-				} else {
-					this.appBar = true;
-				}
-
-				if (!settings.drawer_mobile_only) {
-					this.drawer = null;
-				}
-
-				return settings;
+			if (this.draft._uid) {
+				settings = this.draft;
+			} else {
+				settings = this.$static.allStoryblokEntry.edges[0].node.content;
 			}
+
+			if (settings.default_theme === "dark") {
+				this.$vuetify.theme.dark = true;
+				this.dark = true;
+			}
+
+			if (settings.mobile_only) {
+				this.appBar = this.$vuetify.breakpoint.mdAndDown;
+			} else {
+				this.appBar = true;
+			}
+
+			if (!settings.drawer_mobile_only) {
+				this.drawer = null;
+			}
+
+			this.set = settings;
 		},
 		mounted() {
 			if (window.top !== window.self) {
@@ -112,9 +111,9 @@
 					window.storyblok.get(
 						{
 							slug: "settings",
-							version: "draft"
+							version: "draft",
 						},
-						data => {
+						(data) => {
 							this.draft = data.story.content;
 						}
 					);
@@ -125,7 +124,7 @@
 
 					let sb = window.storyblok;
 
-					sb.on(["change", "published", "input"], payload => {
+					sb.on(["change", "published", "input"], (payload) => {
 						loadStory();
 					});
 
@@ -136,8 +135,8 @@
 					});
 				};
 
-				const loadStoryblokBridge = cb => {
-					let sbConfigs = config.plugins.filter(item => {
+				const loadStoryblokBridge = (cb) => {
+					let sbConfigs = config.plugins.filter((item) => {
 						return item.use === "gridsome-source-storyblok";
 					});
 					let sbConfig = sbConfigs.length > 0 ? sbConfigs[0] : {};
@@ -157,13 +156,13 @@
 		methods: {
 			smoothType(selector, min, max) {
 				return `${selector}: calc(${min}px + (${max} - ${min}) * ((100vw - 400px) / (1800 - 400)));`;
-			}
+			},
 		},
 		watch: {
 			$route(to, from) {
 				this.path = this.$route.path.split("/")[1];
-			}
-		}
+			},
+		},
 	};
 </script>
 

@@ -1,41 +1,45 @@
 <template lang="pug">
-	v-card(
-		:color="color"
-		:dark="blok.options.includes('dark')"
-		:flat="blok.options.includes('flat')"
-		:hover="blok.options.includes('hover')"
-		:href="href"
-		:outlined="blok.options.includes('outlined')"
-		:raised="blok.options.includes('raised')"
-		:shaped="blok.options.includes('shaped')"
-		:tile="blok.options.includes('tile')"
-		:to="to"
-		:class="blok.class"
-		:style="blok.style"
-		v-editable="blok"
+v-card(
+	:color="color",
+	:dark="blok.options.includes('dark')",
+	:flat="blok.options.includes('flat')",
+	:hover="blok.options.includes('hover')",
+	:href="href",
+	:outlined="blok.options.includes('outlined')",
+	:raised="blok.options.includes('raised')",
+	:shaped="blok.options.includes('shaped')",
+	:tile="blok.options.includes('tile')",
+	:to="to",
+	:class="blok.class",
+	:style="blok.style",
+	v-editable="blok"
+)
+	component(
+		v-for="blok in blok.media",
+		:key="blok._uid",
+		:blok="blok",
+		:is="blok.component"
 	)
+	v-divider(
+		v-if="blok.media && blok.content && blok.options.includes('separators')"
+	)
+	v-card-text(v-if="(blok.content || {}).length")
 		component(
-				v-for="blok in blok.media"
-				:key="blok._uid"
-				:blok="blok"
-				:is="blok.component"
-			)
-		v-divider(v-if="blok.media && blok.content && blok.options.includes('separators')")
-		v-card-text(v-if="(blok.content || {}).length")
-			component(
-				v-for="blok in blok.content"
-				:key="blok._uid"
-				:blok="blok"
-				:is="blok.component"
-			)
-		v-divider(v-if="blok.content && blok.actions && blok.options.includes('separators')")
-		v-card-actions(v-if="(blok.actions || {}).length")
-			component(
-				v-for="blok in blok.actions"
-				:key="blok._uid"
-				:blok="blok"
-				:is="blok.component"
-			)
+			v-for="blok in blok.content",
+			:key="blok._uid",
+			:blok="blok",
+			:is="blok.component"
+		)
+	v-divider(
+		v-if="blok.content && blok.actions && blok.options.includes('separators')"
+	)
+	v-card-actions(v-if="(blok.actions || {}).length")
+		component(
+			v-for="blok in blok.actions",
+			:key="blok._uid",
+			:blok="blok",
+			:is="blok.component"
+		)
 </template>
 
 <script>
@@ -76,8 +80,8 @@
 							return "/" + path;
 					}
 				}
-			}
-		}
+			},
+		},
 	};
 </script>
 

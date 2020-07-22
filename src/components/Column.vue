@@ -1,19 +1,19 @@
 <template lang="pug">
-	v-col(
-		:cols="responsive.xs"
-		:sm="responsive.sm"
-		:md="responsive.md"
-		:lg="responsive.lg"
-		:xl="responsive.xl"
-		:class="blok.class"
-		v-editable="blok"
+v-col(
+	:cols="responsive.xs",
+	:sm="responsive.sm",
+	:md="responsive.md",
+	:lg="responsive.lg",
+	:xl="responsive.xl",
+	:class="blok.class",
+	v-editable="blok"
+)
+	component(
+		v-for="blok in blok.content",
+		:key="blok._uid",
+		:blok="blok",
+		:is="blok.component"
 	)
-		component(
-			v-for="blok in blok.content"
-			:key="blok._uid"
-			:blok="blok"
-			:is="blok.component"
-		)
 </template>
 
 <script>
@@ -27,9 +27,9 @@
 					sm: r.small || r.xsmall,
 					md: r.medium || r.small || r.xsmall,
 					lg: r.large || r.medium || r.small || r.xsmall,
-					xl: r.xlarge || r.large || r.medium || r.small || r.xsmall
+					xl: r.xlarge || r.large || r.medium || r.small || r.xsmall,
 				};
-			}
-		}
+			},
+		},
 	};
 </script>

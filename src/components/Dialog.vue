@@ -1,29 +1,25 @@
 <template lang="pug">
-	v-dialog(
-		v-model="dialog"
-		eager
-		width="500"
+v-dialog(v-model="dialog", eager, width="500")
+	template(v-slot:activator="{ on }")
+		div(v-on="on")
+			component(
+				v-for="blok in blok.activator",
+				:key="blok._uid",
+				:blok="blok",
+				:is="blok.component"
+			)
+	component(
+		v-for="blok in blok.content",
+		:key="blok._uid",
+		:blok="blok",
+		:is="blok.component"
 	)
-		template(v-slot:activator="{ on }")
-			div(v-on="on")
-				component(
-					v-for="blok in blok.activator"
-					:key="blok._uid"
-					:blok="blok"
-					:is="blok.component"
-				)
-		component(
-			v-for="blok in blok.content"
-			:key="blok._uid"
-			:blok="blok"
-			:is="blok.component"
-		)
 </template>
 
 <script>
 	export default {
 		props: ["blok"],
-		data: () => ({ dialog: false })
+		data: () => ({ dialog: false }),
 	};
 </script>
 

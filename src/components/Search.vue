@@ -1,14 +1,14 @@
 <template lang="pug">
-	v-text-field(
-		outlined
-		rounded
-		color="accent"
-		hint="Search results will open in Google"
-		:label="blok.label"
-		:prepend-inner-icon="google"
-		v-model="searchTerms"
-		@keydown.enter="search"
-	)
+v-text-field(
+	outlined,
+	rounded,
+	color="accent",
+	hint="Search results will open in Google",
+	:label="blok.label",
+	:prepend-inner-icon="google",
+	v-model="searchTerms",
+	@keydown.enter="search"
+)
 </template>
 
 <script>
@@ -22,8 +22,8 @@
 				window.open(
 					`https://www.google.com/search?q=site:${location} ${this.searchTerms}`
 				);
-			}
-		}
+			},
+		},
 	};
 </script>
 

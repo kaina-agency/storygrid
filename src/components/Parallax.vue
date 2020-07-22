@@ -1,25 +1,25 @@
 <template lang="pug">
-	v-parallax(
-		v-editable="blok"
-		:src="blok.image"
-		:height="blok.height"
-		:class="['parallax text-shadow', 'blur-' + blok.blur, blok.class]"
+v-parallax(
+	v-editable="blok",
+	:src="blok.image",
+	:height="blok.height",
+	:class="['parallax text-shadow', 'blur-' + blok.blur, blok.class]"
+)
+	.parallax-background(
+		:class="blok.background_color",
+		:style="`opacity: ${blok.background_opacity};`"
 	)
-		.parallax-background(
-			:class="blok.background_color"
-			:style="`opacity: ${blok.background_opacity};`"
-		)
-		component(
-			v-for="blok in blok.content"
-			:key="blok._uid"
-			:blok="blok"
-			:is="blok.component"
-		)
+	component(
+		v-for="blok in blok.content",
+		:key="blok._uid",
+		:blok="blok",
+		:is="blok.component"
+	)
 </template>
 
 <script>
 	export default {
-		props: ["blok"]
+		props: ["blok"],
 	};
 </script>
 

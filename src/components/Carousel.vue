@@ -1,27 +1,20 @@
 <template lang="pug">
-	v-carousel(
-		v-editable="blok"
-		:class="blok.options.includes('vertical') ? 'vertical' : ''"
-		:cycle="blok.options.includes('cycle')"
-		:height="blok.height"
-		:hide-delimiter-background="blok.options.includes('hide-delimiter-background')"
-		:hide-delimiters="blok.options.includes('hide-delimiters')"
-		:interval="blok.interval"
-		:progress-color="blok.progress_color"
-		:progress="blok.progress_color.length > 0"
-		:show-arrows="arrows"
-		:style="blok.style"
-		:vertical="blok.options.includes('vertical')"
-	)
-		v-carousel-item(
-			v-for="blok in blok.content"
-			:key="blok._uid"
-		)
-			component(
-				:blok="blok"
-				:is="blok.component"
-				style="min-height: 100%;"
-			)
+v-carousel(
+	v-editable="blok",
+	:class="blok.options.includes('vertical') ? 'vertical' : ''",
+	:cycle="blok.options.includes('cycle')",
+	:height="blok.height",
+	:hide-delimiter-background="blok.options.includes('hide-delimiter-background')",
+	:hide-delimiters="blok.options.includes('hide-delimiters')",
+	:interval="blok.interval",
+	:progress-color="blok.progress_color",
+	:progress="blok.progress_color.length > 0",
+	:show-arrows="arrows",
+	:style="blok.style",
+	:vertical="blok.options.includes('vertical')"
+)
+	v-carousel-item(v-for="blok in blok.content", :key="blok._uid")
+		component(:blok="blok", :is="blok.component", style="min-height: 100%;")
 </template>
 
 <script>
@@ -36,8 +29,8 @@
 				} else {
 					return true;
 				}
-			}
-		}
+			},
+		},
 	};
 </script>
 

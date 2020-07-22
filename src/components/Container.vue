@@ -1,16 +1,16 @@
 <template lang="pug">
-	v-container(
-		:data-name="blok.name"
-		:class="[full, blok.bottom_margin, blok.shape, blok.class]"
-		:style="blok.style"
-		v-editable="blok"
+v-container(
+	:data-name="blok.name",
+	:class="[full, blok.bottom_margin, blok.shape, blok.class]",
+	:style="blok.style",
+	v-editable="blok"
+)
+	component(
+		v-for="blok in blok.content",
+		:key="blok._uid",
+		:blok="blok",
+		:is="blok.component"
 	)
-		component(
-			v-for="blok in blok.content"
-			:key="blok._uid"
-			:blok="blok"
-			:is="blok.component"
-		)
 </template>
 
 <script>
@@ -19,8 +19,8 @@
 		computed: {
 			full() {
 				return this.blok.full_width ? "full" : "";
-			}
-		}
+			},
+		},
 	};
 </script>
 

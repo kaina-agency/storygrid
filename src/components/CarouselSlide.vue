@@ -1,26 +1,29 @@
 <template lang="pug">
-	.carousel-slide
-		ImageG(:blok="blok.image[0]" class="carousel-slide-image")
-		.carousel-slide-background(
-			:class="blok.background_color"
-			:style="`opacity: ${blok.background_opacity};`"
-		)
-		.carousel-slide-content(
-			:class="[blok.text_color, blok.dark ? 'white--text text-shadow' : '', blok.class]"
-			:style="blok.style"
-			v-editable="blok"
-		)
-			component(v-if="blok.header" :is="'h'+blok.heading_level || 'h2'" class="my-2") {{blok.header}}
-			component(v-if="blok.subheader" :is="'h'+blok.subheading_level || 'h3'" class="my-2") {{blok.subheader}}
-			p(v-if="blok.text" class="my-2") {{blok.text}}
-			Button(:blok="blok.button[0]" class="mt-4 mb-2")
+.carousel-slide
+	ImageG.carousel-slide-image(:blok="blok.image[0]")
+	.carousel-slide-background(
+		:class="blok.background_color",
+		:style="`opacity: ${blok.background_opacity};`"
+	)
+	.carousel-slide-content(
+		:class="[blok.text_color, blok.dark ? 'white--text text-shadow' : '', blok.class]",
+		:style="blok.style",
+		v-editable="blok"
+	)
+		component.my-2(v-if="blok.header", :is="'h' + blok.heading_level || 'h2'") {{ blok.header }}
+		component.my-2(
+			v-if="blok.subheader",
+			:is="'h' + blok.subheading_level || 'h3'"
+		) {{ blok.subheader }}
+		p.my-2(v-if="blok.text") {{ blok.text }}
+		Button.mt-4.mb-2(:blok="blok.button[0]")
 </template>
 
 <script>
 	import { Button } from "./Button";
 	import { ImageG } from "./ImageG";
 	export default {
-		props: ["blok"]
+		props: ["blok"],
 	};
 </script>
 

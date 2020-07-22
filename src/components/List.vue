@@ -1,23 +1,23 @@
 <template lang="pug">
-	v-list(
-		:class="[addedStyles, blok.class]"
-		:flat="blok.flat"
-		:nav="blok.shape == 'nav'"
-		:rounded="blok.shape == 'rounded'"
-		:shaped="blok.shape == 'shaped'"
-		:three-line="blok.line_cap == 'three'"
-		:two-line="blok.line_cap == 'two'"
-		v-editable="blok"
-	)
-		v-subheader(v-if="blok.subheader")
-		v-list-item-group(:color="blok.color")
-			component(
-				v-for="blok in blok.content"
-				:key="blok._uid"
-				:blok="blok"
-				:is="blok.component"
-				:activeClass="activeClass"
-			)
+v-list(
+	:class="[addedStyles, blok.class]",
+	:flat="blok.flat",
+	:nav="blok.shape == 'nav'",
+	:rounded="blok.shape == 'rounded'",
+	:shaped="blok.shape == 'shaped'",
+	:three-line="blok.line_cap == 'three'",
+	:two-line="blok.line_cap == 'two'",
+	v-editable="blok"
+)
+	v-subheader(v-if="blok.subheader")
+	v-list-item-group(:color="blok.color")
+		component(
+			v-for="blok in blok.content",
+			:key="blok._uid",
+			:blok="blok",
+			:is="blok.component",
+			:activeClass="activeClass"
+		)
 </template>
 
 <script>
@@ -36,8 +36,8 @@
 			},
 			activeClass() {
 				return this.blok.active_class;
-			}
-		}
+			},
+		},
 	};
 </script>
 

@@ -1,11 +1,11 @@
 <template lang="pug">
-	vue-packer(:style="`margin: -${gutter}`" v-editable="blok")
-		.masonry-item(
-			v-for="blok in blok.content"
-			:key="blok._uid"
-			:style="`padding: ${gutter};`"
-		)
-			component(:is="blok.component" :blok="blok" :class="itemClass")
+vue-packer(:style="`margin: -${gutter}`", v-editable="blok")
+	.masonry-item(
+		v-for="blok in blok.content",
+		:key="blok._uid",
+		:style="`padding: ${gutter};`"
+	)
+		component(:is="blok.component", :blok="blok", :class="itemClass")
 </template>
 
 <script>
@@ -24,8 +24,8 @@
 			},
 			minWidth() {
 				return this.blok.item_min_width;
-			}
-		}
+			},
+		},
 	};
 </script>
 
