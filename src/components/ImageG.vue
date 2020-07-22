@@ -2,7 +2,6 @@
 .imgG(
 	:class="blok.class",
 	:style="src.filters + blok.style",
-	loading="lazy",
 	v-editable="blok"
 )
 	div(:style="src.pt")
@@ -14,7 +13,8 @@
 				:sizes="src.sizes",
 				:src="src.src",
 				:alt="blok.image.alt || blok.image.name",
-				:style="{ objectFit: src.contain }"
+				:style="{ objectFit: src.contain }",
+				loading="lazy"
 			)
 		.imgG__content
 			component(

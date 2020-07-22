@@ -6,6 +6,7 @@ div(v-editable="blok")
 		:src="url",
 		frameborder="0",
 		scrolling="no",
+		loading="lazy",
 		:class="[blok.class, 'google-map']",
 		:style="'display: block;' + blok.style"
 	)
