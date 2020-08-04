@@ -20,7 +20,7 @@ v-card(
 			style="width: 100%; display: block;"
 		)
 	v-card-text(v-if="blok.text.content[0].content")
-		.rich-text(v-html="richtext")
+		.rich-text(v-html="$storyapi.richTextResolver.render(blok.text)")
 	v-card-actions(
 		v-if="(blok.link.url || blok.link.cached_url) && blok.button_text"
 	)
@@ -49,9 +49,6 @@ v-card(
 					png: png,
 					alt: alt,
 				};
-			},
-			richtext() {
-				return this.$storyapi.richTextResolver.render(this.blok.text);
 			},
 			href() {
 				const l = this.blok.link;

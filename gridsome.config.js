@@ -9,6 +9,7 @@ module.exports = {
 	titleTemplate: process.env.GRIDSOME_TITLE,
 	siteDescription: 'Remember to update this',
 	icon: './src/icon.png' || './src/favicon.png',
+	port: 8080,
 	plugins: [
 		{
 			use: 'gridsome-source-storyblok',

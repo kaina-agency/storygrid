@@ -30,10 +30,12 @@ import Menu from '~/components/Menu.vue'
 import PageHeader from '~/components/PageHeader.vue'
 import Parallax from '~/components/Parallax.vue'
 import Posts from '~/components/Posts.vue'
+import Product from '~/components/Product.vue'
 import Row from '~/components/Row.vue'
 import Search from '~/components/Search.vue'
 import SimpleCard from '~/components/SimpleCard.vue'
 import SimpleGrid from '~/components/SimpleGrid.vue'
+import Snipcart from '~/components/Snipcart.vue'
 import Spacer from '~/components/Spacer.vue'
 import Tabs from '~/components/Tabs.vue'
 import TextContent from '~/components/TextContent.vue'
@@ -69,11 +71,13 @@ export default function(Vue, { router, head, isClient, appOptions }) {
 	Vue.component('PageHeader', PageHeader)
 	Vue.component('Parallax', Parallax)
 	Vue.component('Posts', Posts)
+	Vue.component('Product', Product)
 	Vue.component('Row', Row)
 	Vue.component('SimpleCard', SimpleCard)
 	Vue.component('SimpleGrid', SimpleGrid)
 	Vue.component('Search', Search)
 	Vue.component('Spacer', Spacer)
+	Vue.component('Snipcart', Snipcart)
 	Vue.component('Tabs', Tabs)
 	Vue.component('TextContent', TextContent)
 	Vue.component('Toolbar', Toolbar)

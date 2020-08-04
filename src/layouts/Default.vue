@@ -41,6 +41,12 @@ v-app(:class="path")
 		)
 	v-content(app)
 		slot
+		component(
+			v-for="blok in set.app_globals",
+			:key="blok._uid",
+			:blok="blok",
+			:is="blok.component"
+		)
 
 	div(v-html="set.inject_html")
 	component(:is="'style'")
