@@ -71,14 +71,16 @@ v-container.mb-12
 				:data-item-custom3-name="blok.option_3_label || undefined",
 				:data-item-custom3-options="blok.option_3_type === 'dropdown' ? blok.option_3_value.replace(/\\n/gi, '|') : undefined",
 				:data-item-custom3-value="option3 || undefined",
-				:data-item-custom3-type="['checkbox', 'textarea'].includes(blok.option_3_type) ? blok.option_3_type : undefined"
+				:data-item-custom3-type="['checkbox', 'textarea'].includes(blok.option_3_type) ? blok.option_3_type : undefined",
+				@click="snackbar = true"
 			) Add to Cart
+	v-snackbar(v-model="snackbar", top, right) {{ blok.name }} added to cart
 </template>
 
 <script>
 	export default {
 		props: ["blok"],
-		data: () => ({ option1: "", option2: "", option3: "" }),
+		data: () => ({ option1: "", option2: "", option3: "", snackbar: false }),
 		methods: {
 			image(img) {
 				let asset = img.filename.replace("https://a.storyblok.com", "");
@@ -90,7 +92,7 @@ v-container.mb-12
 				let original = Number(this.blok.price).toFixed(2);
 				let sale = Number(this.blok.sale_price).toFixed(2);
 				return {
-					actual: sale ? sale : original,
+					actual: sale > 0 ? sale : original,
 					original: original,
 					sale: sale,
 					discount:

@@ -289,6 +289,13 @@ v-app(:class="path")
 			fill: currentColor;
 		}
 	}
+
+	.in-editor {
+		.v-btn,
+		.v-card {
+			pointer-events: none !important;
+		}
+	}
 </style>
 
 <static-query>

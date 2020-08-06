@@ -8,7 +8,7 @@ v-card(
 	:to="'/' + slug"
 )
 	v-img(:src="image(props.images[0])")
-	v-card-title
+	v-card-title.pb-0
 		.text-truncate {{ props.name }}
 	v-card-text.subtitle-1
 		.d-flex.justify-space-between
@@ -19,7 +19,7 @@ v-card(
 <script>
 	export default {
 		name: "ProductCard",
-		props: ["product"],
+		props: ["product", "ratio"],
 		data: () => ({ props: {} }),
 		created() {
 			this.props = this.product.node.content;
@@ -28,7 +28,9 @@ v-card(
 		methods: {
 			image(img) {
 				let asset = img.filename.replace("https://a.storyblok.com", "");
-				return "https://img2.storyblok.com/800x600/smart/" + asset;
+				return (
+					`https://img2.storyblok.com/${this.ratio || "800x600"}/smart/` + asset
+				);
 			},
 		},
 		computed: {
@@ -36,7 +38,7 @@ v-card(
 				let original = Number(this.props.price).toFixed(2);
 				let sale = Number(this.props.sale_price).toFixed(2);
 				return {
-					actual: sale ? sale : original,
+					actual: sale > 0 ? sale : original,
 					original: original,
 					sale: sale,
 					discount:
