@@ -28,7 +28,7 @@
 			let snipStyles = document.createElement("link");
 			snipStyles.rel = "stylesheet";
 			snipStyles.href =
-				"https://cdn.snipcart.com/themes/v3.0.18/default/snipcart.css";
+				"https://cdn.snipcart.com/themes/v3.0.19/default/snipcart.css";
 			document.head.appendChild(snipStyles);
 			// load script from CDN
 			let snipScript = document.createElement("script");
