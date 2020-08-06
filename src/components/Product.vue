@@ -74,7 +74,7 @@ v-container.mb-12
 				:data-item-custom3-type="['checkbox', 'textarea'].includes(blok.option_3_type) ? blok.option_3_type : undefined",
 				@click="snackbar = true"
 			) Add to Cart
-	v-snackbar(v-model="snackbar", top, right) {{ blok.name }} added to cart
+	v-snackbar(v-model="snackbar") {{ blok.name }} added to cart
 </template>
 
 <script>
