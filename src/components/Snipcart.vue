@@ -33,7 +33,7 @@
 			// load script from CDN
 			let snipScript = document.createElement("script");
 			snipScript.src =
-				"https://cdn.snipcart.com/themes/v3.0.18/default/snipcart.js";
+				"https://cdn.snipcart.com/themes/v3.0.19/default/snipcart.js";
 			document.body.appendChild(snipScript);
 		},
 	};
