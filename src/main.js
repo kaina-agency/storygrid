@@ -31,6 +31,7 @@ import PageHeader from '~/components/PageHeader.vue'
 import Parallax from '~/components/Parallax.vue'
 import Posts from '~/components/Posts.vue'
 import Product from '~/components/Product.vue'
+import ProductList from '~/components/ProductList.vue'
 import Row from '~/components/Row.vue'
 import Search from '~/components/Search.vue'
 import SimpleCard from '~/components/SimpleCard.vue'
@@ -72,6 +73,7 @@ export default function(Vue, { router, head, isClient, appOptions }) {
 	Vue.component('Parallax', Parallax)
 	Vue.component('Posts', Posts)
 	Vue.component('Product', Product)
+	Vue.component('ProductList', ProductList)
 	Vue.component('Row', Row)
 	Vue.component('SimpleCard', SimpleCard)
 	Vue.component('SimpleGrid', SimpleGrid)

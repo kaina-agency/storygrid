@@ -2,7 +2,8 @@
 v-container.mb-12
 	.hidden-md-and-up
 		h1.h2 {{ blok.name }}
-		b.h4.green--text.darken-1 ${{ price }}
+		b.h4.green--text.darken-1 ${{ price.actual }}
+			span.h6.ml-4(v-if="blok.sale_price") {{ price.discount }}
 	v-row
 		v-col(cols, md="6")
 			v-carousel(v-if="blok.images.length > 1", height="auto")
@@ -15,7 +16,8 @@ v-container.mb-12
 		v-col(cols, md="6")
 			.hidden-sm-and-down
 				h1.h2.mt-0 {{ blok.name }}
-				b.h4.green--text.darken-1.d-block.mb-4 ${{ price }}
+				b.h4.green--text.darken-1.d-block.mb-4 ${{ price.actual }}
+					span.h6.ml-4(v-if="blok.sale_price") {{ price.discount }}
 			.rich-text.mb-6(
 				v-html="$storyapi.richTextResolver.render(blok.description)"
 			)
@@ -54,7 +56,7 @@ v-container.mb-12
 			v-btn.snipcart-add-item.green.darken-1(
 				dark,
 				:data-item-id="blok.name",
-				:data-item-price="price",
+				:data-item-price="price.actual",
 				:data-item-url="$route.path",
 				:data-item-image="image(blok.images[0])",
 				:data-item-name="blok.name",
@@ -85,7 +87,15 @@ v-container.mb-12
 		},
 		computed: {
 			price() {
-				return Number(this.blok.price).toFixed(2);
+				let original = Number(this.blok.price).toFixed(2);
+				let sale = Number(this.blok.sale_price).toFixed(2);
+				return {
+					actual: sale ? sale : original,
+					original: original,
+					sale: sale,
+					discount:
+						Math.round((sale / original) * 100) + "% off from $" + original,
+				};
 			},
 		},
 	};
