@@ -14,6 +14,7 @@
 
 	export default {
 		props: ["blok"],
+		data: () => ({ annotationsDrawn: false }),
 		computed: {
 			richtext() {
 				if (this.blok.html) {
@@ -25,30 +26,32 @@
 		},
 		methods: {
 			annotate() {
-				let id = "blok-" + this.blok._uid;
-				let annotations = [];
-				document.querySelectorAll(`#${id} .annotation`).forEach((el) => {
-					let type = el.classList[0];
-					let color = this.blok.annotation_color || "var(--v-accent-base)";
-					let multiline = true;
-					if (type === "highlight") {
-						color = "yellow";
-					}
-					if (type === "bracket") {
-						multiline = false;
-					}
-					annotations.push(
-						annotate(el, {
-							type: type,
-							color: color,
-							padding: [3, 3, 3, 3],
-							multiline: multiline,
-							iterations: 1,
-							brackets: ["left", "right"],
-						})
-					);
-				});
-				annotationGroup(annotations).show();
+				if (this.annotationsDrawn === false) {
+					this.annotationsDrawn = true;
+					let id = "blok-" + this.blok._uid;
+					let annotations = [];
+					document.querySelectorAll(`#${id} .annotation`).forEach((el) => {
+						let type = el.classList[0];
+						let color = this.blok.annotation_color || "var(--v-accent-base)";
+						let multiline = true;
+						if (type === "highlight") {
+							color = "yellow";
+						}
+						if (type === "bracket") {
+							multiline = false;
+						}
+						annotations.push(
+							annotate(el, {
+								type: type,
+								color: color,
+								multiline: multiline,
+								iterations: 1,
+								brackets: ["left", "right"],
+							})
+						);
+					});
+					annotationGroup(annotations).show();
+				}
 			},
 		},
 	};
