@@ -2,7 +2,7 @@
 .rich-text(
 	:id="'blok-' + blok._uid",
 	v-html="richtext",
-	v-intersect.once="annotate",
+	v-intersect.once="{handler: annotate, options: {threshold: [0.33]}}",
 	:class="blok.class",
 	:style="blok.style",
 	v-editable="blok"
@@ -14,7 +14,6 @@
 
 	export default {
 		props: ["blok"],
-		data: () => ({ annotationsDrawn: false }),
 		computed: {
 			richtext() {
 				if (this.blok.html) {
@@ -25,9 +24,8 @@
 			},
 		},
 		methods: {
-			annotate() {
-				if (this.annotationsDrawn === false) {
-					this.annotationsDrawn = true;
+			annotate(entries) {
+				if (entries[0].isIntersecting) {
 					let id = "blok-" + this.blok._uid;
 					let annotations = [];
 					document.querySelectorAll(`#${id} .annotation`).forEach((el) => {
