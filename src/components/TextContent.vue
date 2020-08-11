@@ -1,6 +1,8 @@
 <template lang="pug">
 .rich-text(
+	:id="'blok-' + blok._uid",
 	v-html="richtext",
+	v-intersect.once="annotate",
 	:class="blok.class",
 	:style="blok.style",
 	v-editable="blok"
@@ -8,6 +10,8 @@
 </template>
 
 <script>
+	import { annotate, annotationGroup } from "rough-notation";
+
 	export default {
 		props: ["blok"],
 		computed: {
@@ -17,6 +21,34 @@
 				} else {
 					return this.$storyapi.richTextResolver.render(this.blok.rich_text);
 				}
+			},
+		},
+		methods: {
+			annotate() {
+				let id = "blok-" + this.blok._uid;
+				let annotations = [];
+				document.querySelectorAll(`#${id} .annotation`).forEach((el) => {
+					let type = el.classList[0];
+					let color = this.blok.annotation_color || "var(--v-accent-base)";
+					let multiline = true;
+					if (type === "highlight") {
+						color = "yellow";
+					}
+					if (type === "bracket") {
+						multiline = false;
+					}
+					annotations.push(
+						annotate(el, {
+							type: type,
+							color: color,
+							padding: [3, 3, 3, 3],
+							multiline: multiline,
+							iterations: 1,
+							brackets: ["left", "right"],
+						})
+					);
+				});
+				annotationGroup(annotations).show();
 			},
 		},
 	};

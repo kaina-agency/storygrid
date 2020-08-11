@@ -13,6 +13,7 @@
 		"@mdi/js": "^5.1.45",
 		"gridsome": "^0.7.14",
 		"gridsome-source-storyblok": "^1.0.1",
+		"rough-notation": "^0.4.0",
 		"vue-no-ssr": "^1.1.1",
 		"vuetify": "^2.2.27",
 		"yarn": "^1.22.4"
