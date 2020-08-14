@@ -5,7 +5,8 @@ v-list-item(
 	:href="href",
 	:to="to",
 	exact,
-	v-editable="blok"
+	v-editable="blok",
+	@click="hashHandler"
 )
 	v-list-item-avatar(
 		v-if="blok.avatar.filename || blok.icon",
@@ -75,6 +76,13 @@ v-list-item(
 					);
 				} else {
 					return undefined;
+				}
+			},
+			hashHandler() {
+				let l = this.blok.link;
+				if (l.linktype === "url" && l.url.startsWith("#")) {
+					let name = l.url.replace("#", "");
+					document.querySelector(`[data-name='${name}'`).scrollIntoView();
 				}
 			},
 		},

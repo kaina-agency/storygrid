@@ -76,18 +76,11 @@ v-app(:class="path")
 			dark: false,
 			appBar: false,
 			drawer: false,
-			draft: {},
 			path: "",
 			set: {},
 		}),
 		created() {
-			let settings = {};
-
-			if (this.draft._uid) {
-				settings = this.draft;
-			} else {
-				settings = this.$static.allStoryblokEntry.edges[0].node.content;
-			}
+			let settings = this.$static.allStoryblokEntry.edges[0].node.content;
 
 			if (settings.default_theme === "dark") {
 				this.$vuetify.theme.dark = true;
@@ -295,7 +288,7 @@ v-app(:class="path")
 	}
 
 	.in-editor {
-		.v-btn,
+		.v-btn:not(.v-app-bar__nav-icon),
 		.v-card {
 			pointer-events: none !important;
 		}
