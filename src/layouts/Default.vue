@@ -120,7 +120,7 @@ v-app(:class="path")
 							version: "draft",
 						},
 						(data) => {
-							this.draft = data.story.content;
+							this.set = data.story.content;
 						}
 					);
 				};
@@ -255,6 +255,10 @@ v-app(:class="path")
 	.h6 > * {
 		font-size: 18;
 		font-size: var(--h6-fs, 18px);
+	}
+
+	p {
+		line-height: 1.5;
 	}
 
 	p,

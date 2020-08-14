@@ -105,13 +105,15 @@ v-card(
 		}
 	}
 
-	.theme--light.v-card .v-card__subtitle,
-	.theme--light.v-card > .v-card__text {
-		color: rgba(0, 0, 0, 0.9);
+	.theme--light.v-card .v-card__subtitle *,
+	.theme--light.v-card > .v-card__text * {
+		color: black;
+		opacity: 1;
 	}
 
-	.theme--dark.v-card .v-card__subtitle,
-	.theme--dark.v-card > .v-card__text {
-		color: rgba(255, 255, 255, 0.9);
+	.theme--dark.v-card .v-card__subtitle *,
+	.theme--dark.v-card > .v-card__text * {
+		color: white;
+		opacity: 1;
 	}
 </style>
