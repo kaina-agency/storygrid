@@ -112,7 +112,9 @@ v-card(
 	}
 
 	.theme--dark.v-card .v-card__subtitle *,
-	.theme--dark.v-card > .v-card__text * {
+	.theme--dark.v-card > .v-card__text *,
+	.theme--light.v-card .v-card__subtitle .theme--dark *,
+	.theme--light.v-card > .v-card__text .theme--dark * {
 		color: white;
 		opacity: 1;
 	}

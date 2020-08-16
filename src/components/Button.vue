@@ -1,6 +1,7 @@
 <template lang="pug">
 v-btn(
 	:color="blok.color",
+	:dark="blok.style.includes('dark')",
 	:depressed="blok.style.includes('depressed')",
 	:disabled="disabled",
 	:fab="blok.style.includes('fab')",

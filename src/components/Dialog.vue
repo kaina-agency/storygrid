@@ -20,11 +20,19 @@ v-dialog(v-model="dialog", eager, width="500")
 	export default {
 		props: ["blok"],
 		data: () => ({ dialog: false }),
+		mounted() {
+			if (this.blok.auto_show && !localStorage[`${this.blok._uid}`]) {
+				setTimeout(() => {
+					this.dialog = true;
+					localStorage[`${this.blok._uid}`] = true;
+				}, this.blok.auto_show_delay * 1000 || 3000);
+			}
+		},
 	};
 </script>
 
 <style>
 	.v-dialog > .v-card > .v-card__text {
-		padding-top: 24px;
+		padding-top: 20px !important;
 	}
 </style>

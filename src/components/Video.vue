@@ -10,7 +10,7 @@
 	)
 	iframe(
 		v-else,
-		src="https://www.youtube.com/embed/UbzKuFnXxiU",
+		src="https://www.youtube.com/embed/NpEaa2P7qZI",
 		frameborder="0"
 	)
 </template>
