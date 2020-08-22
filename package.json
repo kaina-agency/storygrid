@@ -9,6 +9,9 @@
 		"build": "gridsome build"
 	},
 	"dependencies": {
+		"@fullcalendar/interaction": "^5.3.0",
+		"@fullcalendar/list": "^5.3.0",
+		"@fullcalendar/vue": "^5.3.0",
 		"@gridsome/plugin-google-analytics": "^0.1.0",
 		"@mdi/js": "^5.1.45",
 		"gridsome": "^0.7.14",
