@@ -69,8 +69,6 @@
 							.then((response) => response.json())
 							.then((data) => (events = data.items));
 
-						console.log(this.blok[`calendar_${i + 1}_color`]);
-
 						await events.forEach((event) => {
 							let details = {
 								title: event.summary,
@@ -92,8 +90,6 @@
 				info.jsEvent.preventDefault();
 				let request = `https://www.googleapis.com/calendar/v3/calendars/${info.event.extendedProps.calendar}/events/${info.event.id}?key=${this.blok.api_key}`;
 				let event = {};
-
-				console.log(info);
 
 				await fetch(request)
 					.then((response) => response.json())
