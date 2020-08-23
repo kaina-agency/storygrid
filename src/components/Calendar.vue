@@ -18,10 +18,10 @@
 						| M21,6V8H3V6H21M3,18H12V16H3V18M3,13H21V11H3V13Z
 					p(v-html="selectedEvent.description")
 				.d-flex(v-if="selectedEvent.attachments")
-					v-icon.mt-2(left)
+					v-icon.mt-1(left)
 						| M7.71,3.5L1.15,15L4.58,21L11.13,9.5M9.73,15L6.3,21H19.42L22.85,15M22.28,14L15.42,2H8.58L8.57,2L15.43,14H22.28Z
 					.d-flex.flex-wrap
-						v-chip.ma-1(
+						v-chip.mr-2.mb-2(
 							v-for="attachment in selectedEvent.attachments",
 							:key="attachment.title",
 							:href="attachment.fileUrl",

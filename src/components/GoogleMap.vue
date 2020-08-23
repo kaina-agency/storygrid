@@ -19,7 +19,7 @@ div(v-editable="blok")
 			url() {
 				return (
 					"https://maps.google.com/maps?q=" +
-					JSON.stringify(this.blok.location) +
+					encodeURI(this.blok.location) +
 					this.blok.satellite +
 					"&z=" +
 					this.blok.zoom_level +
