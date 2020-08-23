@@ -1,17 +1,18 @@
 <template lang="pug">
-.calendar
-	FullCalendar(:options="calendarOptions" ref="fullCalendar")
-	v-dialog(v-model="popup" width="500")
+.calendar(v-editable="blok")
+	FullCalendar(:options="calendarOptions", ref="fullCalendar")
+	v-dialog(v-model="popup", width="500")
 		v-card.event
 			v-card-text.description
-				.title.mb-2 {{selectedEvent.title}}
-				p.mb-2 Starts: {{when(selectedEvent.start)}}
-				p Ends: {{when(selectedEvent.end)}}
+				p.title.bold {{ selectedEvent.title }}
+				p.mb-0(v-html="allDay(selectedEvent.start, selectedEvent.end)")
 				.d-flex.mb-4(v-if="selectedEvent.location")
 					v-icon(left)
 						| M12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5M12,2A7,7 0 0,1 19,9C19,14.25 12,22 12,22C12,22 5,14.25 5,9A7,7 0 0,1 12,2M12,4A5,5 0 0,0 7,9C7,10 7,12 12,18.71C17,12 17,10 17,9A5,5 0 0,0 12,4Z
-					a(:href="`https://maps.google.com/maps?hl=en&q=${encodeURI(selectedEvent.location)}`")
-						| {{selectedEvent.location}}
+					a(
+						:href="`https://maps.google.com/maps?hl=en&q=${encodeURI(selectedEvent.location)}`"
+					)
+						| {{ selectedEvent.location }}
 				.d-flex(v-if="selectedEvent.description")
 					v-icon(left)
 						| M21,6V8H3V6H21M3,18H12V16H3V18M3,13H21V11H3V13Z
@@ -27,7 +28,7 @@
 	export default {
 		props: ["blok"],
 		components: {
-			FullCalendar
+			FullCalendar,
 		},
 		data() {
 			return {
@@ -41,35 +42,90 @@
 					height: "auto",
 					events: [],
 					selectable: true,
-					eventClick: this.eventClick
-				}
+					eventClick: this.eventClick,
+				},
 			};
 		},
-		async mounted() {
-			let events = [];
-			let cleaned = [];
-			let d = new Date();
-			let start = new Date(d.getFullYear(), d.getMonth(), 1).toISOString();
-			let request = `https://www.googleapis.com/calendar/v3/calendars/${this.blok.calendar_id}/events?key=${this.blok.api_key}&timeMin=${start}&singleEvents=true&orderBy=startTime`;
+		methods: {
+			getEvents() {
+				let events = [];
+				let cleaned = [];
+				let d = new Date();
+				let start = new Date(d.getFullYear(), d.getMonth(), 1).toISOString();
 
-			await fetch(request)
-				.then(response => response.json())
-				.then(data => (events = data.items));
+				let cals = [
+					this.blok.calendar_1,
+					this.blok.calendar_2,
+					this.blok.calendar_3,
+					this.blok.calendar_4,
+					this.blok.calendar_5,
+				];
 
-			await events.forEach(event => {
-				let details = {
+				cals.forEach(async (cal, i) => {
+					if (cal) {
+						let request = `https://www.googleapis.com/calendar/v3/calendars/${cal}/events?key=${this.blok.api_key}&timeMin=${start}&singleEvents=true&orderBy=startTime`;
+
+						await fetch(request)
+							.then((response) => response.json())
+							.then((data) => (events = data.items));
+
+						console.log(this.blok[`calendar_${i + 1}_color`]);
+
+						await events.forEach((event) => {
+							let details = {
+								title: event.summary,
+								id: event.id,
+								start: event.start?.date || event.start?.dateTime,
+								end: event.end?.date || event.end?.dateTime,
+								color: this.blok[`calendar_${i + 1}_color`].color,
+								textColor: "white",
+								calendar: cal,
+							};
+							cleaned.push(details);
+						});
+					}
+				});
+
+				this.calendarOptions.events = cleaned;
+			},
+			async eventClick(info) {
+				info.jsEvent.preventDefault();
+				let request = `https://www.googleapis.com/calendar/v3/calendars/${info.event.extendedProps.calendar}/events/${info.event.id}?key=${this.blok.api_key}`;
+				let event = {};
+
+				console.log(info);
+
+				await fetch(request)
+					.then((response) => response.json())
+					.then((data) => (event = data));
+
+				this.selectedEvent = {
 					title: event.summary,
-					id: event.id,
-					start: event.start?.date || event.start?.dateTime,
-					end: event.end?.date || event.end?.dateTime,
-					color: "var(--v-accent-base)",
-					textColor: "white"
+					description: event?.description,
+					location: event?.location,
+					start: event?.start,
+					end: event?.end,
 				};
-				cleaned.push(details);
-			});
 
-			this.calendarOptions.events = cleaned;
+				this.popup = true;
+			},
+			allDay(start, end) {
+				let s = moment(start?.date || start?.dateTime);
+				let e = moment(end?.date || end?.dateTime);
+				let f = "dddd, MMMM Do [at] hh:mma";
+				let diff = e.diff(s);
 
+				if (diff != 86400000) {
+					return `Starts: ${s.format(f)}<br/>Ends: ${e.format(f)}<br/><br/>`;
+				} else {
+					return `all-day ${s.format("dddd, MMMM Do")}`;
+				}
+			},
+		},
+		created() {
+			this.getEvents();
+		},
+		mounted() {
 			let calendarApi = this.$refs.fullCalendar.getApi();
 			window.addEventListener("resize", () => {
 				let view = this.$vuetify.breakpoint.mdAndUp
@@ -78,31 +134,6 @@
 				calendarApi.changeView(view);
 			});
 		},
-		methods: {
-			async eventClick(info) {
-				info.jsEvent.preventDefault();
-				let request = `https://www.googleapis.com/calendar/v3/calendars/${this.blok.calendar_id}/events/${info.event.id}?key=${this.blok.api_key}`;
-				let event = {};
-
-				await fetch(request)
-					.then(response => response.json())
-					.then(data => (event = data));
-
-				this.selectedEvent = {
-					title: event.summary,
-					description: event?.description,
-					location: event?.location,
-					start: event?.start,
-					end: event?.end
-				};
-
-				this.popup = true;
-			},
-			when(input) {
-				let val = input?.date || input?.dateTime;
-				return moment(val).format("dddd, MMMM Do [at] hh:mma");
-			}
-		}
 	};
 </script>
 
