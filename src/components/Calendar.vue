@@ -17,6 +17,19 @@
 					v-icon(left)
 						| M21,6V8H3V6H21M3,18H12V16H3V18M3,13H21V11H3V13Z
 					p(v-html="selectedEvent.description")
+				.d-flex(v-if="selectedEvent.attachments")
+					v-icon.mt-2(left)
+						| M7.71,3.5L1.15,15L4.58,21L11.13,9.5M9.73,15L6.3,21H19.42L22.85,15M22.28,14L15.42,2H8.58L8.57,2L15.43,14H22.28Z
+					.d-flex.flex-wrap
+						v-chip.ma-1(
+							v-for="attachment in selectedEvent.attachments",
+							:key="attachment.title",
+							:href="attachment.fileUrl",
+							outlined
+						)
+							v-avatar(left, tile)
+								v-img(:src="attachment.iconLink", style="transform: scale(0.66);")
+							span {{ attachment.title }}
 </template>
 
 <script>
@@ -48,7 +61,6 @@
 		},
 		methods: {
 			getEvents() {
-				let events = [];
 				let cleaned = [];
 				let d = new Date();
 				let start = new Date(d.getFullYear(), d.getMonth(), 1).toISOString();
@@ -62,6 +74,7 @@
 				];
 
 				cals.forEach(async (cal, i) => {
+					let events = [];
 					if (cal) {
 						let request = `https://www.googleapis.com/calendar/v3/calendars/${cal}/events?key=${this.blok.api_key}&timeMin=${start}&singleEvents=true&orderBy=startTime`;
 
@@ -95,12 +108,15 @@
 					.then((response) => response.json())
 					.then((data) => (event = data));
 
+				console.log(event);
+
 				this.selectedEvent = {
 					title: event.summary,
 					description: event?.description,
 					location: event?.location,
 					start: event?.start,
 					end: event?.end,
+					attachments: event?.attachments,
 				};
 
 				this.popup = true;
