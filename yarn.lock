@@ -820,10 +820,10 @@
     preact "^10.0.5"
     tslib "^2.0.0"
 
-"@fullcalendar/interaction@^5.3.0":
+"@fullcalendar/daygrid@^5.3.0":
   version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@fullcalendar/interaction/-/interaction-5.3.0.tgz#f63621b56463a6c3ee462f115d197a6bb6fbeb04"
-  integrity sha512-ls1OlE55axFUEVHdk3k+gRThx6dvOtk7XKTYHCy1nQmKafWhvW8wuf8v8Pa5uUAndRkNVZZNfbha842P4zb+NA==
+  resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-5.3.0.tgz#d3107a32c4f9c3e1a4bb7084f5fc310b1f92a2d0"
+  integrity sha512-YDE7Pnxf+jkkQjogYPEgHDn4mahgUl2eNJRSytQOBJDVrsWcR/nAXI0PhsWHKi86BZVviEiEjzuLv+e4jeIVCg==
   dependencies:
     "@fullcalendar/common" "~5.3.0"
     tslib "^2.0.0"

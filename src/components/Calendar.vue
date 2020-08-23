@@ -1,6 +1,6 @@
 <template lang="pug">
 .calendar
-	FullCalendar(:options="calendarOptions")
+	FullCalendar(:options="calendarOptions" ref="fullCalendar")
 	v-dialog(v-model="popup" width="500")
 		v-card.event
 			v-card-text.description
@@ -21,7 +21,7 @@
 <script>
 	import FullCalendar from "@fullcalendar/vue";
 	import listPlugin from "@fullcalendar/list";
-	import interactionPlugin from "@fullcalendar/interaction";
+	import dayGridPlugin from "@fullcalendar/daygrid";
 	import moment from "moment";
 
 	export default {
@@ -34,8 +34,10 @@
 				popup: false,
 				selectedEvent: {},
 				calendarOptions: {
-					plugins: [listPlugin, interactionPlugin],
-					initialView: "listMonth",
+					plugins: [listPlugin, dayGridPlugin],
+					initialView: this.$vuetify.breakpoint.mdAndUp
+						? "dayGridMonth"
+						: "listMonth",
 					height: "auto",
 					events: [],
 					selectable: true,
@@ -67,6 +69,14 @@
 			});
 
 			this.calendarOptions.events = cleaned;
+
+			let calendarApi = this.$refs.fullCalendar.getApi();
+			window.addEventListener("resize", () => {
+				let view = this.$vuetify.breakpoint.mdAndUp
+					? "dayGridMonth"
+					: "listMonth";
+				calendarApi.changeView(view);
+			});
 		},
 		methods: {
 			async eventClick(info) {
@@ -89,7 +99,6 @@
 				this.popup = true;
 			},
 			when(input) {
-				console.log(input);
 				let val = input?.date || input?.dateTime;
 				return moment(val).format("dddd, MMMM Do [at] hh:mma");
 			}
