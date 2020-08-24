@@ -21,7 +21,7 @@
 					v-icon.mt-1(left)
 						| M7.71,3.5L1.15,15L4.58,21L11.13,9.5M9.73,15L6.3,21H19.42L22.85,15M22.28,14L15.42,2H8.58L8.57,2L15.43,14H22.28Z
 					.d-flex.flex-wrap
-						v-chip.mr-2.mb-2(
+						v-chip.mr-2.mb-2.attachment(
 							v-for="attachment in selectedEvent.attachments",
 							:key="attachment.title",
 							:href="attachment.fileUrl",
@@ -29,7 +29,7 @@
 						)
 							v-avatar(left, tile)
 								v-img(:src="attachment.iconLink", style="transform: scale(0.66);")
-							span {{ attachment.title }}
+							.text-truncate {{ attachment.title }}
 </template>
 
 <script>
@@ -140,9 +140,7 @@
 		mounted() {
 			let calendarApi = this.$refs.fullCalendar.getApi();
 			window.addEventListener("resize", () => {
-				let view = this.$vuetify.breakpoint.mdAndUp
-					? "dayGridMonth"
-					: "listMonth";
+				let view = window.innerWidth > 1024 ? "dayGridMonth" : "listMonth";
 				calendarApi.changeView(view);
 			});
 		},
@@ -154,6 +152,9 @@
 		.description,
 		.description * {
 			font-size: 14px;
+		}
+		.attachment {
+			max-width: calc(100vw - 130px);
 		}
 	}
 
