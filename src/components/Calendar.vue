@@ -107,8 +107,6 @@
 					.then((response) => response.json())
 					.then((data) => (event = data));
 
-				console.log(event);
-
 				this.selectedEvent = event;
 
 				this.popup = true;
