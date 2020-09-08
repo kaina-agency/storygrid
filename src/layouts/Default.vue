@@ -302,7 +302,7 @@ v-app(:class="path")
 	.in-editor {
 		.v-btn:not(.v-app-bar__nav-icon),
 		.v-card {
-			pointer-events: none !important;
+			// pointer-events: none !important;
 		}
 	}
 </style>
