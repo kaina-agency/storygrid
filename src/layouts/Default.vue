@@ -67,6 +67,18 @@ v-app(:class="path")
 		| {{ smoothType('--bs', set.body_min, set.body_max) }}
 		| }
 		| {{ set.inject_css }}
+	component(:is="'style'" v-if="set.font_1_name")
+		|	@font-face {
+		|		font-family: '{{set.font_1_name}}';
+		|		src: url('{{set.font_1_woff2.filename}}') format('woff2'),
+		|				 url('{{set.font_1_woff.filename}}') format('woff');
+		|	}
+	component(:is="'style'" v-if="set.font_2_name")
+		|	@font-face {
+		|		font-family: '{{set.font_2_name}}';
+		|		src: url('{{set.font_2_woff2.filename}}') format('woff2'),
+		|				 url('{{set.font_2_woff.filename}}') format('woff');
+		|	}
 </template>
 
 <script>
