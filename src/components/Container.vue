@@ -27,6 +27,8 @@ v-container(
 <style scoped lang="scss">
 	.container {
 		position: relative;
+		content-visibility: auto;
+		content-intrinsic-size: 1000px;
 
 		@media (min-width: 1024px) {
 			padding: 24px;
