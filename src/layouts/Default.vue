@@ -39,7 +39,7 @@ v-app(:class="path")
 			:blok="blok",
 			:is="blok.component"
 		)
-	v-content(app)
+	v-main(app)
 		slot
 		component(
 			v-for="blok in set.app_globals",
@@ -112,7 +112,8 @@ v-app(:class="path")
 			this.set = settings;
 		},
 		mounted() {
-			if (window.top !== window.self) {
+			if (window.top !== window.self || window.location.hostname === 'localhost') {
+				
 				document.body.classList.add("in-editor");
 				console.log("Edit Mode");
 

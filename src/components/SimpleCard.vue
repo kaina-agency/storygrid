@@ -11,8 +11,8 @@ v-card(
 	:to="blok.button_text ? undefined : to"
 )
 	picture(v-if="blok.image.filename")
-		source(:src="image.webp", type="image/webp")
-		source(:src="image.png", type="image/png")
+		source(:srcset="image.webp", type="image/webp")
+		source(:srcset="image.png", type="image/png")
 		img(
 			:src="image.png",
 			:alt="image.alt",

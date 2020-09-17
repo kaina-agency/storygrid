@@ -8,6 +8,9 @@ v-form(
 	v-model="valid",
 	v-editable="blok"
 )
+	div(v-if="blok.action.includes('formsubmit.co')")
+		input(type="hidden" name="_template" value="box")
+		input(type="text" name="_honey" style="display:none")
 	component(
 		v-for="blok in blok.content",
 		:key="blok._uid",

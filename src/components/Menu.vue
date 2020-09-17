@@ -25,14 +25,5 @@ v-menu(
 	import { Button } from "./Button";
 	export default {
 		props: ["blok"],
-
-		data: () => ({
-			items: [
-				{ title: "Click Me1" },
-				{ title: "Click Me2" },
-				{ title: "Click Me3" },
-				{ title: "Click Me4" },
-			],
-		}),
 	};
 </script>

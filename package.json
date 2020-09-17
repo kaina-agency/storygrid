@@ -18,7 +18,7 @@
 		"gridsome-source-storyblok": "^1.0.1",
 		"rough-notation": "^0.4.0",
 		"vue-no-ssr": "^1.1.1",
-		"vuetify": "^2.2.27",
+		"vuetify": "^2.3.10",
 		"yarn": "^1.22.4"
 	},
 	"devDependencies": {

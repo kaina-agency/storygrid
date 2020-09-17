@@ -10,7 +10,7 @@ v-card(
 	v-img(:src="image(props.images[0])")
 	v-card-title.pb-0
 		.text-truncate {{ props.name }}
-	v-card-text.subtitle-1
+	v-card-text.text-subtitle-1
 		.d-flex.justify-space-between
 			.green--text.darken-1 ${{ price.actual }}
 			.green--text.darken-1(v-if="props.sale_price") {{ price.discount }}
