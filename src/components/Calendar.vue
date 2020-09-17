@@ -129,9 +129,13 @@
 		},
 		mounted() {
 			let calendarApi = this.$refs.fullCalendar.getApi();
-			window.addEventListener("resize", () => {
-				let view = window.innerWidth > 1024 ? "dayGridMonth" : "listMonth";
-				calendarApi.changeView(view);
+			const mq = window.matchMedia("(min-width: 1024px)");
+			mq.addListener(() => {
+				if (mq.matches) {
+					calendarApi.changeView("dayGridMonth");
+				} else {
+					calendarApi.changeView("listMonth");
+				}
 			});
 		},
 	};
