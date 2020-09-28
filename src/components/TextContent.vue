@@ -12,6 +12,7 @@ div
 		v-if="lineClamp",
 		color="accent",
 		outlined,
+		small,
 		@click="lineClamp = undefined"
 	) Read More
 </template>
