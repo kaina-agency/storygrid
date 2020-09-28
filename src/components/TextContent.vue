@@ -1,12 +1,19 @@
 <template lang="pug">
-.rich-text(
-	:id="'blok-' + blok._uid",
-	v-html="richtext",
-	v-intersect.once="{handler: annotate, options: {threshold: [0.33]}}",
-	:class="blok.class",
-	:style="blok.style",
-	v-editable="blok"
-)
+div
+	.rich-text(
+		:id="'blok-' + blok._uid",
+		v-html="richtext",
+		v-intersect.once="{handler: annotate, options: {threshold: [0.33]}}",
+		:class="[blok.class, lineClamp ? 'line-clamp' : '']",
+		:style="[blok.style, { webkitLineClamp: lineClamp }]",
+		v-editable="blok"
+	)
+	v-btn.mt-4(
+		v-if="lineClamp",
+		color="accent",
+		outlined,
+		@click="lineClamp = undefined"
+	) Read More
 </template>
 
 <script>
@@ -14,6 +21,12 @@
 
 	export default {
 		props: ["blok"],
+		data: () => ({
+			lineClamp: undefined,
+		}),
+		created() {
+			this.lineClamp = this.blok.line_clamp;
+		},
 		computed: {
 			richtext() {
 				if (this.blok.html) {
@@ -69,6 +82,12 @@
 			position: relative;
 			top: -1rem;
 			margin-bottom: -1rem;
+		}
+
+		&.line-clamp {
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
 		}
 	}
 
