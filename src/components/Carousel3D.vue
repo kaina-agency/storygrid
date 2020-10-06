@@ -50,3 +50,9 @@ no-ssr
 		},
 	};
 </script>
+
+<style>
+.carousel-3d-slide:not(.current) * {
+	pointer-events: none;
+}
+</style>

@@ -83,6 +83,12 @@
 
 					let sources = srcset.split(", ");
 					src = sources[sources.length - 2];
+				} else if (b.use_placekitten === true) {
+					let ar = b.aspect_ratio.split("/");
+					let w = b.max_quality.split(",")[1];
+					let h = Math.floor((w * ar[1]) / ar[0]);
+					let rh = h + Math.floor(Math.random() * Math.floor(100));
+					src = `http://placekitten.com/${w}/${rh}`;
 				} else {
 					src = b.image.filename;
 				}
