@@ -6,7 +6,8 @@ v-expansion-panels(
 	:hover="blok.options.includes('hover')",
 	:tile="blok.options.includes('tile')",
 	:class="blok.class",
-	:style="blok.style"
+	:style="blok.style",
+	v-model="panel"
 )
 	v-expansion-panel(
 		v-for="blok in blok.content",
@@ -35,10 +36,16 @@ v-expansion-panels(
 <script>
 	export default {
 		props: ["blok"],
+		data: () => ({
+			panel: null,
+		}),
 		computed: {
 			color() {
 				return this.blok.color ? this.blok.color : "var(--card-bg)";
 			},
+		},
+		created() {
+			if (this.blok.default_item) this.panel = this.blok.default_item - 1;
 		},
 	};
 </script>

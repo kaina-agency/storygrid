@@ -58,8 +58,12 @@ v-btn(
 					this.$refs.icon.$el.innerHTML = isIOS ? iOS : other;
 				}
 			}
-			if (!navigator.share) {
-				if (this.blok.share_button === true) this.$el.style.display = "none";
+			if (
+				!navigator.share &&
+				window.location.hostname !== "localhost" &&
+				this.blok.share_button === true
+			) {
+				this.$el.style.display = "none";
 			}
 		},
 		computed: {
