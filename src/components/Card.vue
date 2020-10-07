@@ -105,8 +105,8 @@ v-card(
 		}
 	}
 
-	.theme--light.v-card .v-card__subtitle *,
-	.theme--light.v-card > .v-card__text * {
+	.theme--light.v-card .v-card__subtitle,
+	.theme--light.v-card > .v-card__text {
 		color: black;
 		opacity: 1;
 	}
