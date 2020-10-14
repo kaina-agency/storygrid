@@ -40,6 +40,13 @@ v-app(:class="path")
 			:is="blok.component"
 		)
 	v-main(app)
+		div(v-if="!barTimedOut")
+			component(
+				v-for="blok in set.announcement_bar",
+				:key="blok._uid",
+				:blok="blok",
+				:is="blok.component"
+			)
 		slot
 		component(
 			v-for="blok in set.app_globals",
@@ -67,18 +74,24 @@ v-app(:class="path")
 		| {{ smoothType('--bs', set.body_min, set.body_max) }}
 		| }
 		| {{ set.inject_css }}
-	component(:is="'style'" v-if="set.font_1_name")
-		|	@font-face {
-		|		font-family: '{{set.font_1_name}}';
-		|		src: url('{{set.font_1_woff2.filename}}') format('woff2'),
-		|				 url('{{set.font_1_woff.filename}}') format('woff');
-		|	}
-	component(:is="'style'" v-if="set.font_2_name")
-		|	@font-face {
-		|		font-family: '{{set.font_2_name}}';
-		|		src: url('{{set.font_2_woff2.filename}}') format('woff2'),
-		|				 url('{{set.font_2_woff.filename}}') format('woff');
-		|	}
+	component(:is="'style'", v-if="set.font_1_name")
+		| @font-face {
+		|
+		| font-family: '{{ set.font_1_name }}';
+		|
+		| src: url('{{ set.font_1_woff2.filename }}') format('woff2'),
+		|
+		| url('{{ set.font_1_woff.filename }}') format('woff');
+		| }
+	component(:is="'style'", v-if="set.font_2_name")
+		| @font-face {
+		|
+		| font-family: '{{ set.font_2_name }}';
+		|
+		| src: url('{{ set.font_2_woff2.filename }}') format('woff2'),
+		|
+		| url('{{ set.font_2_woff.filename }}') format('woff');
+		| }
 </template>
 
 <script>
@@ -112,8 +125,10 @@ v-app(:class="path")
 			this.set = settings;
 		},
 		mounted() {
-			if (window.top !== window.self || window.location.hostname === 'localhost') {
-				
+			if (
+				window.top !== window.self ||
+				window.location.hostname === "localhost"
+			) {
 				document.body.classList.add("in-editor");
 				console.log("Edit Mode");
 
@@ -168,6 +183,11 @@ v-app(:class="path")
 		methods: {
 			smoothType(selector, min, max) {
 				return `${selector}: calc(${min}px + (${max} - ${min}) * ((100vw - 400px) / (1800 - 400)));`;
+			},
+		},
+		computed: {
+			barTimedOut() {
+				return new Date() > new Date(this.set.announcement_bar_timeout);
 			},
 		},
 		watch: {
