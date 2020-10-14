@@ -21,6 +21,8 @@ v-btn(
 	:large="blok.size == 'lg'",
 	:x-large="blok.size == 'xl'",
 	v-editable="blok",
+	:class="blok.class",
+	:style="blok.styles",
 	@click="handleClick"
 ) 
 	v-icon(
