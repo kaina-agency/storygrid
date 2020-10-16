@@ -52,7 +52,7 @@
 				const filters = `filter: ${brt + cnt + sat + grs};`;
 				pt = bpt;
 
-				if (b.image.filename.includes(sb)) {
+				if (b.image.filename.includes(sb) && !b.image.filename.endsWith(".svg")) {
 					const cdn = "https://img2.storyblok.com";
 					const s = bo.includes("smart") ? "/smart" : "";
 					const q = `/filters:quality(${b.quality || "50"})`;
