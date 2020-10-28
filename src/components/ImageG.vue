@@ -88,7 +88,7 @@
 					let w = b.max_quality.split(",")[1];
 					let h = Math.floor((w * ar[1]) / ar[0]);
 					let rh = h + Math.floor(Math.random() * Math.floor(100));
-					src = `http://placekitten.com/${w}/${rh}`;
+					src = `https://placekitten.com/${w}/${rh}`;
 				} else {
 					src = b.image.filename;
 				}
