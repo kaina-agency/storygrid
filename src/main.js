@@ -39,6 +39,7 @@ import SimpleCard from '~/components/SimpleCard.vue'
 import SimpleGrid from '~/components/SimpleGrid.vue'
 import Snipcart from '~/components/Snipcart.vue'
 import Spacer from '~/components/Spacer.vue'
+import Sparkline from '~/components/Sparkline.vue'
 import Tabs from '~/components/Tabs.vue'
 import TextContent from '~/components/TextContent.vue'
 import Toolbar from '~/components/Toolbar.vue'
@@ -80,8 +81,9 @@ export default function(Vue, { router, head, isClient, appOptions }) {
 	Vue.component('SimpleCard', SimpleCard)
 	Vue.component('SimpleGrid', SimpleGrid)
 	Vue.component('Search', Search)
-	Vue.component('Spacer', Spacer)
 	Vue.component('Snipcart', Snipcart)
+	Vue.component('Spacer', Spacer)
+	Vue.component('Sparkline', Sparkline)
 	Vue.component('Tabs', Tabs)
 	Vue.component('TextContent', TextContent)
 	Vue.component('Toolbar', Toolbar)

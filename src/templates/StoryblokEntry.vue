@@ -18,8 +18,8 @@
 		computed: {
 			story() {
 				return this.$page.storyblokEntry;
-			}
-		}
+			},
+		},
 	};
 </script>
 
