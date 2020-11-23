@@ -235,6 +235,15 @@ v-app(:class="path")
 		}
 	}
 
+	.v-main__wrap {
+		display: flex;
+		flex-direction: column;
+
+		div:nth-child(2) {
+			flex-grow: 1;
+		}
+	}
+
 	.v-navigation-drawer__content {
 		border-right: 1px solid transparent;
 	}
@@ -329,13 +338,6 @@ v-app(:class="path")
 	.v-icon {
 		svg {
 			fill: currentColor;
-		}
-	}
-
-	.in-editor {
-		.v-btn:not(.v-app-bar__nav-icon),
-		.v-card {
-			// pointer-events: none !important;
 		}
 	}
 </style>
