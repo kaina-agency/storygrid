@@ -48,6 +48,13 @@ v-app(:class="path")
 				:is="blok.component"
 			)
 		slot
+		v-footer(v-if="set.footer.length", :class="set.footer_class")
+			component(
+				v-for="blok in set.footer",
+				:key="blok._uid",
+				:blok="blok",
+				:is="blok.component"
+			)
 		component(
 			v-for="blok in set.app_globals",
 			:key="blok._uid",
@@ -104,6 +111,11 @@ v-app(:class="path")
 			path: "",
 			set: {},
 		}),
+		metaInfo() {
+			return {
+				link: [{ rel: "icon", href: this.set.favicon.filename, key: "icon" }],
+			};
+		},
 		created() {
 			let settings = this.$static.allStoryblokEntry.edges[0].node.content;
 

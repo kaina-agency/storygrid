@@ -6,9 +6,7 @@
 
 module.exports = {
 	siteName: process.env.GRIDSOME_TITLE,
-	titleTemplate: process.env.GRIDSOME_TITLE,
-	siteDescription: 'Remember to update this',
-	icon: './src/icon.png' || './src/favicon.png',
+	siteDescription: process.env.GRIDSOME_DESCRIPTION,
 	port: 8080,
 	plugins: [
 		{

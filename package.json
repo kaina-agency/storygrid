@@ -9,17 +9,17 @@
 		"build": "gridsome build"
 	},
 	"dependencies": {
-		"@fullcalendar/daygrid": "^5.3.0",
-		"@fullcalendar/list": "^5.3.0",
-		"@fullcalendar/vue": "^5.3.0",
-		"@gridsome/plugin-google-analytics": "^0.1.0",
-		"@mdi/js": "^5.1.45",
+		"@fullcalendar/daygrid": "^5.4.0",
+		"@fullcalendar/list": "^5.4.0",
+		"@fullcalendar/vue": "^5.4.0",
+		"@gridsome/plugin-google-analytics": "^0.1.2",
+		"@mdi/js": "^5.8.55",
 		"gridsome": "^0.7.14",
 		"gridsome-source-storyblok": "^1.0.1",
-		"rough-notation": "^0.4.0",
+		"rough-notation": "^0.5.1",
 		"vue-no-ssr": "^1.1.1",
-		"vuetify": "^2.3.10",
-		"yarn": "^1.22.4"
+		"vuetify": "^2.3.18",
+		"yarn": "^1.22.10"
 	},
 	"devDependencies": {
 		"deepmerge": "^4.2.2",
@@ -29,7 +29,7 @@
 		"os": "^0.1.1",
 		"pug": "^2.0.4",
 		"pug-plain-loader": "^1.0.0",
-		"sass": "^1.26.10",
+		"sass": "^1.29.0",
 		"sass-loader": "7.3.1",
 		"vue-carousel-3d": "^0.2.0",
 		"vue-packer": "^0.3.0",
