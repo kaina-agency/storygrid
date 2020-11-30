@@ -23,6 +23,7 @@
 			snipTag.hidden = true;
 			snipTag.dataset.apiKey = this.blok.key;
 			snipTag.dataset.configAddProductBehavior = "none";
+			snipTag.dataset.configModalStyle = "side";
 			document.body.appendChild(snipTag);
 			// load styles from CDN
 			let snipStyles = document.createElement("link");
