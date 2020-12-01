@@ -53,15 +53,3 @@ v-expansion-panels(
 		},
 	};
 </script>
-
-<style>
-	.v-list-item-group .v-expansion-panel-header {
-		font-size: 1rem;
-		padding: 0 16px;
-	}
-	.expansion-icon {
-		flex: 0 0 auto !important;
-		margin-right: 8px;
-		width: 40px;
-	}
-</style>
