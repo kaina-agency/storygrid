@@ -14,16 +14,20 @@ v-expansion-panels(
 		:key="blok._uid",
 		v-editable="blok"
 	)
-		v-expansion-panel-header(:color="color")
+		v-expansion-panel-header(
+			:color="color",
+			:class="[blok.header.length ? 'pa-0' : '', 'pr-4']"
+		)
 			component(
 				v-for="blok in blok.header",
 				:key="blok._uid",
 				:blok="blok",
-				:is="blok.component"
+				:is="blok.component",
+				style="pointer-events: none"
 			)
-			v-list-item-avatar.expansion-icon(v-if="blok.icon")
-				.g-icon(v-html="blok.icon", notranslate)
-			span(v-if="blok.title") {{ blok.title }}
+			.d-flex.align-center
+				.g-icon.mr-2(v-html="blok.icon", notranslate)
+				span(v-if="blok.title") {{ blok.title }}
 		v-expansion-panel-content(:color="color")
 			component(
 				v-for="blok in blok.content",
