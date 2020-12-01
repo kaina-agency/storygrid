@@ -239,7 +239,7 @@ v-app(:class="path")
 		display: flex;
 		flex-direction: column;
 
-		div:nth-child(2) {
+		> div:nth-child(2) {
 			flex-grow: 1;
 		}
 	}
