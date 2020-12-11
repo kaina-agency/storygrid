@@ -74,6 +74,7 @@ div
 				scriptTags.forEach((tag) => {
 					let newTag = document.createElement("script");
 					newTag.src = tag.src;
+					tag.remove();
 					document.head.appendChild(newTag);
 				});
 			}
