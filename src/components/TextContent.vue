@@ -66,6 +66,18 @@ div
 				}
 			},
 		},
+		mounted() {
+			if (this.blok.html.includes("src")) {
+				let scriptTags = document.querySelectorAll(
+					`#blok-${this.blok._uid} script`
+				);
+				scriptTags.forEach((tag) => {
+					let newTag = document.createElement("script");
+					newTag.src = tag.src;
+					document.head.appendChild(newTag);
+				});
+			}
+		},
 	};
 </script>
 
