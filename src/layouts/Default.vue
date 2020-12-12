@@ -40,6 +40,12 @@ v-app(:class="path")
 			:is="blok.component"
 		)
 	v-main(app)
+		component(
+			v-for="blok in set.app_globals",
+			:key="blok._uid",
+			:blok="blok",
+			:is="blok.component"
+		)
 		div(v-if="!barTimedOut")
 			component(
 				v-for="blok in set.announcement_bar",
@@ -55,12 +61,6 @@ v-app(:class="path")
 				:blok="blok",
 				:is="blok.component"
 			)
-		component(
-			v-for="blok in set.app_globals",
-			:key="blok._uid",
-			:blok="blok",
-			:is="blok.component"
-		)
 
 	div(v-html="set.inject_html")
 	component(:is="'style'")
@@ -112,7 +112,7 @@ v-app(:class="path")
 			set: {},
 		}),
 		metaInfo() {
-			let favicon = this.set.favicon.filename || ""
+			let favicon = this.set.favicon.filename || "";
 			return {
 				link: [{ rel: "icon", href: favicon, key: "icon" }],
 			};
