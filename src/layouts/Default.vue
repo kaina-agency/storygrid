@@ -68,6 +68,7 @@ v-app(:class="path")
 		| --v-primary-base: {{ !dark ? set.primary : set.primary_dark }};
 		| --v-secondary-base: {{ !dark ? set.secondary : set.secondary_dark }};
 		| --v-accent-base: {{ !dark ? set.accent : set.accent_dark }};
+		| --v-anchor-base: {{ !dark ? set.anchor : set.anchor_dark }};
 		| --bg: {{ !dark ? set.background : set.background_dark }};
 		| --card-bg: {{ !dark ? set.card_background : set.card_background_dark }};
 		| --heading-font: {{ set.heading_font }};
