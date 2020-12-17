@@ -56,7 +56,6 @@ div(:class="blok.class")
 		}),
 		methods: {
 			async search() {
-				let location = window.location.host;
 				let search = `https://www.googleapis.com/customsearch/v1/siterestrict?cx=${this.blok.custom_search_engine}&q=${this.query}&safe=off&key=${this.blok.search_api_key}`;
 
 				await fetch(search)
@@ -65,9 +64,6 @@ div(:class="blok.class")
 
 				this.numResults = this.results.searchInformation.totalResults;
 				this.showResults = true;
-				// window.open(
-				// 	`https://www.google.com/search?q=site:${location} ${this.query}`
-				// );
 			},
 		},
 	};
