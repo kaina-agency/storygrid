@@ -26,6 +26,7 @@ div(:class="blok.class")
 					:append-icon="icon",
 					:label="blok.label",
 					:style="`max-width: ${blok.max_width}`",
+					:autofocus="autofocus",
 					color="accent",
 					dense,
 					flat,
@@ -52,6 +53,7 @@ div(:class="blok.class")
 			results: {},
 			numResults: 0,
 			showResults: false,
+			autofocus: true,
 			icon: mdiMagnify,
 		}),
 		methods: {
@@ -65,6 +67,10 @@ div(:class="blok.class")
 				this.numResults = this.results.searchInformation.totalResults;
 				this.showResults = true;
 			},
+		},
+		mounted() {
+			if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+				this.autofocus = false;
 		},
 	};
 </script>
