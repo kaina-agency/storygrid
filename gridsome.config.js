@@ -16,13 +16,7 @@ module.exports = {
 					accessToken: process.env.GRIDSOME_SB,
 				},
 			},
-		},
-		{
-			use: '@gridsome/plugin-google-analytics',
-			options: {
-				id: process.env.GRIDSOME_GA,
-			},
-		},
+		}
 	],
 	chainWebpack: (config) => {
 		config.module
