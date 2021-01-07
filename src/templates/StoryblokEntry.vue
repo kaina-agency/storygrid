@@ -24,7 +24,7 @@
 			let slug = this.$page.storyblokEntry.slug;
 			if (slug !== "settings") {
 				let meta = this.$page.storyblokEntry.content.meta;
-				let image = this.$page.storyblokEntry.content.post_image.filename || "";
+				let image = this.$page.storyblokEntry.content.post_image?.filename || "";
 				function titleCase(string) {
 					var sentence = string.toLowerCase().split(" ");
 					for (var i = 0; i < sentence.length; i++) {

@@ -113,7 +113,7 @@ v-app(:class="path")
 			set: {},
 		}),
 		metaInfo() {
-			let favicon = this.set.favicon.filename || "";
+			let favicon = this.set.favicon?.filename || "";
 			return {
 				link: [{ rel: "icon", href: favicon, key: "icon" }],
 			};
