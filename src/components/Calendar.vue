@@ -27,7 +27,7 @@
 							outlined
 						)
 							v-avatar(left, tile)
-								v-img(:src="attachment.iconLink", style="transform: scale(0.66);")
+								v-img(:src="attachment.iconLink", style="transform: scale(0.66)")
 							.text-truncate {{ attachment.title }}
 </template>
 
@@ -35,7 +35,7 @@
 	import FullCalendar from "@fullcalendar/vue";
 	import listPlugin from "@fullcalendar/list";
 	import dayGridPlugin from "@fullcalendar/daygrid";
-	import moment from "moment";
+	var dayjs = require("dayjs");
 
 	export default {
 		props: ["blok"],
@@ -112,15 +112,17 @@
 				this.popup = true;
 			},
 			allDay(start, end) {
-				let s = moment(start?.date || start?.dateTime);
-				let e = moment(end?.date || end?.dateTime);
-				let f = "dddd, MMMM Do [at] hh:mma";
-				let diff = e.diff(s);
+				let s = dayjs(start?.date || start?.dateTime);
+				let e = dayjs(end?.date || end?.dateTime);
+				let f = "dddd, MMMM D [at] h:mma";
+				let diff = dayjs(e).diff(s);
 
 				if (diff != 86400000) {
-					return `Starts: ${s.format(f)}<br/>Ends: ${e.format(f)}<br/><br/>`;
+					return `Starts: ${dayjs(s).format(f)}<br/>Ends: ${dayjs(e).format(
+						f
+					)}<br/><br/>`;
 				} else {
-					return `all-day ${s.format("dddd, MMMM Do")}`;
+					return `all-day ${dayjs(s).format("dddd, MMMM Do")}`;
 				}
 			},
 		},

@@ -24,7 +24,6 @@ no-ssr
 </template>
 
 <script>
-	// import { Carousel3d, Slide } from "vue-carousel-3d/src/index.js";
 	import NoSSR from "vue-no-ssr";
 
 	export default {
@@ -52,7 +51,7 @@ no-ssr
 </script>
 
 <style>
-.carousel-3d-slide:not(.current) * {
-	pointer-events: none;
-}
+	.carousel-3d-slide:not(.current) * {
+		pointer-events: none;
+	}
 </style>

@@ -14,6 +14,7 @@
 		"@fullcalendar/vue": "^5.4.0",
 		"@gridsome/plugin-google-analytics": "^0.1.2",
 		"@mdi/js": "^5.8.55",
+		"dayjs": "^1.10.3",
 		"gridsome": "^0.7.14",
 		"gridsome-source-storyblok": "^1.0.1",
 		"rough-notation": "^0.5.1",
@@ -23,10 +24,7 @@
 	},
 	"devDependencies": {
 		"deepmerge": "^4.2.2",
-		"download-file": "^0.1.5",
 		"fibers": "^5.0.0",
-		"fs": "^0.0.1-security",
-		"os": "^0.1.1",
 		"pug": "^2.0.4",
 		"pug-plain-loader": "^1.0.0",
 		"sass": "^1.29.0",
