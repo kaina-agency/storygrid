@@ -71,7 +71,6 @@ div
 				let scriptTags = this.$el.querySelectorAll(`script`);
 				scriptTags.forEach((tag) => {
 					let newTag = document.createElement("script");
-					newTag.type = "module";
 					newTag.src = tag.src;
 					newTag.innerHTML = tag.innerHTML;
 					tag.remove();
