@@ -67,15 +67,16 @@ div
 			},
 		},
 		mounted() {
-			if (this.blok.html.includes("src")) {
-				let scriptTags = document.querySelectorAll(
-					`#blok-${this.blok._uid} script`
-				);
+			if (this.blok.html.includes("<script")) {
+				let scriptTags = this.$el.querySelectorAll(`script`);
 				scriptTags.forEach((tag) => {
 					let newTag = document.createElement("script");
+					newTag.type = "module";
 					newTag.src = tag.src;
+					newTag.innerHTML = tag.innerHTML;
 					tag.remove();
 					document.head.appendChild(newTag);
+					eval(tag.innerText);
 				});
 			}
 		},

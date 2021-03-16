@@ -240,10 +240,6 @@ v-app(:class="path")
 	.v-main__wrap {
 		display: flex;
 		flex-direction: column;
-
-		> div:nth-child(2) {
-			flex-grow: 1;
-		}
 	}
 
 	.v-navigation-drawer__content {
